@@ -1,0 +1,68 @@
+[Animation Name]
+JiwooFront
+[Texture Name]
+Jiwoo
+[Texture Path]
+Texture\jiwoo.bmp
+[Frame Count]
+5
+[Frame Index]
+0
+[Left Top]
+0 150
+[Slice Size]
+50 50
+[Offset]
+0 0
+[Duration]
+0.100000
+
+
+[Frame Index]
+1
+[Left Top]
+50 150
+[Slice Size]
+50 50
+[Offset]
+0 0
+[Duration]
+0.100000
+
+
+[Frame Index]
+2
+[Left Top]
+100 150
+[Slice Size]
+50 50
+[Offset]
+0 0
+[Duration]
+0.100000
+
+
+[Frame Index]
+3
+[Left Top]
+150 150
+[Slice Size]
+50 50
+[Offset]
+0 0
+[Duration]
+0.100000
+
+
+[Frame Index]
+4
+[Left Top]
+200 150
+[Slice Size]
+50 50
+[Offset]
+0 0
+[Duration]
+0.100000
+
+

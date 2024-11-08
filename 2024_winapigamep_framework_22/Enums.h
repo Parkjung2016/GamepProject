@@ -1,0 +1,55 @@
+#pragma once
+enum class LAYER
+{
+	DEFAULT,
+	GROUND,
+	BACKGROUND,
+	PLAYER,
+	ENEMY,
+	UI,
+	END = 30
+};
+
+enum class PEN_TYPE
+{
+	HOLLOW, RED, GREEN,
+	BLUE, YELLOW, END
+};
+
+enum class BRUSH_TYPE
+{
+	HOLLOW, BLACK, RED, GREEN,
+	BLUE, YELLOW, END
+};
+
+
+enum class EVENT_TYPE
+{
+	CREATE_OBJECT,
+	DELETE_OBJECT,
+	SCENE_CHANGE,
+	END,
+};
+
+enum class ENEMY_STATE
+{
+	IDLE,
+	PATROL,
+	TRACE,
+	ATTACK,
+	RUNAWAY,
+	DEAD,
+};
+
+enum class PLAYER_STATE
+{
+	IDLE,
+	WALK,
+	ATTACK,
+	DEAD,
+};
+enum class PLAYER_ATTACK_STATE
+{
+	NORMAL_ATTACK_1,
+
+};
