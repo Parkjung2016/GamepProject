@@ -48,7 +48,6 @@ void Animation::Render(HDC _hdc)
 	vPos = GET_SINGLE(Camera)->GetRenderPos(vPos);
 
 
-	bool bIsRotate = m_pAnimator->GetIsRotate();
 	int xDest = (int)(vPos.x - m_vecAnimFrame[m_CurFrame].vSlice.x / 2.f);
 	int yDest = (int)(vPos.y - m_vecAnimFrame[m_CurFrame].vSlice.y / 2.f);
 	int wDest = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x);
@@ -58,11 +57,11 @@ void Animation::Render(HDC _hdc)
 	int wSrc = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x);
 	int hSrc = (int)(m_vecAnimFrame[m_CurFrame].vSlice.y);
 
-	if (bIsRotate)
-	{
-		xDest += wSrc;
-		wDest = -wDest;
-	}
+	//if (bIsRotate)
+	//{
+	//	xDest += wSrc;
+	//	wDest = -wDest;
+	//}
 	DrawAlphaBlendedAndStretched(_hdc,
 		xDest,
 		yDest,
@@ -75,7 +74,7 @@ void Animation::Render(HDC _hdc)
 		hSrc,
 		255);
 
-	//AlphaBlend(_hdc,
+	//TransparentBlt(_hdc,
 	//	xDest
 	//	, yDest
 	//	, wDest
@@ -85,7 +84,7 @@ void Animation::Render(HDC _hdc)
 	//	, ySrc
 	//	, wSrc
 	//	, hSrc,
-	//	blendFunction);
+	//	RGB(255, 0, 255));
 
 }
 
@@ -93,8 +92,15 @@ void Animation::Render(HDC _hdc)
 void Animation::DrawAlphaBlendedAndStretched(HDC hdcDest, int xDest, int yDest, int destWidth, int destHeight, HDC hdcSrc, int xSrc, int ySrc, int srcWidth, int srcHeight, BYTE transparency)
 {
 	HDC hdcTemp = CreateCompatibleDC(hdcDest);
-	HBITMAP hbmTemp = CreateCompatibleBitmap(hdcDest, srcWidth, srcHeight);
+	HBITMAP hbmTemp = CreateCompatibleBitmap(hdcDest, destWidth, destHeight);
 	HBITMAP hbmOld = (HBITMAP)SelectObject(hdcTemp, hbmTemp);
+	bool bIsRotate = m_pAnimator->GetIsRotate();
+
+	int stretchWidth = bIsRotate ? -destWidth : destWidth;
+	int xPosition = bIsRotate ? destWidth - 1 : 0;
+
+	SetStretchBltMode(hdcTemp, HALFTONE);
+	StretchBlt(hdcTemp, xPosition, 0, stretchWidth, destHeight, hdcSrc, xSrc, ySrc, srcWidth, srcHeight, SRCCOPY);
 
 	BLENDFUNCTION blendFunction;
 	blendFunction.BlendOp = AC_SRC_OVER;
@@ -102,30 +108,7 @@ void Animation::DrawAlphaBlendedAndStretched(HDC hdcDest, int xDest, int yDest, 
 	blendFunction.SourceConstantAlpha = transparency;
 	blendFunction.AlphaFormat = AC_SRC_ALPHA;
 
-	TransparentBlt(hdcTemp,
-		0,
-		0,
-		srcWidth,
-		srcHeight,
-		hdcSrc,
-		xSrc,
-		ySrc,
-		srcWidth,
-		srcHeight,
-		RGB(255, 0, 255));
-
-	SetStretchBltMode(hdcDest, HALFTONE);
-	StretchBlt(hdcDest,
-		xDest,
-		yDest,
-		destWidth,
-		destHeight,
-		hdcTemp,
-		0,
-		0,
-		srcWidth,
-		srcHeight,
-		SRCCOPY);
+	TransparentBlt(hdcDest, xDest, yDest, destWidth, destHeight, hdcTemp, 0, 0, destWidth, destHeight, RGB(255, 0, 255));
 
 	SelectObject(hdcTemp, hbmOld);
 	DeleteObject(hbmTemp);

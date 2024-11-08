@@ -9,9 +9,14 @@ public:
 public:
 	void Start() override;
 	void Render(HDC _hdc) override;
-	void EnterCollision(Collider* _other) override;
 
 	CLONE(Ground)
 private:
+
+	void Update() override;
+public:
+	void EnterCollision(Collider* _other) override;
+	void StayCollision(Collider* _other) override;
+	void ExitCollision(Collider* _other) override;
 };
 

@@ -1,15 +1,15 @@
 #pragma once
-#include "PlayerState.h"
+#include "PlayerGroundState.h"
 
-class PlayerIdleState : public PlayerState
+class PlayerIdleState : public PlayerGroundState
 {
 public:
 	PlayerIdleState();
 	~PlayerIdleState() override;
 public:
-	virtual void Update();
-	virtual void Enter();
-	virtual void Exit();
+	void Update() override;
+	void Enter() override;
+	void Exit() override;
 
 };
 

@@ -52,9 +52,9 @@ void Core::CleanUp()
 
 void Core::Clear() const
 {
-	GDISelector gdi(m_pMemTex->GetTexDC(), BRUSH_TYPE::BLACK);
+	GDISelector gdi(m_pMemTex->GetTexDC(), BRUSH_TYPE::HOLLOW);
 	//Rectangle(m_pMemTex->GetTexDC(), -1, -1, SCREEN_WIDTH + 1, SCREEN_HEIGHT + 1);
-	::PatBlt(m_pMemTex->GetTexDC(), 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, BLACKNESS);
+	::PatBlt(m_pMemTex->GetTexDC(), 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, WHITENESS);
 }
 
 void Core::GameLoop()

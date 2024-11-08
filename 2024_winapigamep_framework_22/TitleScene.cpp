@@ -33,6 +33,7 @@ void TitleScene::Init()
 	AddObject(pEnemy, LAYER::ENEMY);
 
 	Object* pPlayer = new Player;
+	pPlayer->SetName(L"Player");
 	pPlayer->SetPos({ SCREEN_WIDTH / 2.f,500.f });
 	pPlayer->SetSize({ 100.f,100.f });
 	AddObject(pPlayer, LAYER::PLAYER);

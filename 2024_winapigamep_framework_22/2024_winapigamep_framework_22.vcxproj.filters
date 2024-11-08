@@ -140,6 +140,12 @@
     <Filter Include="Engine\03. Object\Player">
       <UniqueIdentifier>{230f4099-a61c-4a2e-ac28-509dfa79c742}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\06. Component\Gravity">
+      <UniqueIdentifier>{9ce28521-3aa1-4c13-9c5b-e2f2eac21c77}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Player\State\Jump">
+      <UniqueIdentifier>{60e8e3b3-4e2f-4a44-a913-c0919daed7b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -277,7 +283,18 @@
     <ClInclude Include="Player.h">
       <Filter>Engine\03. Object\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Ground.h" />
+    <ClInclude Include="Ground.h">
+      <Filter>Engine\03. Object\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerGroundState.h">
+      <Filter>Engine\07. Module\StateMachine\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerJumpState.h">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="Gravity.h">
+      <Filter>Engine\06. Component\Gravity</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -407,6 +424,17 @@
     <ClCompile Include="Player.cpp">
       <Filter>Engine\03. Object\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Ground.cpp" />
+    <ClCompile Include="Ground.cpp">
+      <Filter>Engine\03. Object\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerGroundState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerJumpState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Jump</Filter>
+    </ClCompile>
+    <ClCompile Include="Gravity.cpp">
+      <Filter>Engine\06. Component\Gravity</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

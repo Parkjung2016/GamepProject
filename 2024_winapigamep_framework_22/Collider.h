@@ -22,7 +22,7 @@ public:
 		m_vOffsetPos = _vOffsetPos;
 	}
 	const Vec2& GetOffSetPos() const { return m_vOffsetPos; }
-	const Vec2& GetLatedUpatedPos() const
+	const Vec2& GetLatedUpdatedPos() const
 	{
 		return m_vLatePos;
 	}

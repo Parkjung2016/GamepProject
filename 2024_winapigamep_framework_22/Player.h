@@ -7,6 +7,7 @@ class PlayerStateMachine;
 struct tPlayerInfo
 {
 	float fWalkSpeed;
+	float fJumpPower;
 };
 class Player : public Object
 {
@@ -16,9 +17,9 @@ public:
 public:
 	void Update() override;
 	void Render(HDC _hdc) override;
+
 private:
 	void SetInfo(const tPlayerInfo& _info) { m_tInfo = _info; }
-	void UpdateGravity();
 private:
 	int m_iInput;
 	bool m_bIsPressInput;

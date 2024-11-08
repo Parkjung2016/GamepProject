@@ -8,7 +8,7 @@
 #include "Player.h"
 
 
-PlayerIdleState::PlayerIdleState() : PlayerState(PLAYER_STATE::IDLE)
+PlayerIdleState::PlayerIdleState() : PlayerGroundState(PLAYER_STATE::IDLE)
 {
 }
 
@@ -18,6 +18,7 @@ PlayerIdleState::~PlayerIdleState()
 
 void PlayerIdleState::Update()
 {
+	PlayerGroundState::Update();
 	if (GetPlayer()->GetInput() != 0)
 	{
 		GetStateMachine()->ChangeState(PLAYER_STATE::WALK);
@@ -28,7 +29,9 @@ void PlayerIdleState::Update()
 void PlayerIdleState::Enter()
 {
 	Rigidbody* pRigid = GetPlayer()->GetComponent<Rigidbody>();
-	pRigid->SetVelocity({ 0,0 });
+	Vec2 velocity = pRigid->GetVelocity();
+
+	pRigid->SetVelocity({ 0.f,velocity.y });
 
 	GetPlayer()->GetComponent<Animator>()->PlayAnimation(L"Idle", true);
 

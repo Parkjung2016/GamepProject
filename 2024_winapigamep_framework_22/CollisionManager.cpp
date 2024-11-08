@@ -127,8 +127,8 @@ void CollisionManager::CollisionLayerUpdate(LAYER _left, LAYER _right)
 
 bool CollisionManager::IsCollision(Collider* _left, Collider* _right)
 {
-	Vec2 vLeftPos = _left->GetLatedUpatedPos();
-	Vec2 vRightPos = _right->GetLatedUpatedPos();
+	Vec2 vLeftPos = _left->GetLatedUpdatedPos();
+	Vec2 vRightPos = _right->GetLatedUpdatedPos();
 	Vec2 vLeftSize = _left->GetSize();
 	Vec2 vRightSize = _right->GetSize();
 

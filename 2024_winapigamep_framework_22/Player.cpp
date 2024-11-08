@@ -1,12 +1,13 @@
 #include "pch.h"
 #include "Player.h"
 #include "InputManager.h"
-#include "Projectile.h"
 #include "Texture.h"
 #include "ResourceManager.h"
 #include "Collider.h"
 #include "Animator.h"
+#include "Gravity.h"
 #include "PlayerIdleState.h"
+#include "PlayerJumpState.h"
 #include "PlayerStateMachine.h"
 #include "PlayerWalkState.h"
 #include "Rigidbody.h"
@@ -21,6 +22,7 @@ Player::Player()
 	//m_pTex->Load(path);
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Player", L"Texture\\Player.bmp");
 	this->AddComponent<Animator>();
+	this->AddComponent<Gravity>();
 	this->AddComponent<Rigidbody>();
 	this->AddComponent<Collider>();
 	//GetComponent<Animator>()->LoadAnimation(L"Animation\\player_idle.anim");
@@ -36,10 +38,12 @@ Player::Player()
 
 	tPlayerInfo info;
 	info.fWalkSpeed = 100;
+	info.fJumpPower = 500;
 	SetInfo(info);
 	PlayerStateMachine* pStateMachine = new PlayerStateMachine;
 	pStateMachine->AddState(new PlayerIdleState);
 	pStateMachine->AddState(new PlayerWalkState);
+	pStateMachine->AddState(new PlayerJumpState);
 	SetStateMachine(pStateMachine);
 	pStateMachine->SetCurState(PLAYER_STATE::IDLE);
 
@@ -51,7 +55,6 @@ Player::~Player()
 }
 void Player::Update()
 {
-	m_pStateMachine->Update();
 
 	m_bIsPressInput = GET_KEY(KEY_TYPE::A) == true || GET_KEY(KEY_TYPE::D) == true;
 	if (GET_KEY(KEY_TYPE::A) && GET_KEY(KEY_TYPE::D))
@@ -68,6 +71,9 @@ void Player::Update()
 	}
 	else if (GET_KEYUP(KEY_TYPE::A) || GET_KEYUP(KEY_TYPE::D))
 		m_iInput = 0;
+	m_pStateMachine->Update();
+
+
 }
 
 void Player::Render(HDC _hdc)
@@ -77,10 +83,7 @@ void Player::Render(HDC _hdc)
 
 }
 
-void Player::UpdateGravity()
-{
-	GetComponent<Rigidbody>()->AddForce({ 0.f,500.f });
-}
+
 
 void Player::SetStateMachine(PlayerStateMachine* _stateMachine)
 {
