@@ -19,7 +19,7 @@ PlayerIdleState::~PlayerIdleState()
 void PlayerIdleState::Update()
 {
 	PlayerGroundState::Update();
-	if (GetPlayer()->GetInput() != 0)
+	if (GetPlayer()->GetMoveInput() != 0)
 	{
 		GetStateMachine()->ChangeState(PLAYER_STATE::WALK);
 	}

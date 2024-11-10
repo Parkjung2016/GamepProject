@@ -26,6 +26,7 @@ void Ground::Render(HDC _hdc)
 	Vec2 vSize = GetSize();
 	RECT_RENDER(_hdc, vPos.x, vPos.y
 		, vSize.x, vSize.y);
+	ComponentRender(_hdc);
 }
 
 void Ground::EnterCollision(Collider* _other)

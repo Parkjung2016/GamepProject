@@ -15,5 +15,6 @@ public:
 
 public:
 	void SetGround(bool _b);
+	bool IsGrounded() const { return m_bGround; }
 };
 

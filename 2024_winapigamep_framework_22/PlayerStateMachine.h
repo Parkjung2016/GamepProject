@@ -8,6 +8,8 @@ class PlayerStateMachine
 public:
 	PlayerStateMachine();
 	~PlayerStateMachine();
+	int AddState(int _cpp_par_);
+
 private:
 	map<PLAYER_STATE, PlayerState*> m_mapState;
 	PlayerState* m_pCurState;

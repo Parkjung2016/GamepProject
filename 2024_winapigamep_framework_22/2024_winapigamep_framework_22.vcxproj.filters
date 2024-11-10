@@ -146,6 +146,12 @@
     <Filter Include="Engine\07. Module\StateMachine\Player\State\Jump">
       <UniqueIdentifier>{60e8e3b3-4e2f-4a44-a913-c0919daed7b2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Player\State\Falling">
+      <UniqueIdentifier>{713630f8-e9fd-49f7-b007-198565d2e33a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Player\State\Attack">
+      <UniqueIdentifier>{c7e630dc-27a0-4f83-9243-8e56ac6aebed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -295,6 +301,10 @@
     <ClInclude Include="Gravity.h">
       <Filter>Engine\06. Component\Gravity</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerFallingState.h">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Falling</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAttackState.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -436,5 +446,9 @@
     <ClCompile Include="Gravity.cpp">
       <Filter>Engine\06. Component\Gravity</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerFallingState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Falling</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAttackState.cpp" />
   </ItemGroup>
 </Project>

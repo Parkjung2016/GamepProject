@@ -46,9 +46,9 @@ enum class PLAYER_STATE
 	IDLE,
 	WALK,
 	JUMP,
+	FALLING,
 	ATTACK,
 	DEAD,
-	ABSTRACT
 };
 enum class PLAYER_ATTACK_STATE
 {

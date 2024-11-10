@@ -72,7 +72,7 @@ void CollisionManager::CollisionLayerUpdate(LAYER _left, LAYER _right)
 				continue;
 
 			COLLIDER_ID colliderID; // 두 충돌체로만 만들 수 있는 ID
- 			colliderID.left_ID = pLeftCollider->GetID();
+			colliderID.left_ID = pLeftCollider->GetID();
 			colliderID.right_ID = pRightCollider->GetID();
 
 			iter = m_mapCollisionInfo.find(colliderID.ID);
@@ -132,15 +132,11 @@ bool CollisionManager::IsCollision(Collider* _left, Collider* _right)
 	Vec2 vLeftSize = _left->GetSize();
 	Vec2 vRightSize = _right->GetSize();
 
-	RECT leftRt = RECT_MAKE(vLeftPos.x, vLeftPos.y, vLeftSize.x, vLeftSize.y);
-	RECT rightRt = RECT_MAKE(vRightPos.x, vRightPos.y, vRightSize.x, vRightSize.y);
-	RECT rt;
-	return ::IntersectRect(&rt, &leftRt, &rightRt);
-	/*if (abs(vRightPos.x - vLeftPos.x) < (vLeftSize.x + vRightSize.x) / 2.f
-		&& abs(vRightPos.y - vLeftPos.y) < (vLeftSize.y + vRightSize.y) / 2.f)
+	if (abs(vRightPos.x - vLeftPos.x) <= (vLeftSize.x + vRightSize.x) / 2.f
+		&& abs(vRightPos.y - vLeftPos.y) <= (vLeftSize.y + vRightSize.y) / 2.f)
 	{
 		return true;
 	}
 
-	return false;*/
+	return false;
 }

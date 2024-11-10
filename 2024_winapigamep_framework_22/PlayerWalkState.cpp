@@ -20,7 +20,7 @@ void PlayerWalkState::Update()
 	Player* player = GetPlayer();
 	Rigidbody* pRigid = player->GetComponent<Rigidbody>();
 
-	int iInput = player->GetInput();
+	int iInput = player->GetMoveInput();
 	tPlayerInfo info = player->GetInfo();
 	//Vec2 size = player->GetSize();
 	//float xSize = abs(size.x);

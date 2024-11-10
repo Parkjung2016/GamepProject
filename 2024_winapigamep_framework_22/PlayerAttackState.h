@@ -1,18 +1,14 @@
 #pragma once
 #include "PlayerState.h"
-class PlayerJumpState :
+class PlayerAttackState :
     public PlayerState
 {
 public:
-	PlayerJumpState();
-	~PlayerJumpState() override;
-
+	PlayerAttackState();
+	~PlayerAttackState() override;
 public:
 	void Update() override;
 	void Enter() override;
 	void Exit() override;
-
-private:
-	bool bCheckJump;
 };
 

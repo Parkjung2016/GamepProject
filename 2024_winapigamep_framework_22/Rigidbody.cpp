@@ -20,7 +20,7 @@ Rigidbody::~Rigidbody()
 void Rigidbody::LateUpdate()
 {
 	float fForce = m_vForce.Length();
-
+ 
 	if (0.f != fForce)
 	{
 		m_vForce.Normalize();
@@ -58,7 +58,7 @@ void Rigidbody::LateUpdate()
 	}
 	if (abs(m_vMaxVelocity.y) < abs(m_vVelocity.y))
 	{
-		m_vVelocity.x = (m_vVelocity.y / abs(m_vVelocity.y)) * abs(m_vMaxVelocity.y);
+		m_vVelocity.y = (m_vVelocity.y / abs(m_vVelocity.y)) * abs(m_vMaxVelocity.y);
 	}
 	Move();
 	m_vForce = Vec2(0.f, 0.f);

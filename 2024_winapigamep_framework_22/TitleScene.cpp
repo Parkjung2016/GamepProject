@@ -27,21 +27,21 @@ TitleScene::~TitleScene()
 
 void TitleScene::Init()
 {
-	Scene::Init();
 	Enemy* pEnemy = EnemyFactory::CreateEnemy(ENEMY_TYPE::NORMAL, { 250.f,500.f });
 
 	AddObject(pEnemy, LAYER::ENEMY);
 
 	Object* pPlayer = new Player;
 	pPlayer->SetName(L"Player");
-	pPlayer->SetPos({ SCREEN_WIDTH / 2.f,500.f });
+	pPlayer->SetPos({ SCREEN_WIDTH / 2.f,300.f });
 	pPlayer->SetSize({ 100.f,100.f });
 	AddObject(pPlayer, LAYER::PLAYER);
 
 	RegisterPlayer(pPlayer);
 
 	Object* pGround = new Ground;
-	pGround->SetPos({ 640.f,584.f });
+	pGround->SetName(L"Ground");
+	pGround->SetPos({ 640.f,620.f });
 	pGround->SetSize({ 200.f,60.f });
 	AddObject(pGround, LAYER::GROUND);
 
@@ -81,6 +81,9 @@ void TitleScene::Init()
 
 	GET_SINGLE(Camera)->FadeOut(2.f);
 	GET_SINGLE(Camera)->FadeIn(2.f);
+
+	Scene::Init();
+
 
 }
 
