@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "PlayerStateMachine.h"
 
-#include "Func.h"
+#include "MyFunc.h"
 #include "PlayerState.h"
 
 PlayerStateMachine::PlayerStateMachine()
@@ -52,7 +52,6 @@ void PlayerStateMachine::ChangeState(PLAYER_STATE _eNextState)
 {
 	PlayerState* pNextState = GetState(_eNextState);
 
-	assert(m_pCurState != pNextState);
 	m_pCurState->Exit();
 	m_pCurState = pNextState;
 	m_pCurState->Enter();

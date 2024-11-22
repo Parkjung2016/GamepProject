@@ -1,6 +1,7 @@
 #pragma once
 //#include "Object.h"
 class Object; // 클래스 전방선언
+class TileMap;
 class Scene
 {
 public:
@@ -22,10 +23,16 @@ public:
 		return m_vecObj[(UINT)_type];
 	}
 
-	 vector<Object*>& GetUIObjects()
+	vector<Object*>& GetUIObjects()
 	{
 		return m_vecObj[(UINT)LAYER::UI];
 	}
+
+protected:
+	TileMap* m_TileMap;
+public:
+	void SetTileMap(TileMap* TileMap);
+	TileMap* GetTileMap() const { m_TileMap; }
 private:
 	//Object m_obj;
 	//Object* m_pObj;

@@ -92,12 +92,6 @@
     <Filter Include="Engine\03. Object\UI\BtnUI">
       <UniqueIdentifier>{79d79607-9a4c-4fa8-a111-f2d50928a207}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\08. Factory">
-      <UniqueIdentifier>{ab15e475-47d5-4c23-9cab-a2ae04162184}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\08. Factory\EnemyFactory">
-      <UniqueIdentifier>{4941757c-6092-4036-8003-763bc7bebe9c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\06. Component\Rigidbody">
       <UniqueIdentifier>{e2bb0297-940a-4624-acf3-3db7d8758989}</UniqueIdentifier>
     </Filter>
@@ -152,6 +146,42 @@
     <Filter Include="Engine\07. Module\StateMachine\Player\State\Attack">
       <UniqueIdentifier>{c7e630dc-27a0-4f83-9243-8e56ac6aebed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\03. Object\Bullet">
+      <UniqueIdentifier>{f32c651e-1183-46ac-8fed-ac5b7602a661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Enemy">
+      <UniqueIdentifier>{f85d4a49-5c16-49f6-82d7-e081854570a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Enemy\State\Recover">
+      <UniqueIdentifier>{c76d83b3-aecb-4925-b8dd-bbcb1f3ab714}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06. Component\Health">
+      <UniqueIdentifier>{37a1a695-d9f3-430b-85b9-80315c407c9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Player\State\GetHit">
+      <UniqueIdentifier>{aee84cf3-3956-469f-9c9b-a1c1eb23b4e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Background">
+      <UniqueIdentifier>{d84ec7ec-fc7b-4ec6-b2d3-f76deb5a7b6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02. Manager\MapManager">
+      <UniqueIdentifier>{cba882d0-80a3-4ddd-b478-ffa1e3bdd92a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02. Manager\GameManager">
+      <UniqueIdentifier>{a83bd53f-a63c-4ae6-b3c8-6abe2bc14efd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\04. Scene\EditorScene">
+      <UniqueIdentifier>{931a7593-6535-417c-af50-197091fcc989}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\08.Editor">
+      <UniqueIdentifier>{06462369-9927-4187-8e4a-2c8d2f5c40de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Tile">
+      <UniqueIdentifier>{98aea09e-3811-4951-8d09-8ee42568d06a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\TileMap">
+      <UniqueIdentifier>{a4e88499-1a38-47d4-b025-2ae010d49a38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -180,9 +210,6 @@
     </ClInclude>
     <ClInclude Include="Vec2.h">
       <Filter>Engine\99. Header</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Engine\03. Object</Filter>
     </ClInclude>
     <ClInclude Include="GDISelector.h">
       <Filter>Engine\07. Module</Filter>
@@ -241,7 +268,7 @@
     <ClInclude Include="UI.h">
       <Filter>Engine\03. Object\UI</Filter>
     </ClInclude>
-    <ClInclude Include="Func.h">
+    <ClInclude Include="MyFunc.h">
       <Filter>Engine\99. Header</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
@@ -264,9 +291,6 @@
     </ClInclude>
     <ClInclude Include="EnemyTraceState.h">
       <Filter>Engine\07. Module\StateMachine\Enemy\State\Trace</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyFactory.h">
-      <Filter>Engine\08. Factory\EnemyFactory</Filter>
     </ClInclude>
     <ClInclude Include="Rigidbody.h">
       <Filter>Engine\06. Component\Rigidbody</Filter>
@@ -304,7 +328,50 @@
     <ClInclude Include="PlayerFallingState.h">
       <Filter>Engine\07. Module\StateMachine\Player\State\Falling</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerAttackState.h" />
+    <ClInclude Include="PlayerAirState.h">
+      <Filter>Engine\07. Module\StateMachine\Player\State</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerAttackState.h">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>Engine\03. Object\Bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyAttackState.h">
+      <Filter>Engine\07. Module\StateMachine\Enemy\State\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyRecoverState.h">
+      <Filter>Engine\07. Module\StateMachine\Enemy\State\Recover</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Engine\06. Component\Health</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerGetHitState.h">
+      <Filter>Engine\07. Module\StateMachine\Player\State\GetHit</Filter>
+    </ClInclude>
+    <ClInclude Include="Background.h">
+      <Filter>Engine\03. Object\Background</Filter>
+    </ClInclude>
+    <ClInclude Include="MapManager.h">
+      <Filter>Engine\02. Manager\MapManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Action.h">
+      <Filter>Engine\99. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorScene.h">
+      <Filter>Engine\04. Scene\EditorScene</Filter>
+    </ClInclude>
+    <ClInclude Include="GameManager.h">
+      <Filter>Engine\02. Manager\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorSceneDialog.h" />
+    <ClInclude Include="Tile.h">
+      <Filter>Engine\03. Object\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="TileMap.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -324,9 +391,6 @@
       <Filter>Engine\01. Core</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>Engine\03. Object</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
       <Filter>Engine\03. Object</Filter>
     </ClCompile>
     <ClCompile Include="GDISelector.cpp">
@@ -386,7 +450,7 @@
     <ClCompile Include="UI.cpp">
       <Filter>Engine\03. Object\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Func.cpp">
+    <ClCompile Include="MyFunc.cpp">
       <Filter>Engine\99. Header</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
@@ -409,9 +473,6 @@
     </ClCompile>
     <ClCompile Include="EnemyTraceState.cpp">
       <Filter>Engine\07. Module\StateMachine\Enemy\State\Trace</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyFactory.cpp">
-      <Filter>Engine\08. Factory\EnemyFactory</Filter>
     </ClCompile>
     <ClCompile Include="Rigidbody.cpp">
       <Filter>Engine\06. Component\Rigidbody</Filter>
@@ -449,6 +510,49 @@
     <ClCompile Include="PlayerFallingState.cpp">
       <Filter>Engine\07. Module\StateMachine\Player\State\Falling</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerAttackState.cpp" />
+    <ClCompile Include="PlayerAirState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Player\State</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerAttackState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>Engine\03. Object\Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Engine\03. Object\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyAttackState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Enemy\State\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyRecoverState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Enemy\State\Recover</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Engine\06. Component\Health</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerGetHitState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Player\State\GetHit</Filter>
+    </ClCompile>
+    <ClCompile Include="Background.cpp">
+      <Filter>Engine\03. Object\Background</Filter>
+    </ClCompile>
+    <ClCompile Include="MapManager.cpp">
+      <Filter>Engine\02. Manager\MapManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Action.cpp">
+      <Filter>Engine\99. Header</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorScene.cpp">
+      <Filter>Engine\04. Scene\EditorScene</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Engine\02. Manager\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorSceneDialog.cpp" />
+    <ClCompile Include="Tile.cpp">
+      <Filter>Engine\03. Object\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "Camera.h"
 
-#include "InputManager.h"
 #include "Object.h"
 #include "ResourceManager.h"
 #include "TimeManager.h"
@@ -14,6 +13,7 @@ void Camera::Init()
 	m_fTime = .5f;
 	m_fSpeed = 0.f;
 	m_fAccTime = 0.f;
+	m_bIsShaking = false;
 
 	m_pVeilTex = GET_SINGLE(ResourceManager)->CreateTexture(L"CameraVeil", SCREEN_WIDTH, SCREEN_HEIGHT);
 }
@@ -81,24 +81,56 @@ void Camera::Render(HDC _hdc)
 	}
 }
 
+void Camera::Shake(float _fShakeIntensity, float _fShakeTime)
+{
+	m_bIsShaking = true;
+	m_fShakeTimeLeft = _fShakeTime;
+	m_fShakeIntensity = _fShakeIntensity;
+}
+
 void Camera::CalDiff()
 {
-
-	m_fAccTime += fDT;
-	if (m_fTime <= m_fAccTime)
+	if (m_bIsShaking)
 	{
-		m_vCurLookAt = m_vLookAt;
+		if (m_fShakeTimeLeft > 0.f)
+		{
+			m_fShakeTimeLeft -= fDT;
+
+			float shakeOffsetX = (rand() % 200 - 100) * m_fShakeIntensity;
+			float shakeOffsetY = (rand() % 200 - 100) * m_fShakeIntensity;
+			m_vCurLookAt.x = m_vPrevShakeLookAt.x + shakeOffsetX;
+			m_vCurLookAt.y = m_vPrevShakeLookAt.y + shakeOffsetY;
+
+			//m_fShakeIntensity *= 0.9f;
+
+		}
+		else
+		{
+			m_bIsShaking = false;
+			m_vCurLookAt = m_vPrevShakeLookAt;
+		}
 	}
 	else
 	{
-		Vec2 vLookDir = m_vLookAt - m_vPrevLookAt;
 
-		if (vLookDir.IsZero())
+		m_fAccTime += fDT;
+		if (m_fTime <= m_fAccTime)
 		{
+			m_vCurLookAt = m_vLookAt;
+		}
+		else
+		{
+			Vec2 vLookDir = m_vLookAt - m_vPrevLookAt;
+
+			if (vLookDir.IsZero())
+			{
+				m_vCurLookAt = m_vPrevLookAt + vLookDir.Normalize() * m_fSpeed * fDT;
+			}
 			m_vCurLookAt = m_vPrevLookAt + vLookDir.Normalize() * m_fSpeed * fDT;
 		}
-		m_vCurLookAt = m_vPrevLookAt + vLookDir.Normalize() * m_fSpeed * fDT;
+
 	}
+
 
 	Vec2 vResolution = { SCREEN_WIDTH, SCREEN_HEIGHT };
 	Vec2 vCenter = vResolution / 2;

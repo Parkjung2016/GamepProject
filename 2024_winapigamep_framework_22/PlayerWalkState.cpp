@@ -22,10 +22,6 @@ void PlayerWalkState::Update()
 
 	int iInput = player->GetMoveInput();
 	tPlayerInfo info = player->GetInfo();
-	//Vec2 size = player->GetSize();
-	//float xSize = abs(size.x);
-	//size.x = xSize * -1;
-	//player->SetSize(size);
 	if (iInput != 0)
 	{
 		player->GetComponent<Animator>()->SetIsRotate(iInput == -1);

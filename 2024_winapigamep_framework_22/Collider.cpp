@@ -19,6 +19,7 @@ void Collider::LateUpdate()
 	const Object* pOwner = GetOwner();
 	Vec2 vPos = pOwner->GetPos();
 	m_vLatePos = vPos + m_vOffsetPos;
+
 }
 
 void Collider::Render(HDC _hdc)

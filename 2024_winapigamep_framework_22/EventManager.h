@@ -3,12 +3,12 @@ class Object;
 struct tEvent
 {
 	EVENT_TYPE eveType;
-	Object* obj;
-	LAYER objType;
+	DWORD_PTR lParam;
+	DWORD_PTR wParam;
 public:
 	bool operator==(const tEvent& other)
 	{
-		return eveType == other.eveType && obj == other.obj;
+		return eveType == other.eveType && lParam == other.lParam && wParam == other.wParam;
 	}
 };
 class EventManager
@@ -16,8 +16,7 @@ class EventManager
 	DECLARE_SINGLE(EventManager);
 public:
 	void Update();
-	void DeleteObject(Object* _pObj);
-	// todo..
+	void AddEvent(tEvent _tEve);
 private:
 	void Excute(const tEvent& _eve);
 private:

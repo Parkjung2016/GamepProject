@@ -23,8 +23,7 @@ void PlayerGroundState::Update()
 		GetStateMachine()->ChangeState(PLAYER_STATE::FALLING);
 		return;
 	}
-
-	if (GetPlayer()->GetIsPressAttackInput())
+	if (GET_KEYDOWN(KEY_TYPE::A))
 	{
 		GetStateMachine()->ChangeState(PLAYER_STATE::ATTACK);
 

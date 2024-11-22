@@ -6,7 +6,7 @@
 #include "Player.h"
 #include "PlayerStateMachine.h"
 
-PlayerFallingState::PlayerFallingState() : PlayerState(PLAYER_STATE::FALLING)
+PlayerFallingState::PlayerFallingState() : PlayerAirState(PLAYER_STATE::FALLING)
 {
 }
 
@@ -16,6 +16,7 @@ PlayerFallingState::~PlayerFallingState()
 
 void PlayerFallingState::Update()
 {
+	PlayerAirState::Update();
 	bool bIsGrounded = GetPlayer()->GetComponent<Gravity>()->IsGrounded();
 	if (bIsGrounded)
 	{

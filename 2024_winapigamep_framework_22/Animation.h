@@ -24,6 +24,8 @@ public:
 		Vec2 _vStep, int _framecount, float _fDuration);
 public:
 	const wstring& GetName() const { return m_strName; }
+	bool IsFinished() const { return m_bFinished; }
+	void ResetFinished() { m_bFinished = false; }
 	void SetName(wstring _name) { m_strName = _name; }
 	void SetAnimator(Animator* _animator) { m_pAnimator = _animator; }
 	void SetFrame(int _frame) { m_CurFrame = _frame; }
@@ -37,6 +39,7 @@ private:
 	UINT   m_CurFrame; // 현재 프레임
 	float  m_fAccTime; // 누적 시간
 	int	   m_repeatcnt; // 반복 횟수
+	bool m_bFinished;
 	wstring m_strName;
 	Animator* m_pAnimator;
 	Texture* m_pTex; // 애니메이션 텍스처

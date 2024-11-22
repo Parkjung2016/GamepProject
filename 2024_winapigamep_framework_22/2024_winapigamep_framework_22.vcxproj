@@ -178,6 +178,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h" />
+    <ClInclude Include="Background.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="EditorScene.h" />
+    <ClInclude Include="EditorSceneDialog.h" />
+    <ClInclude Include="EnemyAttackState.h" />
+    <ClInclude Include="EnemyRecoverState.h" />
     <ClInclude Include="EnemyStateMachine.h" />
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Animator.h" />
@@ -190,23 +196,28 @@
     <ClInclude Include="Core.h" />
     <ClInclude Include="Define.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="Enums.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="Func.h" />
+    <ClInclude Include="Action.h" />
+    <ClInclude Include="GameManager.h" />
+    <ClInclude Include="MapManager.h" />
+    <ClInclude Include="MyFunc.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GDISelector.h" />
     <ClInclude Include="EnemyIdleState.h" />
     <ClInclude Include="Gravity.h" />
     <ClInclude Include="Ground.h" />
+    <ClInclude Include="Health.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PanelUI.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerAirState.h" />
     <ClInclude Include="PlayerAttackState.h" />
     <ClInclude Include="PlayerFallingState.h" />
+    <ClInclude Include="PlayerGetHitState.h" />
     <ClInclude Include="PlayerGroundState.h" />
     <ClInclude Include="PlayerIdleState.h" />
     <ClInclude Include="PlayerJumpState.h" />
@@ -222,6 +233,8 @@
     <ClInclude Include="EnemyState.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="Tile.h" />
+    <ClInclude Include="TileMap.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="EnemyTraceState.h" />
@@ -230,6 +243,12 @@
     <ClInclude Include="Vec2.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="EditorScene.cpp" />
+    <ClCompile Include="EditorSceneDialog.cpp" />
+    <ClCompile Include="EnemyAttackState.cpp" />
+    <ClCompile Include="EnemyRecoverState.cpp" />
     <ClCompile Include="EnemyStateMachine.cpp" />
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animator.cpp" />
@@ -241,21 +260,26 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="Core.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="EventManager.cpp" />
-    <ClCompile Include="Func.cpp" />
+    <ClCompile Include="Action.cpp" />
+    <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="MapManager.cpp" />
+    <ClCompile Include="MyFunc.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="GDISelector.cpp" />
     <ClCompile Include="EnemyIdleState.cpp" />
     <ClCompile Include="Gravity.cpp" />
     <ClCompile Include="Ground.cpp" />
+    <ClCompile Include="Health.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="PanelUI.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerAirState.cpp" />
     <ClCompile Include="PlayerAttackState.cpp" />
     <ClCompile Include="PlayerFallingState.cpp" />
+    <ClCompile Include="PlayerGetHitState.cpp" />
     <ClCompile Include="PlayerGroundState.cpp" />
     <ClCompile Include="PlayerIdleState.cpp" />
     <ClCompile Include="PlayerJumpState.cpp" />
@@ -269,6 +293,8 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="EnemyState.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Tile.cpp" />
+    <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="EnemyTraceState.cpp" />

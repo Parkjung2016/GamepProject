@@ -3,11 +3,14 @@
 
 #include "Collider.h"
 #include "Gravity.h"
-#include "Rigidbody.h"
+#include "ResourceManager.h"
+#include "Texture.h"
 
 Ground::Ground()
 {
 	AddComponent<Collider>();
+
+
 }
 
 Ground::~Ground()
@@ -16,25 +19,36 @@ Ground::~Ground()
 
 void Ground::Start()
 {
-	GetComponent<Collider>()->SetSize(GetSize());
 
 }
 
 void Ground::Render(HDC _hdc)
 {
 	Vec2 vPos = GetPos();
+	Vec2 vPos2 = GetPos2();
 	Vec2 vSize = GetSize();
-	RECT_RENDER(_hdc, vPos.x, vPos.y
-		, vSize.x, vSize.y);
+	Vec2 vRenderPos = GET_SINGLE(Camera)->GetRenderPos(vPos);
+
+	if (m_pTex != nullptr)
+		BitBlt(_hdc,
+			(int)vRenderPos.x,
+			(int)vRenderPos.y,
+			vSize.x,
+			vSize.y,
+			m_pTex->GetTexDC(),
+			vPos2.x,
+			vPos2.y,
+			SRCCOPY);
 	ComponentRender(_hdc);
 }
 
 void Ground::EnterCollision(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
-	if (pOtherObj->GetName() == L"Player")
+	Gravity* gravity = pOtherObj->GetComponent<Gravity>();
+	if (nullptr != gravity)
 	{
-		pOtherObj->GetComponent<Gravity>()->SetGround(true);
+		gravity->SetGround(true);
 
 		Vec2 vObjPos = _other->GetLatedUpdatedPos();
 		Vec2 vObjSize = _other->GetSize();
@@ -57,9 +71,10 @@ void Ground::EnterCollision(Collider* _other)
 void Ground::StayCollision(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
-	if (pOtherObj->GetName() == L"Player")
+	Gravity* gravity = pOtherObj->GetComponent<Gravity>();
+	if (nullptr != gravity)
 	{
-		pOtherObj->GetComponent<Gravity>()->SetGround(true);
+		gravity->SetGround(true);
 
 		Vec2 vObjPos = _other->GetLatedUpdatedPos();
 		Vec2 vObjSize = _other->GetSize();
@@ -83,15 +98,21 @@ void Ground::StayCollision(Collider* _other)
 void Ground::ExitCollision(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
-
-	if (pOtherObj->GetName() == L"Player")
+	Gravity* gravity = pOtherObj->GetComponent<Gravity>();
+	if (nullptr != gravity)
 	{
-		pOtherObj->GetComponent<Gravity>()->SetGround(false);
+		gravity->SetGround(false);
 	}
 }
 
 void Ground::Update()
 {
+}
+
+void Ground::SetTexture(const wstring& _wKey, const wstring& _wPath)
+{
+	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(_wKey, _wPath);
+
 }
 
 

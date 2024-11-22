@@ -1,8 +1,9 @@
 #include "pch.h"
 #include "EventManager.h"
 
-#include "Func.h"
+#include "MyFunc.h"
 #include "Object.h"
+#include "Scene.h"
 #include "SceneManager.h"
 #include "UIManager.h"
 
@@ -16,17 +17,14 @@ void EventManager::Update()
 	m_vecEvent.clear();
 }
 
-void EventManager::DeleteObject(Object* _pObj)
+void EventManager::AddEvent(tEvent _tEve)
 {
-	tEvent eve = {};
-	eve.eveType = EVENT_TYPE::DELETE_OBJECT;
-	eve.obj = _pObj;
-
-	if (std::find(m_vecEvent.begin(), m_vecEvent.end(), eve) == m_vecEvent.end())
+	if (std::find(m_vecEvent.begin(), m_vecEvent.end(), _tEve) == m_vecEvent.end())
 	{
-		m_vecEvent.push_back(eve);
+		m_vecEvent.push_back(_tEve);
 	}
 }
+
 
 void EventManager::Excute(const tEvent& _eve)
 {
@@ -34,13 +32,19 @@ void EventManager::Excute(const tEvent& _eve)
 	{
 	case EVENT_TYPE::DELETE_OBJECT:
 	{
-		Object* pDeadObj = _eve.obj;
+		Object* pDeadObj = (Object*)_eve.lParam;
 		pDeadObj->SetDead();
 		m_vecDead.push_back(pDeadObj);
 	}
 	break;
 	case EVENT_TYPE::CREATE_OBJECT:
-		break;
+	{
+		Object* pNewObj = (Object*)_eve.lParam;
+		LAYER eType = (LAYER)_eve.wParam;
+
+		GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pNewObj, eType);
+	}
+	break;
 	case EVENT_TYPE::SCENE_CHANGE:
 		GET_SINGLE(UIManager)->SetFocusedUI(nullptr);
 		break;

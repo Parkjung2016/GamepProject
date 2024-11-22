@@ -11,7 +11,7 @@ class Core
 {
 	DECLARE_SINGLE(Core)
 public:
-	bool Init(HWND _hwnd);
+	bool Init(HWND _hwnd, HINSTANCE _hInst);
 	void GameLoop();
 	void CleanUp();
 	void Clear() const;
@@ -22,6 +22,9 @@ private:
 
 
 public:
+	HINSTANCE GetWindowInstance()	const { return m_hInst; }
+
+
 	const HWND& GetHwnd() const { return m_hWnd; }
 	// 이름 바꾸기
 	const HDC& GetMainDC() const { return m_hDC; }
@@ -35,6 +38,7 @@ public:
 	}
 
 private:
+	HINSTANCE m_hInst;
 	HBRUSH m_colorBrushs[(UINT)BRUSH_TYPE::END] = {};
 	HPEN m_colorPens[(UINT)PEN_TYPE::END] = {};
 	HWND m_hWnd;

@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "ResourceManager.h"
 #include "Core.h"
-#include "Func.h"
+#include "MyFunc.h"
 #include "Texture.h"
 void ResourceManager::Init()
 {

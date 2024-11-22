@@ -3,7 +3,7 @@
 #include "TimeManager.h"
 #include "InputManager.h"
 #include "Component.h"
-#include "Func.h"
+#include "MyFunc.h"
 
 Object::Object()
 	: m_vPos{}

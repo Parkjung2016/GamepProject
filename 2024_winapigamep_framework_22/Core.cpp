@@ -9,12 +9,14 @@
 #include "CollisionManager.h"
 #include "EventManager.h"
 #include "GDISelector.h"
+#include "MapManager.h"
 #include "Texture.h"
 #include "UIManager.h"
 
-bool Core::Init(HWND _hwnd)
+bool Core::Init(HWND _hwnd,HINSTANCE _hInst)
 {
 	// 변수 초기화
+	m_hInst = _hInst;
 	m_hWnd = _hwnd;
 	m_hDC = ::GetDC(m_hWnd);
 
@@ -24,6 +26,7 @@ bool Core::Init(HWND _hwnd)
 	// === Manager Init === 
 	GET_SINGLE(TimeManager)->Init();
 	GET_SINGLE(InputManager)->Init();
+	GET_SINGLE(MapManager)->Init();
 	GET_SINGLE(ResourceManager)->Init();
 	GET_SINGLE(SceneManager)->Init();
 	GET_SINGLE(UIManager)->Init();

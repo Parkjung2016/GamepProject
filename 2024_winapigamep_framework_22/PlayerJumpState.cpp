@@ -1,15 +1,12 @@
 #include "pch.h"
 #include "PlayerJumpState.h"
-
-#include "Animation.h"
 #include "Animator.h"
 #include "Gravity.h"
 #include "Player.h"
 #include "PlayerStateMachine.h"
 #include "Rigidbody.h"
 
-PlayerJumpState::PlayerJumpState() : PlayerState(PLAYER_STATE::JUMP)
-, bCheckJump(false)
+PlayerJumpState::PlayerJumpState() : PlayerAirState(PLAYER_STATE::JUMP)
 {
 }
 
@@ -19,8 +16,9 @@ PlayerJumpState::~PlayerJumpState()
 
 void PlayerJumpState::Update()
 {
+	PlayerAirState::Update();
 	float fYVelocity = GetPlayer()->GetComponent<Rigidbody>()->GetVelocity().y;
-	if (fYVelocity > 0)
+	if (fYVelocity > 5)
 	{
 		GetStateMachine()->ChangeState(PLAYER_STATE::FALLING);
 		return;

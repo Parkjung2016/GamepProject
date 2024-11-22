@@ -1,7 +1,7 @@
 #pragma once
-#include "PlayerState.h"
+#include "PlayerAirState.h"
 class PlayerJumpState :
-    public PlayerState
+    public PlayerAirState
 {
 public:
 	PlayerJumpState();
@@ -12,7 +12,5 @@ public:
 	void Enter() override;
 	void Exit() override;
 
-private:
-	bool bCheckJump;
 };
 

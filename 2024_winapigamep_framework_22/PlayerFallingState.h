@@ -1,7 +1,7 @@
 #pragma once
-#include "PlayerState.h"
+#include "PlayerAirState.h"
 class PlayerFallingState :
-    public PlayerState
+    public PlayerAirState
 {
 public:
 	PlayerFallingState();

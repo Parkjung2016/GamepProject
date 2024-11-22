@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "EnemyIdleState.h"
 
+#include "Animator.h"
 #include "EnemyStateMachine.h"
 #include "Enemy.h"
 #include "Player.h"
@@ -19,18 +20,10 @@ EnemyIdleState::~EnemyIdleState()
 
 void EnemyIdleState::Update()
 {
-	std::shared_ptr<TitleScene> scene = std::dynamic_pointer_cast<TitleScene>(GET_SINGLE(SceneManager)->GetCurrentScene());
-	Player* pPlayer = (Player*)scene->GetPlayer();
-
-	Vec2 vPlayerpos = pPlayer->GetPos();
-
 	Enemy* pEnemy = GetEnemy();
-	Vec2 vEnemyPos = pEnemy->GetPos();
+	float fRecogRange = pEnemy->GetInfo().fRecogRange;
 
-	Vec2 vDiff = vPlayerpos - vEnemyPos;
-	float fLen = vDiff.Length();
-
-	if (fLen < pEnemy->GetInfo().fRecogRange)
+	if (pEnemy->IsPlayerInRange(fRecogRange))
 	{
 		GetStateMachine()->ChangeState(ENEMY_STATE::TRACE);
 	}
@@ -39,6 +32,7 @@ void EnemyIdleState::Update()
 
 void EnemyIdleState::Enter()
 {
+	GetEnemy()->GetComponent<Animator>()->PlayAnimation(L"Idle", true);
 }
 
 void EnemyIdleState::Exit()

@@ -1,51 +1,84 @@
 #include "pch.h"
 #include "GameScene.h"
 
-#include "BtnUI.h"
+#include "Background.h"
+#include "CollisionManager.h"
 #include "Enemy.h"
-#include "PanelUI.h"
+#include "Ground.h"
+#include "InputManager.h"
+#include "MapManager.h"
 #include "Player.h"
-#include "SceneManager.h"
-void ChangeScene2(DWORD_PTR, DWORD_PTR);
+#include "ResourceManager.h"
+
+GameScene::GameScene()
+	: m_pPlayer(nullptr)
+{
+}
+
+GameScene::~GameScene()
+{
+}
 
 void GameScene::Init()
 {
+	GET_SINGLE(MapManager)->LoadMap(L"Json\\Tileset.json"); // ¸Ê ·Îµå
+
+	Background* pBackground = new Background;
+	pBackground->SetPos({ SCREEN_WIDTH / 2,SCREEN_HEIGHT / 2 });
+	pBackground->SetSize({ 0,0 });
+	AddObject(pBackground, LAYER::BACKGROUND);
+
+
+
+	//Enemy* pEnemy = new Enemy;
+	//pEnemy->SetPos({ SCREEN_WIDTH / 2.f,0.f });
+	//pEnemy->SetSize({ 100.f,100.f });
+
+	//AddObject(pEnemy, LAYER::ENEMY);
+
 	Object* pPlayer = new Player;
-	pPlayer->SetPos({ SCREEN_WIDTH / 2.f,500.f });
+	pPlayer->SetName(L"Player");
+	pPlayer->SetPos({ SCREEN_WIDTH / 2.f,-100.f });
 	pPlayer->SetSize({ 100.f,100.f });
 	AddObject(pPlayer, LAYER::PLAYER);
 
+	RegisterPlayer(pPlayer);
+
+	//Object* pGround = new Ground;
+	//pGround->SetName(L"Ground");
+	//pGround->SetPos({ 640.f,600.f });
+	//pGround->SetSize({ 1500.f,60.f });
+	//AddObject(pGround, LAYER::GROUND);
+
+	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::GROUND);
+	//GET_SINGLE(CollisionManager)->CheckLayer(LAYER::PLAYER, LAYER::ENEMY);
+	GET_SINGLE(CollisionManager)->CheckLayer(LAYER::ENEMY, LAYER::GROUND);
+	GET_SINGLE(ResourceManager)->LoadSound(L"BGM", L"Sound\\Retro_bgm.wav", true);
+	GET_SINGLE(ResourceManager)->Play(L"BGM");
+
 	Vec2 vResolution = { SCREEN_WIDTH, SCREEN_HEIGHT };
-	GET_SINGLE(Camera)->SetLookAt(vResolution / 2.f);
+	GET_SINGLE(Camera)->SetLookAt({ 256,544 });
+	GET_SINGLE(Camera)->SetPrevShakeLookAt(vResolution / 2.f);
 
+	GET_SINGLE(Camera)->FadeOut(2.f);
+	GET_SINGLE(Camera)->FadeIn(2.f);
 
-	Vec2 resolution = { SCREEN_WIDTH,SCREEN_HEIGHT };
+	Scene::Init();
 
-	Vec2 size = { 500.f,300.f };
-	UI* pPanelUI = new PanelUI;
-	pPanelUI->SetName(L"ParentUI");
-	pPanelUI->SetSize(size);
-	pPanelUI->SetPos({ resolution.x - size.x,0.f });
-
-
-	BtnUI* pBtnUI = new BtnUI;
-	pBtnUI->SetName(L"ChildUI");
-	size = { 100.f,40.f };
-	pBtnUI->SetSize(size);
-	pBtnUI->SetPos({ 0.f,0.f });
-	pBtnUI->SetClickedCallBack(ChangeScene2, 0, 0);
-
-	pPanelUI->AddChild(pBtnUI);
-
-	AddObject(pPanelUI, LAYER::UI);
-
-	UI* pClonePanel = pPanelUI->Clone();
-	Vec2 pos = pClonePanel->GetPos();
-	pClonePanel->SetPos(pos + Vec2(-300.f, 0.f));
-	((BtnUI*)pClonePanel->GetChildUI()[0])->SetClickedCallBack(ChangeScene2, 0, 0);
-	AddObject(pClonePanel, LAYER::UI);
 }
-void ChangeScene2(DWORD_PTR, DWORD_PTR)
+
+void GameScene::Update()
 {
-	GET_SINGLE(SceneManager)->LoadScene(L"TitleScene");
+	Scene::Update();
+
+	//if (GET_KEYDOWN(KEY_TYPE::R))
+	//{
+	//	GET_SINGLE(Camera)->SetLookAt(GET_SINGLE(InputManager)->GetMousePos());
+	//}
+}
+
+void GameScene::Render(HDC _hdc)
+{
+
+	Scene::Render(_hdc);
 }

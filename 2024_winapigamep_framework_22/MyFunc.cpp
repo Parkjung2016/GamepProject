@@ -1,8 +1,26 @@
 #include "pch.h"
-#include "Func.h"
+#include "MyFunc.h"
 
 #include "EventManager.h"
 
+
+void CreateObject(Object* _pObj, LAYER _eLayer)
+{
+	tEvent eve = {};
+	eve.lParam = (DWORD_PTR)_pObj;
+	eve.wParam = (DWORD_PTR)_eLayer;
+
+	GET_SINGLE(EventManager)->AddEvent(eve);
+}
+
+void DeleteObject(Object* _pObj)
+{
+	tEvent eve = {};
+	eve.eveType = EVENT_TYPE::DELETE_OBJECT;
+	eve.lParam = (DWORD)_pObj;
+
+	GET_SINGLE(EventManager)->AddEvent(eve);
+}
 
 void FScanf(char* _pOutBuff, FILE* _pFile)
 {

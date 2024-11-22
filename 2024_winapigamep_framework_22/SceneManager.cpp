@@ -1,5 +1,7 @@
 #include "pch.h"
 #include "SceneManager.h"
+
+#include "EditorScene.h"
 #include "Scene.h"
 #include "TitleScene.h"
 #include "GameScene.h"
@@ -8,8 +10,9 @@ void SceneManager::Init()
 	m_pCurrentScene = nullptr;
 
 	// ¾À µî·Ï
-	RegisterScene(L"TitleScene",std::make_shared<TitleScene>());
-	RegisterScene(L"GameScene",std::make_shared<GameScene>());
+	RegisterScene(L"TitleScene", std::make_shared<TitleScene>());
+	RegisterScene(L"GameScene", std::make_shared<GameScene>());
+	RegisterScene(L"EditorScene", std::make_shared<EditorScene>());
 
 	// ¾À ·Îµå
 	LoadScene(L"TitleScene");
@@ -34,7 +37,7 @@ void SceneManager::RegisterScene(const wstring& _sceneName, std::shared_ptr<Scen
 {
 	if (_sceneName.empty() || _scene == nullptr)
 		return;
-	m_mapScenes.insert(m_mapScenes.end(), {_sceneName, _scene});
+	m_mapScenes.insert(m_mapScenes.end(), { _sceneName, _scene });
 }
 
 void SceneManager::LoadScene(const wstring& _sceneName)

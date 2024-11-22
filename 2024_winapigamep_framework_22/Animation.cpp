@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Animation.h"
 #include "Animator.h"
-#include "Func.h"
+#include "MyFunc.h"
 #include "Object.h"
 #include "ResourceManager.h"
 #include "Texture.h"
@@ -35,6 +35,11 @@ void Animation::Update()
 				m_pAnimator->SetRepeatcnt();
 			m_CurFrame = 0;
 			m_fAccTime = 0.f;
+			m_bFinished = true;
+		}
+		else
+		{
+			m_bFinished = false;
 		}
 
 	}

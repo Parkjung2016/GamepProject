@@ -8,6 +8,10 @@ struct tPlayerInfo
 {
 	float fWalkSpeed;
 	float fJumpPower;
+	float fAirControl;
+	float fBulletSpeed;
+	int iBulletCountPerShot;
+	int iBulletPower;
 };
 class Player : public Object
 {
@@ -25,10 +29,9 @@ private:
 
 	void UpdateInput();
 	void UpdateMoveInput();
-	void UpdateAttackInput();
+	void HandleApplyDamagedEvent();
 private:
 	int m_iMoveInput;
-	bool m_bIsPressAttackInput;
 	bool m_bIsPressMoveInput;
 	Texture* m_pTex;
 	PlayerStateMachine* m_pStateMachine;
@@ -38,7 +41,6 @@ public:
 	void SetStateMachine(PlayerStateMachine* _stateMachine);
 	int GetMoveInput() const { return m_iMoveInput; }
 	bool GetIsPressMoveInput() const { return m_bIsPressMoveInput; }
-	bool GetIsPressAttackInput() const { return m_bIsPressAttackInput; }
 	const tPlayerInfo& GetInfo() const { return m_tInfo; }
 	CLONE(Player)
 };

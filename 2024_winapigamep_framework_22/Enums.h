@@ -5,6 +5,7 @@ enum class LAYER
 	GROUND,
 	BACKGROUND,
 	PLAYER,
+	BULLET,
 	ENEMY,
 	UI,
 	END = 30
@@ -37,7 +38,7 @@ enum class ENEMY_STATE
 	PATROL,
 	TRACE,
 	ATTACK,
-	RUNAWAY,
+	RECOVER,
 	DEAD,
 };
 
@@ -48,10 +49,16 @@ enum class PLAYER_STATE
 	JUMP,
 	FALLING,
 	ATTACK,
+	GETHIT,
 	DEAD,
 };
 enum class PLAYER_ATTACK_STATE
 {
 	NORMAL_ATTACK_1,
 
+};
+enum class TILEOPTION
+{
+	NORMAL,
+	BLOCKED
 };

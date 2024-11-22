@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "EnemyStateMachine.h"
 
-#include "Func.h"
+#include "MyFunc.h"
 #include "EnemyState.h"
 
 EnemyStateMachine::EnemyStateMachine()
@@ -44,7 +44,7 @@ EnemyState* EnemyStateMachine::GetState(ENEMY_STATE _eState)
 void EnemyStateMachine::SetCurState(ENEMY_STATE _eState)
 {
 	m_pCurState = GetState(_eState);
-
+	m_pCurState->Enter();
 	assert(m_pCurState);
 }
 

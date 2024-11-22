@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "UI.h"
 
-#include "Func.h"
+#include "MyFunc.h"
 #include "GDISelector.h"
 #include "InputManager.h"
 

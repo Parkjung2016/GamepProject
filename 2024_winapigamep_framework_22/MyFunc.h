@@ -2,9 +2,11 @@
 #include <cstdio>
 #include <string>
 
-
-
+#include "Object.h"
 class EnemyStateMachine;
+
+void CreateObject(Object* _pObj, LAYER _eLayer);
+void DeleteObject(Object* _pObj);
 template<typename T>
 void SafeDeleteVec(vector<T>& _vec)
 {

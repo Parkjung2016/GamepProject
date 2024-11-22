@@ -2,7 +2,7 @@
 #include "Scene.h"
 #include "Object.h"
 #include "CollisionManager.h"
-#include "Func.h"
+#include "MyFunc.h"
 
 Scene::Scene()
 {
