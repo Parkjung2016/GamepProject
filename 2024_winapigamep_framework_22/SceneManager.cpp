@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "SceneManager.h"
 
-#include "EditorScene.h"
 #include "Scene.h"
 #include "TitleScene.h"
 #include "GameScene.h"
@@ -12,7 +11,6 @@ void SceneManager::Init()
 	// ¾À µî·Ï
 	RegisterScene(L"TitleScene", std::make_shared<TitleScene>());
 	RegisterScene(L"GameScene", std::make_shared<GameScene>());
-	RegisterScene(L"EditorScene", std::make_shared<EditorScene>());
 
 	// ¾À ·Îµå
 	LoadScene(L"TitleScene");

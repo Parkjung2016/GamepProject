@@ -117,8 +117,14 @@ void Player::Render(HDC _hdc)
 
 void Player::EnterCollision(Collider* _other)
 {
+	cout << "Enter" << endl;
 }
 
+void Player::ExitCollision(Collider* _other)
+{
+	cout << "Exit" << endl;
+
+}
 
 
 void Player::SetStateMachine(PlayerStateMachine* _stateMachine)

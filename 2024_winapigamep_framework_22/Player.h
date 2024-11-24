@@ -23,7 +23,7 @@ public:
 	void Render(HDC _hdc) override;
 
 	void EnterCollision(Collider* _other) override;
-
+	void ExitCollision(Collider* _other) override;
 private:
 	void SetInfo(const tPlayerInfo& _info) { m_tInfo = _info; }
 

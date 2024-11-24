@@ -8,7 +8,6 @@
 
 Ground::Ground()
 {
-	AddComponent<Collider>();
 
 
 }
@@ -28,17 +27,17 @@ void Ground::Render(HDC _hdc)
 	Vec2 vPos2 = GetPos2();
 	Vec2 vSize = GetSize();
 	Vec2 vRenderPos = GET_SINGLE(Camera)->GetRenderPos(vPos);
-
-	if (m_pTex != nullptr)
-		BitBlt(_hdc,
-			(int)vRenderPos.x,
-			(int)vRenderPos.y,
-			vSize.x,
-			vSize.y,
-			m_pTex->GetTexDC(),
-			vPos2.x,
-			vPos2.y,
-			SRCCOPY);
+	TransparentBlt(_hdc,
+		(int)(vRenderPos.x - vSize.x / 2.f),
+		(int)(vRenderPos.y - vSize.y / 2.f),
+		(int)vSize.x,
+		(int)vSize.y,
+		m_pTex->GetTexDC(),
+		(int)vPos2.x,
+		(int)vPos2.y,
+		(int)vSize.x,
+		(int)vSize.y,
+		RGB(255, 0, 255));
 	ComponentRender(_hdc);
 }
 
@@ -60,7 +59,7 @@ void Ground::EnterCollision(Collider* _other)
 		float fValue = (vObjSize.y / 2.f + vSize.y / 2.f) - fLen;
 
 		vObjPos = pOtherObj->GetPos();
-		vObjPos.y -= fValue;
+		vObjPos.y -= fValue - 4;
 
 
 		pOtherObj->SetPos(vObjPos);
@@ -86,7 +85,7 @@ void Ground::StayCollision(Collider* _other)
 		float fValue = (vObjSize.y / 2.f + vSize.y / 2.f) - fLen;
 
 		vObjPos = pOtherObj->GetPos();
-		vObjPos.y -= fValue;
+		vObjPos.y -= fValue - 1;
 
 		pOtherObj->SetPos(vObjPos);
 

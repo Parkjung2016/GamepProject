@@ -2,6 +2,7 @@
 #include "MapManager.h"
 
 #include "Collider.h"
+#include "Core.h"
 #include "Ground.h"
 #include "ResourceManager.h"
 #include "Scene.h"
@@ -23,58 +24,70 @@ void MapManager::LoadMap(const std::wstring& filePath) {
 
 	wstring path = m_resourcePath;
 	path += filePath;
-	tson::Tileson tileson;
-	map = tileson.parse(path);
+	tson::Tileson t;
+	std::unique_ptr<tson::Map> map = t.parse(path);
+
 	if (map->getStatus() == tson::ParseStatus::OK)
 	{
-		std::cout << "Map loaded successfully!" << std::endl;
-		std::cout << "Map size: " << map->getSize().x << "x" << map->getSize().y << std::endl;
-	}
-	else
-	{
-		std::cerr << "Failed to parse map. Error: " << map->getStatusMessage() << std::endl;
-	}
-	tileWidth = 32;
-	tileHeight = 32;
-
-	for (auto& layer : map->getLayers()) {
-		if (layer.getType() == tson::LayerType::TileLayer) {
-			for (auto& [pos, tile] : layer.getTileData()) {
-				if (tile != nullptr) {
-					int tileId = tile->getId();
+		tson::Layer* layer = map->getLayer("Main Layer");
+		tson::Tileset* tileset = map->getTileset("Tiles");
+		if (layer->getType() == tson::LayerType::TileLayer)
+		{
+			if (!map->isInfinite())
+			{
+				std::map<std::tuple<int, int>, tson::Tile*> tileData = layer->getTileData();
 
 
+				for (const auto& [pos, tile] : tileData)
+				{
 
-					Ground* pGround = new Ground;
-					pGround->SetName(L"Ground");
-					pGround->SetTexture(L"Ground", L"Texture\\Map\\Tiles.bmp");
-					int tilesetWidth = pGround->GetTex()->GetWidth();
-					int tilesetCols = tilesetWidth / tileWidth;
-					int srcX = (tileId - 1) % tilesetCols * tileWidth;
-					int srcY = (tileId - 1) / tilesetCols * tileHeight;
+					if (tile != nullptr)
+					{
+						int tileId = tile->getId();
 
-					// 화면에 렌더링할 위치 계산
-					int destX = std::get<0>(pos) * tileWidth;
-					int destY = std::get<1>(pos) * tileHeight;
-					pGround->SetPos({ destX,destY });
-					pGround->SetSize({ tileWidth,tileHeight });
-					pGround->SetPos2({ srcX ,srcY });
-					pGround->SetTileId(tileId);
-					for (auto& object : tile->getObjectgroup().getObjects()) {
-						float colliderX = destX + object.getPosition().x;
-						float colliderY = destY + object.getPosition().y;
-						float colliderWidth = object.getSize().x;
-						float colliderHeight = object.getSize().y;
-						pGround->GetComponent<Collider>()->SetSize({ colliderWidth, colliderHeight });
-						pGround->GetComponent<Collider>()->SetOffSetPos({ 15,15});
+						// 타일셋 이미지에서 타일의 위치 계산
+						int columns = tileset->getColumns();
+						int tileWidth = tileset->getTileSize().x;
+						int tileHeight = tileset->getTileSize().y;
+						int tileX = ((tileId - 1) % columns) * tileWidth;
+						int tileY = ((tileId - 1) / columns) * tileHeight;
+
+						// 화면에서 타일의 렌더링 위치
+						int screenX = std::get<0>(pos) * tileWidth;
+						int screenY = std::get<1>(pos) * tileHeight;
+						// 타일 렌더링
 
 
+						Ground* ground = new Ground;
+						ground->SetTexture(L"Tiles", L"Texture\\Map\\Tiles.bmp");
+						ground->SetPos({ screenX,screenY });
+						ground->SetPos2({ tileX ,tileY });
+						ground->SetSize({ tileWidth ,tileHeight });
+						GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(ground, LAYER::GROUND);
+
+						for (const auto& object : tile->getObjectgroup().getObjects())
+						{
+							if (object.getClassType() == "Collider")
+							{
+								tson::Vector2i vec2iSize = object.getSize();
+								tson::Vector2i vec2iPos = object.getPosition();
+								ground->AddComponent<Collider>();
+								ground->GetComponent<Collider>()->SetSize({ vec2iSize.x,vec2iSize.y });
+								ground->GetComponent<Collider>()->SetOffSetPos({ vec2iPos.x,vec2iPos.y });
+								break;
+							}
+						}
 					}
-					GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pGround, LAYER::GROUND);
 				}
 			}
 		}
-	}
 
+	}
+	else
+	{
+		std::cout << map->getStatusMessage();
+	}
 }
+
+
 

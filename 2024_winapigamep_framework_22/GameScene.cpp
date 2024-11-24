@@ -21,7 +21,6 @@ GameScene::~GameScene()
 
 void GameScene::Init()
 {
-	GET_SINGLE(MapManager)->LoadMap(L"Json\\Tileset.json"); // ¸Ê ·Îµå
 
 	Background* pBackground = new Background;
 	pBackground->SetPos({ SCREEN_WIDTH / 2,SCREEN_HEIGHT / 2 });
@@ -57,11 +56,12 @@ void GameScene::Init()
 	GET_SINGLE(ResourceManager)->Play(L"BGM");
 
 	Vec2 vResolution = { SCREEN_WIDTH, SCREEN_HEIGHT };
-	GET_SINGLE(Camera)->SetLookAt({ 256,544 });
+	GET_SINGLE(Camera)->SetLookAt({ 640,400 });
 	GET_SINGLE(Camera)->SetPrevShakeLookAt(vResolution / 2.f);
 
 	GET_SINGLE(Camera)->FadeOut(2.f);
 	GET_SINGLE(Camera)->FadeIn(2.f);
+	GET_SINGLE(MapManager)->LoadMap(L"Json\\Tileset.json"); // ¸Ê ·Îµå
 
 	Scene::Init();
 

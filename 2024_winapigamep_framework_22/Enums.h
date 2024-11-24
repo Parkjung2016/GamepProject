@@ -57,8 +57,3 @@ enum class PLAYER_ATTACK_STATE
 	NORMAL_ATTACK_1,
 
 };
-enum class TILEOPTION
-{
-	NORMAL,
-	BLOCKED
-};

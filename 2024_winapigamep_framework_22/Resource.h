@@ -13,12 +13,6 @@
 #define IDC_MY2024WINAPIGAMEPFRAMEWORK22 109
 #define IDR_MAINFRAME                   128
 #define IDD_DIALOG1                     129
-#define IDD_DIALOG_TILEMAPEDIT          129
-#define IDC_EDIT_COUNTX                 1000
-#define IDC_EDIT_COUNTY                 1001
-#define IDC_EDIT_SIZEY                  1002
-#define IDC_EDIT_SIZEX                  1003
-#define IDC_BUTTON_CREATE               1004
 #define IDC_STATIC                      -1
 
 // Next default values for new objects

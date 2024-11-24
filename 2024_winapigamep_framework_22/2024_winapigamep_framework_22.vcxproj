@@ -180,8 +180,6 @@
     <ClInclude Include="2024_winapigamep_framework_22.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Bullet.h" />
-    <ClInclude Include="EditorScene.h" />
-    <ClInclude Include="EditorSceneDialog.h" />
     <ClInclude Include="EnemyAttackState.h" />
     <ClInclude Include="EnemyRecoverState.h" />
     <ClInclude Include="EnemyStateMachine.h" />
@@ -233,8 +231,6 @@
     <ClInclude Include="EnemyState.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="Tile.h" />
-    <ClInclude Include="TileMap.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="EnemyTraceState.h" />
@@ -245,8 +241,6 @@
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bullet.cpp" />
-    <ClCompile Include="EditorScene.cpp" />
-    <ClCompile Include="EditorSceneDialog.cpp" />
     <ClCompile Include="EnemyAttackState.cpp" />
     <ClCompile Include="EnemyRecoverState.cpp" />
     <ClCompile Include="EnemyStateMachine.cpp" />
@@ -293,8 +287,6 @@
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="EnemyState.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="TileMap.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="EnemyTraceState.cpp" />

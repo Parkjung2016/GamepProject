@@ -170,18 +170,6 @@
     <Filter Include="Engine\02. Manager\GameManager">
       <UniqueIdentifier>{a83bd53f-a63c-4ae6-b3c8-6abe2bc14efd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\04. Scene\EditorScene">
-      <UniqueIdentifier>{931a7593-6535-417c-af50-197091fcc989}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\08.Editor">
-      <UniqueIdentifier>{06462369-9927-4187-8e4a-2c8d2f5c40de}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Object\Tile">
-      <UniqueIdentifier>{98aea09e-3811-4951-8d09-8ee42568d06a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Engine\03. Object\TileMap">
-      <UniqueIdentifier>{a4e88499-1a38-47d4-b025-2ae010d49a38}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -361,17 +349,9 @@
     <ClInclude Include="Action.h">
       <Filter>Engine\99. Header</Filter>
     </ClInclude>
-    <ClInclude Include="EditorScene.h">
-      <Filter>Engine\04. Scene\EditorScene</Filter>
-    </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>Engine\02. Manager\GameManager</Filter>
     </ClInclude>
-    <ClInclude Include="EditorSceneDialog.h" />
-    <ClInclude Include="Tile.h">
-      <Filter>Engine\03. Object\Tile</Filter>
-    </ClInclude>
-    <ClInclude Include="TileMap.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -543,16 +523,8 @@
     <ClCompile Include="Action.cpp">
       <Filter>Engine\99. Header</Filter>
     </ClCompile>
-    <ClCompile Include="EditorScene.cpp">
-      <Filter>Engine\04. Scene\EditorScene</Filter>
-    </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>Engine\02. Manager\GameManager</Filter>
     </ClCompile>
-    <ClCompile Include="EditorSceneDialog.cpp" />
-    <ClCompile Include="Tile.cpp">
-      <Filter>Engine\03. Object\Tile</Filter>
-    </ClCompile>
-    <ClCompile Include="TileMap.cpp" />
   </ItemGroup>
 </Project>

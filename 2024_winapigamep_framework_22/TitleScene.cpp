@@ -39,7 +39,7 @@ void TitleScene::Init()
 
 void ChangeScene(DWORD_PTR, DWORD_PTR)
 {
-	GET_SINGLE(SceneManager)->LoadScene(L"EditorScene");
+	GET_SINGLE(SceneManager)->LoadScene(L"GameScene");
 }
 void TitleScene::Update()
 {
