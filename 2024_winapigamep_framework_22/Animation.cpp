@@ -62,11 +62,6 @@ void Animation::Render(HDC _hdc)
 	int wSrc = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x);
 	int hSrc = (int)(m_vecAnimFrame[m_CurFrame].vSlice.y);
 
-	//if (bIsRotate)
-	//{
-	//	xDest += wSrc;
-	//	wDest = -wDest;
-	//}
 	DrawAlphaBlendedAndStretched(_hdc,
 		xDest,
 		yDest,
@@ -77,7 +72,8 @@ void Animation::Render(HDC _hdc)
 		ySrc,
 		wSrc,
 		hSrc,
-		255);
+		255,
+		m_pAnimator->GetIsHit());
 
 	//TransparentBlt(_hdc,
 	//	xDest
@@ -94,10 +90,21 @@ void Animation::Render(HDC _hdc)
 }
 
 
-void Animation::DrawAlphaBlendedAndStretched(HDC hdcDest, int xDest, int yDest, int destWidth, int destHeight, HDC hdcSrc, int xSrc, int ySrc, int srcWidth, int srcHeight, BYTE transparency)
+void Animation::DrawAlphaBlendedAndStretched(HDC hdcDest, int xDest, int yDest, int destWidth, int destHeight, HDC hdcSrc, int xSrc, int ySrc, int srcWidth, int srcHeight, BYTE transparency, bool isHit)
 {
 	HDC hdcTemp = CreateCompatibleDC(hdcDest);
-	HBITMAP hbmTemp = CreateCompatibleBitmap(hdcDest, destWidth, destHeight);
+	// DIBSection을 사용하여 비트맵 데이터를 메모리에서 효율적으로 처리
+	BITMAPINFO bmi = { 0 };
+	bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
+	bmi.bmiHeader.biWidth = destWidth;
+	bmi.bmiHeader.biHeight = -destHeight; // 하단에서 상단으로 비트맵을 저장
+	bmi.bmiHeader.biPlanes = 1;
+	bmi.bmiHeader.biBitCount = 32; // 32비트 컬러
+	bmi.bmiHeader.biCompression = BI_RGB;
+
+	void* pBits = nullptr;
+
+	HBITMAP hbmTemp = CreateDIBSection(hdcDest, &bmi, DIB_RGB_COLORS, &pBits, nullptr, 0);
 	HBITMAP hbmOld = (HBITMAP)SelectObject(hdcTemp, hbmTemp);
 	bool bIsRotate = m_pAnimator->GetIsRotate();
 
@@ -107,11 +114,33 @@ void Animation::DrawAlphaBlendedAndStretched(HDC hdcDest, int xDest, int yDest, 
 	SetStretchBltMode(hdcTemp, HALFTONE);
 	StretchBlt(hdcTemp, xPosition, 0, stretchWidth, destHeight, hdcSrc, xSrc, ySrc, srcWidth, srcHeight, SRCCOPY);
 
-	BLENDFUNCTION blendFunction;
-	blendFunction.BlendOp = AC_SRC_OVER;
-	blendFunction.BlendFlags = 0;
-	blendFunction.SourceConstantAlpha = transparency;
-	blendFunction.AlphaFormat = AC_SRC_ALPHA;
+
+
+	if (isHit)
+	{
+		DWORD* pixels = (DWORD*)pBits;
+		for (int y = 0; y < destHeight; ++y)
+		{
+			for (int x = 0; x < destWidth; ++x)
+			{
+				int index = y * destWidth + x;
+				DWORD color = pixels[index];
+
+				if (color == RGB(255, 0, 255)) continue;;
+
+				BYTE r = (color & 0x000000FF);
+				BYTE g = (color & 0x0000FF00) >> 8;
+				BYTE b = (color & 0x00FF0000) >> 16;
+
+				r = max(0, r - 50);
+				g = max(0, g - 50);
+				b = min(255, b + 100);
+
+				pixels[index] = (r | (g << 8) | (b << 16));
+
+			}
+		}
+	}
 
 	TransparentBlt(hdcDest, xDest, yDest, destWidth, destHeight, hdcTemp, 0, 0, destWidth, destHeight, RGB(255, 0, 255));
 

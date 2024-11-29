@@ -2,8 +2,9 @@
 enum class LAYER
 {
 	DEFAULT,
-	GROUND,
 	BACKGROUND,
+	MIDDLEGROUND,
+	GROUND,
 	PLAYER,
 	BULLET,
 	ENEMY,
@@ -37,6 +38,7 @@ enum class ENEMY_STATE
 	IDLE,
 	PATROL,
 	TRACE,
+	GETHIT,
 	ATTACK,
 	RECOVER,
 	DEAD,
@@ -51,9 +53,4 @@ enum class PLAYER_STATE
 	ATTACK,
 	GETHIT,
 	DEAD,
-};
-enum class PLAYER_ATTACK_STATE
-{
-	NORMAL_ATTACK_1,
-
 };

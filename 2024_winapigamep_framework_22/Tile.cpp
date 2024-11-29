@@ -1,27 +1,27 @@
 #include "pch.h"
-#include "Ground.h"
+#include "Tile.h"
 
 #include "Collider.h"
 #include "Gravity.h"
 #include "ResourceManager.h"
 #include "Texture.h"
 
-Ground::Ground()
+Tile::Tile()
 {
 
 
 }
 
-Ground::~Ground()
+Tile::~Tile()
 {
 }
 
-void Ground::Start()
+void Tile::Start()
 {
 
 }
 
-void Ground::Render(HDC _hdc)
+void Tile::Render(HDC _hdc)
 {
 	Vec2 vPos = GetPos();
 	Vec2 vPos2 = GetPos2();
@@ -41,13 +41,13 @@ void Ground::Render(HDC _hdc)
 	ComponentRender(_hdc);
 }
 
-void Ground::EnterCollision(Collider* _other)
+void Tile::EnterCollision(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
-	Gravity* gravity = pOtherObj->GetComponent<Gravity>();
-	if (nullptr != gravity)
+	Gravity* pGravity = pOtherObj->GetComponent<Gravity>();
+	if (nullptr != pGravity)
 	{
-		gravity->SetGround(true);
+		pGravity->SetGround(true);
 
 		Vec2 vObjPos = _other->GetLatedUpdatedPos();
 		Vec2 vObjSize = _other->GetSize();
@@ -59,22 +59,18 @@ void Ground::EnterCollision(Collider* _other)
 		float fValue = (vObjSize.y / 2.f + vSize.y / 2.f) - fLen;
 
 		vObjPos = pOtherObj->GetPos();
-		vObjPos.y -= fValue - 4;
-
+		vObjPos.y -= fValue;
 
 		pOtherObj->SetPos(vObjPos);
-
 	}
 }
 
-void Ground::StayCollision(Collider* _other)
+void Tile::StayCollision(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
-	Gravity* gravity = pOtherObj->GetComponent<Gravity>();
-	if (nullptr != gravity)
+	Gravity* pGravity = pOtherObj->GetComponent<Gravity>();
+	if (nullptr != pGravity)
 	{
-		gravity->SetGround(true);
-
 		Vec2 vObjPos = _other->GetLatedUpdatedPos();
 		Vec2 vObjSize = _other->GetSize();
 
@@ -85,30 +81,29 @@ void Ground::StayCollision(Collider* _other)
 		float fValue = (vObjSize.y / 2.f + vSize.y / 2.f) - fLen;
 
 		vObjPos = pOtherObj->GetPos();
-		vObjPos.y -= fValue - 1;
+		vObjPos.y -= fValue;
 
 		pOtherObj->SetPos(vObjPos);
 
-
-
+		pGravity->SetGround(true);
 	}
 }
 
-void Ground::ExitCollision(Collider* _other)
+void Tile::ExitCollision(Collider* _other)
 {
 	Object* pOtherObj = _other->GetOwner();
-	Gravity* gravity = pOtherObj->GetComponent<Gravity>();
-	if (nullptr != gravity)
+	Gravity* pGravity = pOtherObj->GetComponent<Gravity>();
+	if (nullptr != pGravity)
 	{
-		gravity->SetGround(false);
+		pGravity->SetGround(false);
 	}
 }
 
-void Ground::Update()
+void Tile::Update()
 {
 }
 
-void Ground::SetTexture(const wstring& _wKey, const wstring& _wPath)
+void Tile::SetTexture(const wstring& _wKey, const wstring& _wPath)
 {
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(_wKey, _wPath);
 

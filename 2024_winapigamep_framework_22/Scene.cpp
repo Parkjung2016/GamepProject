@@ -30,7 +30,7 @@ void Scene::Update()
 	{
 		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
 		{
-			if (!m_vecObj[i][j]->GetIsDead())
+			if (nullptr != m_vecObj[i][j] && !m_vecObj[i][j]->GetIsDead())
 				m_vecObj[i][j]->Update();
 		}
 	}
@@ -50,20 +50,23 @@ void Scene::LateUpdate()
 
 void Scene::Render(HDC _hdc)
 {
-	//for (UINT i = 0; i < (UINT)LAYER::END; ++i)
-	//{
-	//	for (size_t j = 0; j < m_vecObj[i].size(); ++j)
-	//	{
-	//		if (!m_vecObj[i][j]->GetIsDead())
-	//			m_vecObj[i][j]->Render(_hdc);
-	//	}
-	//}
+	auto camera = GET_SINGLE(Camera);
 	for (UINT i = 0; i < (UINT)LAYER::END; ++i)
 	{
 		for (size_t j = 0; j < m_vecObj[i].size();)
 		{
-			if (!m_vecObj[i][j]->GetIsDead())
-				m_vecObj[i][j++]->Render(_hdc);
+			auto* obj = m_vecObj[i][j];
+			if (!obj->GetIsDead())
+			{
+				Vec2 objRenderPos = camera->GetRenderPos(obj->GetPos());
+
+				if (objRenderPos.x + obj->GetSize().x > 0 && objRenderPos.y < SCREEN_WIDTH && objRenderPos.y + obj->GetSize().y > 0 && objRenderPos.y < SCREEN_HEIGHT)
+				{
+					obj->Render(_hdc);
+
+				}
+				++j;
+			}
 			else
 				m_vecObj[i].erase(m_vecObj[i].begin() + j);
 		}

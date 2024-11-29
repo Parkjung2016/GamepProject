@@ -28,14 +28,13 @@ public:
 	}
 private:
 	bool m_showDebug = false;
+	bool m_bIsInCollision;
 	UINT m_ID; // 충돌체 고유 ID값
-	static UINT m_sNextID;
 
 	Vec2 m_vSize; // 콜라이더 크기
 	// Object로부터 상대적인 위치
 	Vec2 m_vOffsetPos;
 	// LateUpdate에서 매 프레임마다 오브젝트로부터 계산되는 위치
 	Vec2 m_vLatePos;
-
 };
 

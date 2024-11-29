@@ -17,7 +17,7 @@ void TitleScene::Init()
 
 
 	Vec2 size = { 500.f,300.f };
-	UI* pPanelUI = new PanelUI;
+	UI* pPanelUI = new PanelUI(false);
 	pPanelUI->SetName(L"ParentUI");
 	pPanelUI->SetSize(size);
 	pPanelUI->SetPos({ resolution.x - size.x,0.f });

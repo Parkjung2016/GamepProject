@@ -26,6 +26,8 @@ void PlayerFallingState::Update()
 
 void PlayerFallingState::Enter()
 {
+	GetPlayer()->GetComponent<Gravity>()->SetCanGravity(true);
+
 	GetPlayer()->GetComponent<Animator>()->PlayAnimation(L"JumpDown", false);
 
 }

@@ -2,6 +2,7 @@
 #include "PlayerAirState.h"
 
 #include "Animator.h"
+#include "Gravity.h"
 #include "Player.h"
 #include "Rigidbody.h"
 
@@ -29,8 +30,11 @@ void PlayerAirState::Update()
 
 void PlayerAirState::Enter()
 {
+	GetPlayer()->GetComponent<Gravity>()->SetCanGravity(true);
+
 }
 
 void PlayerAirState::Exit()
 {
+
 }

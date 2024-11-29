@@ -46,6 +46,9 @@ Player::Player()
 	info.fJumpPower = 500;
 	info.fAirControl = 300;
 	info.fBulletSpeed = 600;
+	info.iBulletPower = 5;
+	info.fBulletKnockBackDuration = .15f;
+	info.fBulletKnockBackPower = 200;
 	info.iBulletCountPerShot = 3;
 	SetInfo(info);
 	PlayerStateMachine* pStateMachine = new PlayerStateMachine;
@@ -62,8 +65,8 @@ Player::Player()
 
 Player::~Player()
 {
-	//if (nullptr != m_pTex)
-	//	delete m_pTex;
+	if (nullptr != m_pTex)
+		delete m_pTex;
 }
 void Player::Update()
 {
@@ -81,10 +84,6 @@ void Player::UpdateInput()
 void Player::UpdateMoveInput()
 {
 	m_bIsPressMoveInput = m_iMoveInput != 0;
-	if (GET_KEYDOWN(KEY_TYPE::F))
-	{
-		this->GetComponent<Health>()->ApplyDamage(1);
-	}
 	if (GET_KEY(KEY_TYPE::LEFT) && GET_KEY(KEY_TYPE::RIGHT))
 	{
 		m_iMoveInput = 0;
@@ -104,7 +103,7 @@ void Player::UpdateMoveInput()
 void Player::HandleApplyDamagedEvent()
 {
 	cout << "대미지 받음";
-	GET_SINGLE(Camera)->Shake(.05f, .1f);
+	//GET_SINGLE(Camera)->Shake(.05f, .1f);
 	m_pStateMachine->ChangeState(PLAYER_STATE::GETHIT);
 
 }
@@ -117,12 +116,10 @@ void Player::Render(HDC _hdc)
 
 void Player::EnterCollision(Collider* _other)
 {
-	cout << "Enter" << endl;
 }
 
 void Player::ExitCollision(Collider* _other)
 {
-	cout << "Exit" << endl;
 
 }
 

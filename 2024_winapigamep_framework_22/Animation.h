@@ -34,7 +34,18 @@ public:
 	const size_t& GetMaxFrame() { return m_vecAnimFrame.size(); }
 
 private:
-	void DrawAlphaBlendedAndStretched(HDC hdcDest, int xDest, int yDest, int destWidth, int destHeight, HDC hdcSrc, int xSrc, int ySrc, int srcWidth, int srcHeight, BYTE transparency);
+	void DrawAlphaBlendedAndStretched(HDC hdcDest,
+		int xDest,
+		int yDest,
+		int destWidth,
+		int destHeight,
+		HDC hdcSrc,
+		int xSrc,
+		int ySrc,
+		int srcWidth,
+		int srcHeight,
+		BYTE transparency,
+		bool isHit);
 private:
 	UINT   m_CurFrame; // 현재 프레임
 	float  m_fAccTime; // 누적 시간

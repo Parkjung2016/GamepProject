@@ -17,6 +17,7 @@
 #include<math.h>
 
 // My Header
+#include "CombatData.h"
 #include "Define.h"
 #include "Enums.h"
 #include "Vec2.h"

@@ -72,9 +72,16 @@ void CollisionManager::CollisionLayerUpdate(LAYER _left, LAYER _right)
 				continue;
 
 			COLLIDER_ID colliderID; // 두 충돌체로만 만들 수 있는 ID
-			colliderID.left_ID = pLeftCollider->GetID();
-			colliderID.right_ID = pRightCollider->GetID();
-
+			if (pLeftCollider->GetID() < pRightCollider->GetID())
+			{
+				colliderID.left_ID = pLeftCollider->GetID();
+				colliderID.right_ID = pRightCollider->GetID();
+			}
+			else
+			{
+				colliderID.left_ID = pRightCollider->GetID();
+				colliderID.right_ID = pLeftCollider->GetID();
+			}
 			iter = m_mapCollisionInfo.find(colliderID.ID);
 			// 이전 프레임 충돌한 적 없다.
 			if (iter == m_mapCollisionInfo.end())
@@ -116,9 +123,11 @@ void CollisionManager::CollisionLayerUpdate(LAYER _left, LAYER _right)
 			{
 				if (iter->second) // 근데 이전에 충돌중
 				{
+
 					pLeftCollider->ExitCollision(pRightCollider);
 					pRightCollider->ExitCollision(pLeftCollider);
 					iter->second = false;
+
 				}
 			}
 		}
@@ -131,9 +140,8 @@ bool CollisionManager::IsCollision(Collider* _left, Collider* _right)
 	Vec2 vRightPos = _right->GetLatedUpdatedPos();
 	Vec2 vLeftSize = _left->GetSize();
 	Vec2 vRightSize = _right->GetSize();
-
-	if (abs(vRightPos.x - vLeftPos.x) <= (vLeftSize.x + vRightSize.x) / 2.f
-		&& abs(vRightPos.y - vLeftPos.y) <= (vLeftSize.y + vRightSize.y) / 2.f)
+	if (abs(vRightPos.x - vLeftPos.x) <= (vLeftSize.x + vRightSize.x) / 2.f + 0.1f
+		&& abs(vRightPos.y - vLeftPos.y) <= (vLeftSize.y + vRightSize.y) / 2.f + 0.1f)
 	{
 		return true;
 	}

@@ -36,6 +36,8 @@ void PlayerGroundState::Update()
 
 void PlayerGroundState::Enter()
 {
+	//GetPlayer()->GetComponent<Gravity>()->SetCanGravity(false);
+
 }
 
 void PlayerGroundState::Exit()

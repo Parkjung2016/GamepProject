@@ -150,7 +150,7 @@ UI* UIManager::GetTargetedUI(UI* _pParentUI)
 		const vector<UI*>& vecChild = pUI->GetChildUI();
 		for (size_t i = 0; i < vecChild.size(); ++i)
 		{
-			list.push_back(vecChild[i]);
+				list.push_back(vecChild[i]);
 		}
 	}
 

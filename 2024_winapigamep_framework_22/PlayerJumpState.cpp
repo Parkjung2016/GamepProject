@@ -33,13 +33,14 @@ void PlayerJumpState::Update()
 
 void PlayerJumpState::Enter()
 {
+	PlayerAirState::Enter();
 	float fJumpPower = -GetPlayer()->GetInfo().fJumpPower;
 	GetPlayer()->GetComponent<Rigidbody>()->AddVelocity({ 0.f,fJumpPower });
-
 	GetPlayer()->GetComponent<Animator>()->PlayAnimation(L"JumpUp", false);
 
 }
 
 void PlayerJumpState::Exit()
 {
+
 }

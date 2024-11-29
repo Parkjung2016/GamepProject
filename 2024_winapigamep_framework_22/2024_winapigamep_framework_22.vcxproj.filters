@@ -128,9 +128,6 @@
     <Filter Include="Engine\07. Module\StateMachine\Player\State\Walk">
       <UniqueIdentifier>{e3bb2ad7-dc85-48d3-98f0-2b799d2b2a53}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\03. Object\Ground">
-      <UniqueIdentifier>{2c958938-95d9-4dfd-9d5d-6332f2433f4b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\03. Object\Player">
       <UniqueIdentifier>{230f4099-a61c-4a2e-ac28-509dfa79c742}</UniqueIdentifier>
     </Filter>
@@ -169,6 +166,12 @@
     </Filter>
     <Filter Include="Engine\02. Manager\GameManager">
       <UniqueIdentifier>{a83bd53f-a63c-4ae6-b3c8-6abe2bc14efd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Tile">
+      <UniqueIdentifier>{2c958938-95d9-4dfd-9d5d-6332f2433f4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Enemy\State\GetHit">
+      <UniqueIdentifier>{67aeb8c3-acf0-4a2d-bcac-51c1f914f53a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -301,8 +304,8 @@
     <ClInclude Include="Player.h">
       <Filter>Engine\03. Object\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Ground.h">
-      <Filter>Engine\03. Object\Ground</Filter>
+    <ClInclude Include="Tile.h">
+      <Filter>Engine\03. Object\Tile</Filter>
     </ClInclude>
     <ClInclude Include="PlayerGroundState.h">
       <Filter>Engine\07. Module\StateMachine\Player\State</Filter>
@@ -351,6 +354,18 @@
     </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>Engine\02. Manager\GameManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Interfaces.h">
+      <Filter>Engine\99. Header</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyGetHitState.h">
+      <Filter>Engine\07. Module\StateMachine\Enemy\State\GetHit</Filter>
+    </ClInclude>
+    <ClInclude Include="CombatData.h">
+      <Filter>Engine\06. Component\Health</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyDeadState.h">
+      <Filter>Engine\07. Module\StateMachine\Enemy\State\Dead</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -475,8 +490,8 @@
     <ClCompile Include="Player.cpp">
       <Filter>Engine\03. Object\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Ground.cpp">
-      <Filter>Engine\03. Object\Ground</Filter>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Engine\03. Object\Tile</Filter>
     </ClCompile>
     <ClCompile Include="PlayerGroundState.cpp">
       <Filter>Engine\07. Module\StateMachine\Player\State</Filter>
@@ -525,6 +540,12 @@
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>Engine\02. Manager\GameManager</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyGetHitState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Enemy\State\GetHit</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyDeadState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Enemy\State\Dead</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

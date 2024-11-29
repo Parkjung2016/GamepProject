@@ -36,6 +36,8 @@ void PlayerWalkState::Update()
 
 void PlayerWalkState::Enter()
 {
+	PlayerGroundState::Enter();
+
 	GetPlayer()->GetComponent<Animator>()->PlayAnimation(L"Walk", true);
 }
 

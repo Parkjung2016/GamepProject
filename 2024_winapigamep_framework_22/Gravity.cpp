@@ -5,7 +5,9 @@
 #include "Rigidbody.h"
 
 Gravity::Gravity()
+	:m_bCanGravity(true)
 {
+
 }
 
 Gravity::~Gravity()
@@ -14,6 +16,7 @@ Gravity::~Gravity()
 
 void Gravity::LateUpdate()
 {
+	if (!m_bCanGravity)return;
 	GetOwner()->GetComponent<Rigidbody>()->AddForce({ 0.f,800.f });
 }
 

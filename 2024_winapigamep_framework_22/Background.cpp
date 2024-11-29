@@ -6,7 +6,6 @@
 
 Background::Background()
 {
-	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Background_0", L"Texture\\Map\\Background_0.bmp");
 
 }
 
@@ -18,19 +17,29 @@ void Background::Render(HDC _hdc)
 {
 	Vec2 vPos = GetPos();
 	Vec2 vSize = GetSize();
-	int width = m_pTex->GetWidth();
-	int height = m_pTex->GetHeight();
-	//::BitBlt(_hdc
-	//	, (int)(vPos.x - vSize.x / 2)
-	//	, (int)(vPos.y - vSize.y / 2)
-	//	, width, height,
-	//	m_pTex->GetTexDC()
-	//	, 0, 0, SRCCOPY
-	//);
+	Vec2 vRenderPos = GET_SINGLE(Camera)->GetRenderPosWithParallax(vPos, m_vParallaxFactor, vSize);
+
+	::TransparentBlt(_hdc
+		, (int)(vRenderPos.x - vSize.x / 2.f)
+		, (int)(vRenderPos.y - vSize.y / 2.f)
+		, (int)vSize.x,
+		(int)vSize.y,
+		m_pTex->GetTexDC(),
+		0,
+		0,
+		(int)vSize.x,
+		(int)vSize.y,
+		RGB(255, 0, 255)
+	);
 }
 
 void Background::Update()
 {
+}
+
+void Background::SetTexture(const wstring& _wKey, const wstring& _wPath)
+{
+	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(_wKey, _wPath);
 }
 
 

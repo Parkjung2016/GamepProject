@@ -1,5 +1,7 @@
 #pragma once
 #include "tileson.hpp"
+
+class Tile;
 class MapManager
 {
 	DECLARE_SINGLE(MapManager);
@@ -10,6 +12,9 @@ public:
 	void Init();
 	void LoadMap(const std::wstring& filePath);
 
+private:
+	void CreateBackground(tson::Layer* backgroundLayer, Vec2 vParallaxFactor, LAYER layer);
+	Tile* CreateTile(tson::Tile* tile, int screenX, int screenY, int tileX, int tileY, int tileWidth, int tileHeight);
 private:
 	wchar_t m_resourcePath[255] = {};
 

@@ -7,13 +7,17 @@ PanelUI::PanelUI() : UI(false)
 {
 }
 
+PanelUI::PanelUI(bool _bCanMovePanel) : UI(false), m_bCanMovePanel(_bCanMovePanel)
+{
+}
+
 PanelUI::~PanelUI()
 {
 }
 
 void PanelUI::MouseOn()
 {
-
+	if (!m_bCanMovePanel)return;
 	if (IsLBDown())
 	{
 		Vec2 mousePos = GET_MOUSEPOS;

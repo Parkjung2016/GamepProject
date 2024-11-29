@@ -36,6 +36,7 @@ void EnemyRecoverState::Update()
 
 void EnemyRecoverState::Enter()
 {
+	m_fWaitTime = 1;
 	GetEnemy()->GetComponent<Animator>()->PlayAnimation(L"Idle", true);
 
 }

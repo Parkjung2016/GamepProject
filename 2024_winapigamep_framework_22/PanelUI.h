@@ -6,6 +6,7 @@ class PanelUI :
 
 public:
 	PanelUI();
+	PanelUI(bool _bCanMovePanel);
 	~PanelUI() override;
 
 public:
@@ -15,6 +16,7 @@ public:
 	void MouseLBClicked() override;
 	CLONE(PanelUI);
 private:
+	bool m_bCanMovePanel;
 	Vec2 m_vDragStart;
 };
 

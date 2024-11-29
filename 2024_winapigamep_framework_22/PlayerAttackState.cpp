@@ -53,6 +53,8 @@ void PlayerAttackState::Update()
 			pBullet->SetDir({ xDir,fAngleOffset });
 			pBullet->SetSpeed(tInfo.fBulletSpeed);
 			pBullet->SetPower(tInfo.iBulletPower);
+			pBullet->SetKnockBackDuration(tInfo.fBulletKnockBackDuration);
+			pBullet->SetKnockBackPower(tInfo.fBulletKnockBackPower);
 			CreateObject(pBullet, LAYER::BULLET);
 		}
 	}

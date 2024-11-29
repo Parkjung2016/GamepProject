@@ -26,7 +26,6 @@ void PlayerGetHitState::Update()
 void PlayerGetHitState::Enter()
 {
 	GetPlayer()->GetComponent<Animator>()->PlayAnimation(L"GetHit", false);
-
 }
 
 void PlayerGetHitState::Exit()

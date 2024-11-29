@@ -98,6 +98,7 @@
       <MinFilesInUnityFile>10</MinFilesInUnityFile>
       <UnityFilesDirectory>$(ProjectDir)\Unity\</UnityFilesDirectory>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -121,6 +122,7 @@
       <MinFilesInUnityFile>10</MinFilesInUnityFile>
       <UnityFilesDirectory>$(ProjectDir)\Unity\</UnityFilesDirectory>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -143,6 +145,7 @@
       <AdditionalIncludeDirectories>$(SolutionDir)Output\build\Resource\Fmod\inc</AdditionalIncludeDirectories>
       <MinFilesInUnityFile>10</MinFilesInUnityFile>
       <UnityFilesDirectory>$(ProjectDir)\Unity\</UnityFilesDirectory>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -166,6 +169,7 @@
       <MinFilesInUnityFile>10</MinFilesInUnityFile>
       <UnityFilesDirectory>$(ProjectDir)\Unity\</UnityFilesDirectory>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <OpenMPSupport>true</OpenMPSupport>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -180,7 +184,10 @@
     <ClInclude Include="2024_winapigamep_framework_22.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Bullet.h" />
+    <ClInclude Include="CombatData.h" />
     <ClInclude Include="EnemyAttackState.h" />
+    <ClInclude Include="EnemyDeadState.h" />
+    <ClInclude Include="EnemyGetHitState.h" />
     <ClInclude Include="EnemyRecoverState.h" />
     <ClInclude Include="EnemyStateMachine.h" />
     <ClInclude Include="Animation.h" />
@@ -199,13 +206,14 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Action.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="Interfaces.h" />
     <ClInclude Include="MapManager.h" />
     <ClInclude Include="MyFunc.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="GDISelector.h" />
     <ClInclude Include="EnemyIdleState.h" />
     <ClInclude Include="Gravity.h" />
-    <ClInclude Include="Ground.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Object.h" />
@@ -242,6 +250,8 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="EnemyAttackState.cpp" />
+    <ClCompile Include="EnemyDeadState.cpp" />
+    <ClCompile Include="EnemyGetHitState.cpp" />
     <ClCompile Include="EnemyRecoverState.cpp" />
     <ClCompile Include="EnemyStateMachine.cpp" />
     <ClCompile Include="Animation.cpp" />
@@ -263,7 +273,7 @@
     <ClCompile Include="GDISelector.cpp" />
     <ClCompile Include="EnemyIdleState.cpp" />
     <ClCompile Include="Gravity.cpp" />
-    <ClCompile Include="Ground.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />

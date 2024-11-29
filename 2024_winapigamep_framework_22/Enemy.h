@@ -29,7 +29,8 @@ public:
 
 private:
 	void SetInfo(const tEnemyInfo& _info) { m_tInfo = _info; }
-
+	void HandleApplyDamaged();
+	void HandleDead();
 public:
 	void Update() override;
 	void Render(HDC _hdc) override;

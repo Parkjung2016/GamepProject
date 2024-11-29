@@ -28,8 +28,11 @@ void EnemyAttackState::Update()
 
 		if (GetEnemy()->IsPlayerInFront() && GetEnemy()->IsPlayerInRange(fAttackRange))
 		{
-			int iPower = GetEnemy()->GetInfo().iPower;
-			GetEnemy()->GetPlayer()->GetComponent<Health>()->ApplyDamage(iPower);
+			CombatData combatData
+			{
+				GetEnemy()->GetInfo().iPower
+			};
+			GetEnemy()->GetPlayer()->GetComponent<Health>()->ApplyDamage(combatData);
 		}
 	}
 

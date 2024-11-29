@@ -2,12 +2,12 @@
 #include "Object.h"
 
 class Texture;
-class Ground :
+class Tile :
 	public Object
 {
 public:
-	Ground();
-	~Ground() override;
+	Tile();
+	~Tile() override;
 public:
 	void Start() override;
 	void Render(HDC _hdc) override;
@@ -15,7 +15,7 @@ public:
 	void EnterCollision(Collider* _other) override;
 	void StayCollision(Collider* _other) override;
 	void ExitCollision(Collider* _other) override;
-	CLONE(Ground)
+	CLONE(Tile)
 private:
 	void Update() override;
 

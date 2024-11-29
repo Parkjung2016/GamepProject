@@ -29,13 +29,16 @@ public:
 	const int& GetRepeatcnt() const { return m_repeatcnt; }
 	void SetRepeatcnt() { --m_repeatcnt; }
 	void SetIsRotate(bool _bIsRotate) { m_IsRotate = _bIsRotate; }
+	void SetIsHit(bool _bIsHit) { m_IsHit = _bIsHit; }
 	bool GetIsRotate() const { return m_IsRotate; }
+	bool GetIsHit() const { return m_IsHit; }
 private:
 	map<wstring, Animation*> m_mapAnimations;
 	Animation* m_pCurrentAnimation;
 	bool	m_IsRepeat;
 	int		m_repeatcnt;
 	bool m_IsRotate;
+	bool m_IsHit;
 
 };
 

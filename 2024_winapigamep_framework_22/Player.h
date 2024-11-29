@@ -1,4 +1,5 @@
 #pragma once
+#include "Interfaces.h"
 #include "Object.h"
 
 class Texture;
@@ -10,6 +11,8 @@ struct tPlayerInfo
 	float fJumpPower;
 	float fAirControl;
 	float fBulletSpeed;
+	float fBulletKnockBackPower;
+	float fBulletKnockBackDuration;
 	int iBulletCountPerShot;
 	int iBulletPower;
 };
@@ -24,6 +27,7 @@ public:
 
 	void EnterCollision(Collider* _other) override;
 	void ExitCollision(Collider* _other) override;
+
 private:
 	void SetInfo(const tPlayerInfo& _info) { m_tInfo = _info; }
 

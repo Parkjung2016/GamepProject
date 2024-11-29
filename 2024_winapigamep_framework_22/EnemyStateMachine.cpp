@@ -52,7 +52,7 @@ void EnemyStateMachine::ChangeState(ENEMY_STATE _eNextState)
 {
 	EnemyState* pNextState = GetState(_eNextState);
 
-	assert(m_pCurState != pNextState);
+	//assert(m_pCurState != pNextState);
 	m_pCurState->Exit();
 	m_pCurState = pNextState;
 	m_pCurState->Enter();

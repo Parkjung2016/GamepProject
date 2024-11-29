@@ -17,7 +17,7 @@ void DeleteObject(Object* _pObj)
 {
 	tEvent eve = {};
 	eve.eveType = EVENT_TYPE::DELETE_OBJECT;
-	eve.lParam = (DWORD)_pObj;
+	eve.lParam = (DWORD_PTR)_pObj;
 
 	GET_SINGLE(EventManager)->AddEvent(eve);
 }

@@ -5,11 +5,13 @@
 #include "EnemyStateMachine.h"
 #include "Collider.h"
 #include "EnemyAttackState.h"
+#include "EnemyGetHitState.h"
 #include "EnemyIdleState.h"
 #include "EnemyRecoverState.h"
 #include "EnemyTraceState.h"
 #include "GameScene.h"
 #include "Gravity.h"
+#include "Health.h"
 #include "Player.h"
 #include "ResourceManager.h"
 #include "Rigidbody.h"
@@ -23,6 +25,7 @@ Enemy::Enemy()
 	this->AddComponent<Animator>();
 	this->AddComponent<Gravity>();
 	this->AddComponent<Rigidbody>();
+	this->AddComponent<Health>();
 	Collider* collider = this->AddComponent<Collider>();
 	collider->SetSize({ 30,50 });
 	collider->SetOffSetPos({ 0,21 });
@@ -33,7 +36,10 @@ Enemy::Enemy()
 		Vec2(96.f, 96.f), Vec2(96.f, 0.f), 10, 0.1f);
 	animator->CreateAnimation(L"Attack", m_pTex, Vec2(0.f, 96.f),
 		Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.1f);
-
+	animator->CreateAnimation(L"GetHit", m_pTex, Vec2(0.f, 0.f),
+		Vec2(96.f, 96.f), Vec2(96.f, 0.f), 5, 0.1f);
+	animator->CreateAnimation(L"Dead", m_pTex, Vec2(0.f, 864.f),
+		Vec2(96.f, 96.f), Vec2(96.f, 0.f), 5, 0.1f);
 	tEnemyInfo info;
 	info.fSpeed = 100;
 	info.fRecogRange = 400;
@@ -45,7 +51,10 @@ Enemy::Enemy()
 	pStateMachine->AddState(new EnemyTraceState);
 	pStateMachine->AddState(new EnemyAttackState);
 	pStateMachine->AddState(new EnemyRecoverState);
+	pStateMachine->AddState(new EnemyGetHitState);
 	SetStateMachine(pStateMachine);
+	GetComponent<Health>()->onApplyDamaged += [this] { HandleApplyDamaged(); };
+	GetComponent<Health>()->onDead += [this] { HandleDead(); };
 	pStateMachine->SetCurState(ENEMY_STATE::IDLE);
 
 }
@@ -93,6 +102,14 @@ Player* Enemy::GetPlayer() const
 	return pPlayer;
 }
 
+void Enemy::HandleApplyDamaged()
+{
+	m_pStateMachine->ChangeState(ENEMY_STATE::GETHIT);
+}
+void Enemy::HandleDead()
+{
+	m_pStateMachine->ChangeState(ENEMY_STATE::DEAD);
+}
 void Enemy::Update()
 {
 	m_pStateMachine->Update();
@@ -105,11 +122,6 @@ void Enemy::Render(HDC _hdc)
 
 void Enemy::EnterCollision(Collider* _other)
 {
-	Object* pOtherObj = _other->GetOwner();
-	wstring str = pOtherObj->GetName();
-	if (pOtherObj->GetName() == L"PlayerBullet")
-	{
-	}
 }
 
 void Enemy::StayCollision(Collider* _other)

@@ -4,15 +4,13 @@ class EnemyTraceState :
     public EnemyState
 {
 
-private:
-
+public:
+	EnemyTraceState();
+	~EnemyTraceState() override;
 public:
 	virtual void Update();
 	virtual void Enter();
 	virtual void Exit();
 
-public:
-	EnemyTraceState();
-	~EnemyTraceState() override;
 };
 

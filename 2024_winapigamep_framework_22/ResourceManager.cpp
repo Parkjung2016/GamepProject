@@ -20,7 +20,9 @@ Texture* ResourceManager::TextureLoad(const wstring& _key, const wstring& _path)
 {
 	Texture* pTex = TextureFind(_key);
 	if (nullptr != pTex)
+	{
 		return pTex;
+	}
 
 	// 없어요 최초입니다. 만들어주세요.
 	// 1. 경로 설정
