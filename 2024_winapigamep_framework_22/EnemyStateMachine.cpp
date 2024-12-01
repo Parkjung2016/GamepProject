@@ -6,7 +6,8 @@
 
 EnemyStateMachine::EnemyStateMachine()
 	: m_pCurState(nullptr),
-	m_pOwner(nullptr)
+	m_pOwner(nullptr),
+	m_bCanChangeState(true)
 {
 }
 
@@ -50,6 +51,7 @@ void EnemyStateMachine::SetCurState(ENEMY_STATE _eState)
 
 void EnemyStateMachine::ChangeState(ENEMY_STATE _eNextState)
 {
+	if (!m_bCanChangeState)return;
 	EnemyState* pNextState = GetState(_eNextState);
 
 	//assert(m_pCurState != pNextState);

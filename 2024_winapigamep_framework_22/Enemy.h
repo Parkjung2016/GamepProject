@@ -9,20 +9,23 @@ struct tEnemyInfo
 	float fHP;
 	float fRecogRange;
 	float fAttackRange;
+	float fAttackKnockBackPower;
+	float fAttackKnockBackDuration;
 	int iPower;
+
 };
 class Enemy :
 	public Object
 {
 public:
 	Enemy();
-	virtual ~Enemy();
+	~Enemy() override;
 
 public:
 	float GetSpeed() const { return m_tInfo.fSpeed; }
 	void SetSpeed(float _f) { m_tInfo.fSpeed = _f; }
 	void SetStateMachine(EnemyStateMachine* _stateMachine);
-	bool IsPlayerInRange(float fRange);
+	bool IsPlayerInRange(float fRange) const;
 	bool IsPlayerInFront();
 	const tEnemyInfo& GetInfo() const { return m_tInfo; }
 	Player* GetPlayer()const;

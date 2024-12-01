@@ -24,7 +24,7 @@ public:
 	void PlayAnimation(const wstring& _strName, bool _IsRepeat, int _repeatcnt = 1);
 	void StopAnimation();
 public:
-	Animation* GetCurrentAnim() { return m_pCurrentAnimation; }
+	Animation* GetCurrentAnim() const { return m_pCurrentAnimation; }
 	const bool& GetRepeat() const { return m_IsRepeat; }
 	const int& GetRepeatcnt() const { return m_repeatcnt; }
 	void SetRepeatcnt() { --m_repeatcnt; }

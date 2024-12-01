@@ -77,8 +77,6 @@ public:
 
 		m_listCamEffect.push_back(ef);
 
-		if (0.f == _fDuration)
-			assert(nullptr);
 	}
 public:
 	void Init();

@@ -28,11 +28,24 @@ void EnemyAttackState::Update()
 
 		if (GetEnemy()->IsPlayerInFront() && GetEnemy()->IsPlayerInRange(fAttackRange))
 		{
+			auto playerHealth = GetEnemy()->GetPlayer()->GetComponent<Health>();
+			if (playerHealth->GetIsDead())return;
+			auto info = GetEnemy()->GetInfo();
+			Vec2 vOtherPos = GetEnemy()->GetPlayer()->GetPos();
+
+			Vec2 vPos = GetEnemy()->GetPos();
+			Vec2 dis = (vOtherPos - vPos);
+			dis.y = -20;
+			Vec2 vKnockBackDir = dis.Normalize();
 			CombatData combatData
 			{
-				GetEnemy()->GetInfo().iPower
+				info.iPower,
+				vKnockBackDir,
+				info.fAttackKnockBackPower,
+				info.fAttackKnockBackDuration
+
 			};
-			GetEnemy()->GetPlayer()->GetComponent<Health>()->ApplyDamage(combatData);
+			playerHealth->ApplyDamage(combatData);
 		}
 	}
 
@@ -44,8 +57,16 @@ void EnemyAttackState::Update()
 
 void EnemyAttackState::Enter()
 {
+	Animator* animator = GetEnemy()->GetComponent<Animator>();
+	Player* pPlayer = GetEnemy()->GetPlayer();
+
+	Vec2 vPlayerpos = pPlayer->GetPos();
+
+	Vec2 vEnemyPos = GetEnemy()->GetPos();
+
+	animator->SetIsRotate(vPlayerpos.x < vEnemyPos.x);
 	GetEnemy()->GetComponent<Rigidbody>()->SetVelocity({ 0.f,0.f });
-	GetEnemy()->GetComponent<Animator>()->PlayAnimation(L"Attack", false);
+	animator->PlayAnimation(L"Attack", false);
 
 }
 

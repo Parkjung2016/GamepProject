@@ -72,16 +72,8 @@ void CollisionManager::CollisionLayerUpdate(LAYER _left, LAYER _right)
 				continue;
 
 			COLLIDER_ID colliderID; // 두 충돌체로만 만들 수 있는 ID
-			if (pLeftCollider->GetID() < pRightCollider->GetID())
-			{
-				colliderID.left_ID = pLeftCollider->GetID();
-				colliderID.right_ID = pRightCollider->GetID();
-			}
-			else
-			{
-				colliderID.left_ID = pRightCollider->GetID();
-				colliderID.right_ID = pLeftCollider->GetID();
-			}
+			colliderID.left_ID = pLeftCollider->GetID();
+			colliderID.right_ID = pRightCollider->GetID();
 			iter = m_mapCollisionInfo.find(colliderID.ID);
 			// 이전 프레임 충돌한 적 없다.
 			if (iter == m_mapCollisionInfo.end())

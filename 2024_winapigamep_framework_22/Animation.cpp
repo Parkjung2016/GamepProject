@@ -61,7 +61,6 @@ void Animation::Render(HDC _hdc)
 	int ySrc = (int)(m_vecAnimFrame[m_CurFrame].vLT.y);
 	int wSrc = (int)(m_vecAnimFrame[m_CurFrame].vSlice.x);
 	int hSrc = (int)(m_vecAnimFrame[m_CurFrame].vSlice.y);
-
 	DrawAlphaBlendedAndStretched(_hdc,
 		xDest,
 		yDest,
@@ -112,7 +111,17 @@ void Animation::DrawAlphaBlendedAndStretched(HDC hdcDest, int xDest, int yDest, 
 	int xPosition = bIsRotate ? destWidth - 1 : 0;
 
 	SetStretchBltMode(hdcTemp, HALFTONE);
-	StretchBlt(hdcTemp, xPosition, 0, stretchWidth, destHeight, hdcSrc, xSrc, ySrc, srcWidth, srcHeight, SRCCOPY);
+	StretchBlt(hdcTemp,
+		xPosition,
+		0,
+		stretchWidth,
+		destHeight,
+		hdcSrc,
+		xSrc,
+		ySrc,
+		srcWidth,
+		srcHeight,
+		SRCCOPY);
 
 
 
@@ -142,7 +151,17 @@ void Animation::DrawAlphaBlendedAndStretched(HDC hdcDest, int xDest, int yDest, 
 		}
 	}
 
-	TransparentBlt(hdcDest, xDest, yDest, destWidth, destHeight, hdcTemp, 0, 0, destWidth, destHeight, RGB(255, 0, 255));
+	TransparentBlt(hdcDest,
+		xDest,
+		yDest,
+		destWidth,
+		destHeight,
+		hdcTemp,
+		0,
+		0,
+		destWidth,
+		destHeight,
+		RGB(255, 0, 255));
 
 	SelectObject(hdcTemp, hbmOld);
 	DeleteObject(hbmTemp);

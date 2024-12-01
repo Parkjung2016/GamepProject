@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Camera.h"
-class Collider;
-class Component;
+#include "Component.h"
+#include "Collider.h"
 class Object
 {
 public:
@@ -40,6 +40,22 @@ public:
 		com->SetOwner(this);
 		m_vecComponents.push_back(com);
 		return com;
+	}
+	template<typename T>
+	void RemoveComponent()
+	{
+		auto iter = std::find_if(m_vecComponents.begin(), m_vecComponents.end(),
+			[](Component* com)
+			{
+				return dynamic_cast<T*>(com) != nullptr;
+			});
+
+		// 요소를 찾았다면 삭제
+		if (iter != m_vecComponents.end())
+		{
+			delete* iter;  // 메모리 해제
+			m_vecComponents.erase(iter);  // 벡터에서 제거
+		}
 	}
 	template<typename T>
 	T* GetComponent()

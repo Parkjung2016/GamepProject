@@ -6,7 +6,8 @@
 
 PlayerStateMachine::PlayerStateMachine()
 	: m_pCurState(nullptr),
-	m_pOwner(nullptr)
+	m_pOwner(nullptr),
+	m_bCanChangeState(true)
 {
 }
 
@@ -50,6 +51,8 @@ void PlayerStateMachine::SetCurState(PLAYER_STATE _eState)
 
 void PlayerStateMachine::ChangeState(PLAYER_STATE _eNextState)
 {
+	if (!m_bCanChangeState)return;
+
 	PlayerState* pNextState = GetState(_eNextState);
 
 	m_pCurState->Exit();

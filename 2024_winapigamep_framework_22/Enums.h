@@ -48,6 +48,7 @@ enum class PLAYER_STATE
 {
 	IDLE,
 	WALK,
+	RUN,
 	JUMP,
 	FALLING,
 	ATTACK,

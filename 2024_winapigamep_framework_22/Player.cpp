@@ -8,10 +8,12 @@
 #include "Gravity.h"
 #include "Health.h"
 #include "PlayerAttackState.h"
+#include "PlayerDeadState.h"
 #include "PlayerFallingState.h"
 #include "PlayerGetHitState.h"
 #include "PlayerIdleState.h"
 #include "PlayerJumpState.h"
+#include "PlayerRunState.h"
 #include "PlayerStateMachine.h"
 #include "PlayerWalkState.h"
 #include "Rigidbody.h"
@@ -21,7 +23,7 @@ Player::Player()
 	, m_pTex(nullptr)
 {
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Player", L"Texture\\Player.bmp");
-	this->AddComponent<Health>();
+	this->AddComponent<Health>()->SetMaxHealth(10);
 	this->AddComponent<Animator>();
 	this->AddComponent<Gravity>();
 	this->AddComponent<Rigidbody>();
@@ -32,6 +34,8 @@ Player::Player()
 		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 6, 0.1f);
 	GetComponent<Animator>()->CreateAnimation(L"Walk", m_pTex, Vec2(0.f, 256.f),
 		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 10, 0.1f);
+	GetComponent<Animator>()->CreateAnimation(L"Run", m_pTex, Vec2(0.f, 384.f),
+		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 10, 0.1f);
 	GetComponent<Animator>()->CreateAnimation(L"JumpUp", m_pTex, Vec2(512.f, 512.f),
 		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 1, 0.1f);
 	GetComponent<Animator>()->CreateAnimation(L"JumpDown", m_pTex, Vec2(640.f, 512.f),
@@ -40,13 +44,15 @@ Player::Player()
 		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 4, 0.1f);
 	GetComponent<Animator>()->CreateAnimation(L"GetHit", m_pTex, Vec2(0.f, 1024.f),
 		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 4, 0.05f);
-
+	GetComponent<Animator>()->CreateAnimation(L"Dead", m_pTex, Vec2(0.f, 1152.f),
+		Vec2(128.f, 128.f), Vec2(128.f, 0.f), 5, 0.1f);
 	tPlayerInfo info;
 	info.fWalkSpeed = 100;
+	info.fRunSpeed = 300;
 	info.fJumpPower = 500;
 	info.fAirControl = 300;
 	info.fBulletSpeed = 600;
-	info.iBulletPower = 5;
+	info.iBulletPower = 2;
 	info.fBulletKnockBackDuration = .15f;
 	info.fBulletKnockBackPower = 200;
 	info.iBulletCountPerShot = 3;
@@ -54,13 +60,16 @@ Player::Player()
 	PlayerStateMachine* pStateMachine = new PlayerStateMachine;
 	pStateMachine->AddState(new PlayerIdleState);
 	pStateMachine->AddState(new PlayerWalkState);
+	pStateMachine->AddState(new PlayerRunState);
 	pStateMachine->AddState(new PlayerJumpState);
 	pStateMachine->AddState(new PlayerFallingState);
 	pStateMachine->AddState(new PlayerAttackState);
 	pStateMachine->AddState(new PlayerGetHitState);
+	pStateMachine->AddState(new PlayerDeadState);
 	SetStateMachine(pStateMachine);
 	pStateMachine->SetCurState(PLAYER_STATE::IDLE);
 	GetComponent<Health>()->onApplyDamaged += [this] { HandleApplyDamagedEvent(); };
+	GetComponent<Health>()->onDead += [this] { HandleDeadEvent(); };
 }
 
 Player::~Player()
@@ -78,6 +87,7 @@ void Player::Update()
 }
 void Player::UpdateInput()
 {
+	m_bIsPressRunInput = GET_KEY(KEY_TYPE::LSHIFT);
 	UpdateMoveInput();
 }
 
@@ -102,9 +112,13 @@ void Player::UpdateMoveInput()
 
 void Player::HandleApplyDamagedEvent()
 {
-	cout << "대미지 받음";
-	//GET_SINGLE(Camera)->Shake(.05f, .1f);
 	m_pStateMachine->ChangeState(PLAYER_STATE::GETHIT);
+
+}
+
+void Player::HandleDeadEvent()
+{
+	m_pStateMachine->ChangeState(PLAYER_STATE::DEAD);
 
 }
 

@@ -1,20 +1,20 @@
 #include "pch.h"
-#include "PlayerWalkState.h"
+#include "PlayerRunState.h"
 
 #include "Animator.h"
 #include "Player.h"
 #include "PlayerStateMachine.h"
 #include "Rigidbody.h"
 
-PlayerWalkState::PlayerWalkState() : PlayerGroundState(PLAYER_STATE::WALK)
+PlayerRunState::PlayerRunState() : PlayerGroundState(PLAYER_STATE::RUN)
 {
 }
 
-PlayerWalkState::~PlayerWalkState()
+PlayerRunState::~PlayerRunState()
 {
 }
 
-void PlayerWalkState::Update()
+void PlayerRunState::Update()
 {
 	PlayerGroundState::Update();
 	Player* player = GetPlayer();
@@ -26,25 +26,25 @@ void PlayerWalkState::Update()
 		GetStateMachine()->ChangeState(PLAYER_STATE::IDLE);
 		return;
 	}
-	if (GetPlayer()->GetIsPressRunInput())
+	if (!GetPlayer()->GetIsPressRunInput())
 	{
-		GetStateMachine()->ChangeState(PLAYER_STATE::RUN);
+		GetStateMachine()->ChangeState(PLAYER_STATE::WALK);
 		return;
 	}
 	tPlayerInfo info = player->GetInfo();
 	player->GetComponent<Animator>()->SetIsRotate(iInput == -1);
 	Vec2 velocity = pRigid->GetVelocity();
-	pRigid->SetVelocity({ info.fWalkSpeed * iInput,velocity.y });
+	pRigid->SetVelocity({ info.fRunSpeed * iInput,velocity.y });
 
 }
 
-void PlayerWalkState::Enter()
+void PlayerRunState::Enter()
 {
 	PlayerGroundState::Enter();
 
-	GetPlayer()->GetComponent<Animator>()->PlayAnimation(L"Walk", true);
+	GetPlayer()->GetComponent<Animator>()->PlayAnimation(L"Run", true);
 }
 
-void PlayerWalkState::Exit()
+void PlayerRunState::Exit()
 {
 }

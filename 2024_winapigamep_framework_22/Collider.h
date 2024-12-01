@@ -1,5 +1,6 @@
 #pragma once
 #include "Component.h"
+
 class Collider : public Component
 {
 public:
@@ -26,11 +27,12 @@ public:
 	{
 		return m_vLatePos;
 	}
+	int GetCol()const { return m_iCol; }
 private:
+	static UINT g_iNextID;
 	bool m_showDebug = false;
-	bool m_bIsInCollision;
 	UINT m_ID; // 충돌체 고유 ID값
-
+	int m_iCol;
 	Vec2 m_vSize; // 콜라이더 크기
 	// Object로부터 상대적인 위치
 	Vec2 m_vOffsetPos;

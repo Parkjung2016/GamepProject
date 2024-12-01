@@ -1,16 +1,14 @@
 #pragma once
 #include "PlayerState.h"
-class PlayerGetHitState :
+class PlayerDeadState :
 	public PlayerState
 {
 public:
-	PlayerGetHitState();
-	~PlayerGetHitState() override;
+	PlayerDeadState();
+	~PlayerDeadState() override;
 public:
 	void Update() override;
 	void Enter() override;
 	void Exit() override;
-private:
-	float m_fCurrentKnockBackDuration;
 };
 

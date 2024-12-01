@@ -2,22 +2,20 @@
 #include "Collider.h"
 #include "Object.h"
 #include "GDISelector.h"
-#include <rpc.h>
-#pragma comment(lib,"Rpcrt4.lib")
+UINT Collider::g_iNextID = 0;
 Collider::Collider()
-	: m_vSize(30.f, 30.f)
-	, m_vLatePos(0.f, 0.f)
-	, m_vOffsetPos(0.f, 0.f)
+	: m_ID(g_iNextID++)
+	, m_iCol(0)
+	, m_vSize(30.f, 30.f),
+	m_vOffsetPos(0.f, 0.f),
+	m_vLatePos(0.f, 0.f)
 {
-
-	UUID uuid;
-	UuidCreate(&uuid);
-
-	m_ID = uuid.Data1;
 }
 
 Collider::~Collider()
 {
+	SetOwner(nullptr);
+	m_iCol = -1;
 }
 
 void Collider::LateUpdate()
@@ -25,13 +23,13 @@ void Collider::LateUpdate()
 	const Object* pOwner = GetOwner();
 	Vec2 vPos = pOwner->GetPos();
 	m_vLatePos = vPos + m_vOffsetPos;
-
+	assert(0 <= m_iCol);
 }
 
 void Collider::Render(HDC _hdc)
 {
 	PEN_TYPE ePen = PEN_TYPE::GREEN;
-	if (m_showDebug)
+	if (m_iCol)
 		ePen = PEN_TYPE::RED;
 	GDISelector pen(_hdc, ePen);
 	GDISelector brush(_hdc, BRUSH_TYPE::HOLLOW);
@@ -42,8 +40,8 @@ void Collider::Render(HDC _hdc)
 
 void Collider::EnterCollision(Collider* _other)
 {
-	m_showDebug = true;
-	//cout << "Enter" << endl;
+	if (m_iCol < 0)return;
+	++m_iCol;
 	GetOwner()->EnterCollision(_other);
 }
 
@@ -54,7 +52,7 @@ void Collider::StayCollision(Collider* _other)
 
 void Collider::ExitCollision(Collider* _other)
 {
-	m_showDebug = false;
+	--m_iCol;
 	//cout << "Exit" << endl;
 	GetOwner()->ExitCollision(_other);
 }

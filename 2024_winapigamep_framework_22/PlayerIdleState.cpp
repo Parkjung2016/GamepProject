@@ -3,7 +3,6 @@
 
 #include "Animator.h"
 #include "Gravity.h"
-#include "InputManager.h"
 #include "PlayerStateMachine.h"
 #include "Rigidbody.h"
 #include "Player.h"
@@ -22,7 +21,10 @@ void PlayerIdleState::Update()
 	PlayerGroundState::Update();
 	if (GetPlayer()->GetMoveInput() != 0)
 	{
-		GetStateMachine()->ChangeState(PLAYER_STATE::WALK);
+		if (GetPlayer()->GetIsPressRunInput())
+			GetStateMachine()->ChangeState(PLAYER_STATE::RUN);
+		else
+			GetStateMachine()->ChangeState(PLAYER_STATE::WALK);
 		return;
 	}
 

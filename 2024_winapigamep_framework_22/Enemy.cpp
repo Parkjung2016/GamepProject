@@ -5,6 +5,7 @@
 #include "EnemyStateMachine.h"
 #include "Collider.h"
 #include "EnemyAttackState.h"
+#include "EnemyDeadState.h"
 #include "EnemyGetHitState.h"
 #include "EnemyIdleState.h"
 #include "EnemyRecoverState.h"
@@ -18,14 +19,14 @@
 #include "SceneManager.h"
 
 Enemy::Enemy()
-	:m_tInfo{},
-	m_pTex(nullptr)
+	: m_pTex(nullptr),
+	m_tInfo{}
 {
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(L"Enemy_zombie1", L"Texture\\Enemy_zombie1.bmp");
 	this->AddComponent<Animator>();
 	this->AddComponent<Gravity>();
 	this->AddComponent<Rigidbody>();
-	this->AddComponent<Health>();
+	this->AddComponent<Health>()->SetMaxHealth(10);
 	Collider* collider = this->AddComponent<Collider>();
 	collider->SetSize({ 30,50 });
 	collider->SetOffSetPos({ 0,21 });
@@ -38,13 +39,15 @@ Enemy::Enemy()
 		Vec2(96.f, 96.f), Vec2(96.f, 0.f), 4, 0.1f);
 	animator->CreateAnimation(L"GetHit", m_pTex, Vec2(0.f, 0.f),
 		Vec2(96.f, 96.f), Vec2(96.f, 0.f), 5, 0.1f);
-	animator->CreateAnimation(L"Dead", m_pTex, Vec2(0.f, 864.f),
+	animator->CreateAnimation(L"Dead", m_pTex, Vec2(0.f, 768.f),
 		Vec2(96.f, 96.f), Vec2(96.f, 0.f), 5, 0.1f);
 	tEnemyInfo info;
 	info.fSpeed = 100;
 	info.fRecogRange = 400;
 	info.fAttackRange = 100;
 	info.iPower = 4;
+	info.fAttackKnockBackPower = 200;
+	info.fAttackKnockBackDuration = .1f;
 	SetInfo(info);
 	EnemyStateMachine* pStateMachine = new EnemyStateMachine;
 	pStateMachine->AddState(new EnemyIdleState);
@@ -52,6 +55,7 @@ Enemy::Enemy()
 	pStateMachine->AddState(new EnemyAttackState);
 	pStateMachine->AddState(new EnemyRecoverState);
 	pStateMachine->AddState(new EnemyGetHitState);
+	pStateMachine->AddState(new EnemyDeadState);
 	SetStateMachine(pStateMachine);
 	GetComponent<Health>()->onApplyDamaged += [this] { HandleApplyDamaged(); };
 	GetComponent<Health>()->onDead += [this] { HandleDead(); };
@@ -71,7 +75,7 @@ void Enemy::SetStateMachine(EnemyStateMachine* _stateMachine)
 	m_pStateMachine->m_pOwner = this;
 }
 
-bool Enemy::IsPlayerInRange(float fRange)
+bool Enemy::IsPlayerInRange(float fRange) const
 {
 	Player* pPlayer = GetPlayer();
 

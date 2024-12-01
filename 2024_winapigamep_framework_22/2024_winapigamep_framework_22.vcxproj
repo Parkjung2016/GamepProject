@@ -213,6 +213,8 @@
     <ClInclude Include="GDISelector.h" />
     <ClInclude Include="EnemyIdleState.h" />
     <ClInclude Include="Gravity.h" />
+    <ClInclude Include="PlayerDeadState.h" />
+    <ClInclude Include="PlayerRunState.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="InputManager.h" />
@@ -273,6 +275,8 @@
     <ClCompile Include="GDISelector.cpp" />
     <ClCompile Include="EnemyIdleState.cpp" />
     <ClCompile Include="Gravity.cpp" />
+    <ClCompile Include="PlayerDeadState.cpp" />
+    <ClCompile Include="PlayerRunState.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="InputManager.cpp" />

@@ -41,8 +41,8 @@ void GameScene::Init()
 	Vec2 vResolution = { SCREEN_WIDTH, SCREEN_HEIGHT };
 	GET_SINGLE(Camera)->SetPrevShakeLookAt(vResolution / 2.f);
 
-	//GET_SINGLE(Camera)->FadeOut(2.f);
-	//GET_SINGLE(Camera)->FadeIn(2.f);
+	GET_SINGLE(Camera)->FadeOut(0);
+	GET_SINGLE(Camera)->FadeIn(2.f);
 
 	Scene::Init();
 

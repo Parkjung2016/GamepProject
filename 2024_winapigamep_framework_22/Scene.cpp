@@ -53,17 +53,22 @@ void Scene::Render(HDC _hdc)
 	auto camera = GET_SINGLE(Camera);
 	for (UINT i = 0; i < (UINT)LAYER::END; ++i)
 	{
+		bool isUILayer = (UINT)LAYER::UI == i;
 		for (size_t j = 0; j < m_vecObj[i].size();)
 		{
 			auto* obj = m_vecObj[i][j];
+
 			if (!obj->GetIsDead())
 			{
 				Vec2 objRenderPos = camera->GetRenderPos(obj->GetPos());
+				int margin =15;  // 여백 크기
 
-				if (objRenderPos.x + obj->GetSize().x > 0 && objRenderPos.y < SCREEN_WIDTH && objRenderPos.y + obj->GetSize().y > 0 && objRenderPos.y < SCREEN_HEIGHT)
+				if (isUILayer || objRenderPos.x + obj->GetSize().x > -margin &&
+					objRenderPos.x < SCREEN_WIDTH + margin &&
+					objRenderPos.y + obj->GetSize().y > -margin &&
+					objRenderPos.y < SCREEN_HEIGHT + margin)
 				{
 					obj->Render(_hdc);
-
 				}
 				++j;
 			}

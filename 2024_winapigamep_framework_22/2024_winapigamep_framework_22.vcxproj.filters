@@ -173,6 +173,12 @@
     <Filter Include="Engine\07. Module\StateMachine\Enemy\State\GetHit">
       <UniqueIdentifier>{67aeb8c3-acf0-4a2d-bcac-51c1f914f53a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Player\State\Dead">
+      <UniqueIdentifier>{e22e2b7f-8923-4278-8dac-8927a35ae45e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Player\State\Run">
+      <UniqueIdentifier>{62a02802-337e-4f5a-b417-75953541a3a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -367,6 +373,12 @@
     <ClInclude Include="EnemyDeadState.h">
       <Filter>Engine\07. Module\StateMachine\Enemy\State\Dead</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerDeadState.h">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Dead</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerRunState.h">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Run</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -546,6 +558,12 @@
     </ClCompile>
     <ClCompile Include="EnemyDeadState.cpp">
       <Filter>Engine\07. Module\StateMachine\Enemy\State\Dead</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDeadState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Dead</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerRunState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Run</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

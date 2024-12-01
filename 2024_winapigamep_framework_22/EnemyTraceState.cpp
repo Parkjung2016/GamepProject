@@ -23,6 +23,13 @@ void EnemyTraceState::Update()
 	Enemy* pEnemy = GetEnemy();
 	float fRecogRange = pEnemy->GetInfo().fRecogRange;
 	float fAttackRange = pEnemy->GetInfo().fAttackRange;
+	Player* pPlayer = GetEnemy()->GetPlayer();
+
+	Vec2 vPlayerpos = pPlayer->GetPos();
+
+	Vec2 vEnemyPos = pEnemy->GetPos();
+
+	pEnemy->GetComponent<Animator>()->SetIsRotate(vPlayerpos.x < vEnemyPos.x);
 	if (!pEnemy->IsPlayerInRange(fRecogRange))
 	{
 		GetStateMachine()->ChangeState(ENEMY_STATE::IDLE);
@@ -33,12 +40,7 @@ void EnemyTraceState::Update()
 		GetStateMachine()->ChangeState(ENEMY_STATE::ATTACK);
 		return;
 	}
-	std::shared_ptr<GameScene> scene = std::dynamic_pointer_cast<GameScene>(GET_SINGLE(SceneManager)->GetCurrentScene());
-	Player* pPlayer = (Player*)scene->GetPlayer();
 
-	Vec2 vPlayerpos = pPlayer->GetPos();
-
-	Vec2 vEnemyPos = pEnemy->GetPos();
 
 	Vec2 vDir = (vPlayerpos - vEnemyPos).Normalize();
 	Vec2 vV = pEnemy->GetComponent<Rigidbody>()->GetVelocity();

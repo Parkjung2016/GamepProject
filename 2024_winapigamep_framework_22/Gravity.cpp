@@ -16,7 +16,7 @@ Gravity::~Gravity()
 
 void Gravity::LateUpdate()
 {
-	if (!m_bCanGravity)return;
+	if (!m_bCanGravity || m_bGround)return;
 	GetOwner()->GetComponent<Rigidbody>()->AddForce({ 0.f,800.f });
 }
 

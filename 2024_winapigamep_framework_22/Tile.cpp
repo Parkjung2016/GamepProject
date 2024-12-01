@@ -18,7 +18,6 @@ Tile::~Tile()
 
 void Tile::Start()
 {
-
 }
 
 void Tile::Render(HDC _hdc)
@@ -43,6 +42,8 @@ void Tile::Render(HDC _hdc)
 
 void Tile::EnterCollision(Collider* _other)
 {
+	//if (_other->GetCol() > 1)return;
+
 	Object* pOtherObj = _other->GetOwner();
 	Gravity* pGravity = pOtherObj->GetComponent<Gravity>();
 	if (nullptr != pGravity)
@@ -67,6 +68,8 @@ void Tile::EnterCollision(Collider* _other)
 
 void Tile::StayCollision(Collider* _other)
 {
+	//if (_other->GetCol() > 1)return;
+
 	Object* pOtherObj = _other->GetOwner();
 	Gravity* pGravity = pOtherObj->GetComponent<Gravity>();
 	if (nullptr != pGravity)
@@ -83,9 +86,9 @@ void Tile::StayCollision(Collider* _other)
 		vObjPos = pOtherObj->GetPos();
 		vObjPos.y -= fValue;
 
+		pGravity->SetGround(true);
 		pOtherObj->SetPos(vObjPos);
 
-		pGravity->SetGround(true);
 	}
 }
 

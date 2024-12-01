@@ -24,29 +24,34 @@
             "scaleInEditor": 4
         },
         "map.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 2,
+            "expandedObjectLayers": [
+                3
+            ],
+            "scale": 0.33,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 1230,
-                "y": 934.3333333333333
+                "x": 1286.3636363636363,
+                "y": 893.939393939394
             }
         }
     },
-    "last.exportedFilePath": "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Json",
-    "last.imagePath": "C:/Users/bagj2/Downloads/DarkForest1.2",
+    "last.exportedFilePath": "D:/_Github/Gamep/Output/build/Resource/Json",
+    "last.imagePath": "D:/_Github/Gamep/DarkForest1.2",
+    "map.height": 1,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
     "map.lastUsedFormat": "tmx",
     "map.tileHeight": 32,
     "map.tileWidth": 32,
+    "map.width": 80,
     "openFiles": [
         "map.tmx",
-        "Tileset.tsx",
-        "Background.tsx"
+        "Background.tsx",
+        "Tileset.tsx"
     ],
     "project": "map.tiled-project",
     "recentFiles": [
-        "Background.tsx",
         "Tileset.tsx",
+        "Background.tsx",
         "map.tmx",
         "Background_Tree3.tsx"
     ],

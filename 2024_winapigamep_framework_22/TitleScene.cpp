@@ -3,6 +3,7 @@
 
 #include "EnemyStateMachine.h"
 #include "BtnUI.h"
+#include "InputManager.h"
 #include "Object.h"
 #include "SceneManager.h"
 #include "PanelUI.h"
@@ -43,5 +44,8 @@ void ChangeScene(DWORD_PTR, DWORD_PTR)
 }
 void TitleScene::Update()
 {
+	if(GET_KEYDOWN(KEY_TYPE::C))
+		GET_SINGLE(SceneManager)->LoadScene(L"GameScene");
+
 	Scene::Update();
 }
