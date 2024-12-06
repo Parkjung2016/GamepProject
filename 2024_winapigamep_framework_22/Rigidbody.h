@@ -18,7 +18,6 @@ private:
 	Vec2 m_vAccel;
 	Vec2 m_vAccelA;
 	Vec2 m_vVelocity;
-	Vec2 m_vMaxVelocity;
 
 	float m_fMass;
 	float m_fFricCoeff;
@@ -31,7 +30,6 @@ public:
 
 	void  SetVelocity(const Vec2& _v) { m_vVelocity = _v; }
 	void  AddVelocity(const Vec2& _v) { m_vVelocity += _v; }
-	void  SetMaxVelocity(const Vec2 _v) { m_vMaxVelocity = _v; }
 	void  SetAccelAlpha(const Vec2& _vAccel) { m_vAccelA = _vAccel; }
 
 private:

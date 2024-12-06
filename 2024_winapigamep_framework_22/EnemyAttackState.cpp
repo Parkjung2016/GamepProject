@@ -9,7 +9,8 @@
 #include "Player.h"
 #include "Rigidbody.h"
 
-EnemyAttackState::EnemyAttackState() : EnemyState(ENEMY_STATE::ATTACK)
+EnemyAttackState::EnemyAttackState() : EnemyState(ENEMY_STATE::ATTACK),
+m_bAnimationTrigger(false)
 {
 }
 
@@ -19,17 +20,17 @@ EnemyAttackState::~EnemyAttackState()
 
 void EnemyAttackState::Update()
 {
-	Animator* animator = GetEnemy()->GetComponent<Animator>();
+	auto playerHealth = GetEnemy()->GetPlayer()->GetComponent<Health>();
+	Animator* pAnimator = GetEnemy()->GetComponent<Animator>();
 
-	if (animator->GetCurrentAnim()->GetCurFrame() == 2 && !_animationTrigger)
+	if (!playerHealth->GetIsDead() && pAnimator->GetCurrentAnim()->GetCurFrame() == 2 && !m_bAnimationTrigger)
 	{
-		_animationTrigger = true;
+		m_bAnimationTrigger = true;
 		float fAttackRange = GetEnemy()->GetInfo().fAttackRange;
 
 		if (GetEnemy()->IsPlayerInFront() && GetEnemy()->IsPlayerInRange(fAttackRange))
 		{
-			auto playerHealth = GetEnemy()->GetPlayer()->GetComponent<Health>();
-			if (playerHealth->GetIsDead())return;
+
 			auto info = GetEnemy()->GetInfo();
 			Vec2 vOtherPos = GetEnemy()->GetPlayer()->GetPos();
 
@@ -39,6 +40,7 @@ void EnemyAttackState::Update()
 			Vec2 vKnockBackDir = dis.Normalize();
 			CombatData combatData
 			{
+				GetEnemy(),
 				info.iPower,
 				vKnockBackDir,
 				info.fAttackKnockBackPower,
@@ -49,7 +51,7 @@ void EnemyAttackState::Update()
 		}
 	}
 
-	if (animator->GetCurrentAnim()->IsFinished())
+	if (pAnimator->GetCurrentAnim()->IsFinished())
 	{
 		GetStateMachine()->ChangeState(ENEMY_STATE::RECOVER);
 	}
@@ -57,20 +59,23 @@ void EnemyAttackState::Update()
 
 void EnemyAttackState::Enter()
 {
-	Animator* animator = GetEnemy()->GetComponent<Animator>();
+	Animator* pAnimator = GetEnemy()->GetComponent<Animator>();
 	Player* pPlayer = GetEnemy()->GetPlayer();
 
 	Vec2 vPlayerpos = pPlayer->GetPos();
 
 	Vec2 vEnemyPos = GetEnemy()->GetPos();
 
-	animator->SetIsRotate(vPlayerpos.x < vEnemyPos.x);
-	GetEnemy()->GetComponent<Rigidbody>()->SetVelocity({ 0.f,0.f });
-	animator->PlayAnimation(L"Attack", false);
+	pAnimator->SetIsRotate(vPlayerpos.x < vEnemyPos.x);
+	Rigidbody* pRigid = GetEnemy()->GetComponent<Rigidbody>();
+	Vec2 velocity = pRigid->GetVelocity();
+
+	pRigid->SetVelocity({ 0.f,velocity.y });
+	pAnimator->PlayAnimation(L"Attack", false);
 
 }
 
 void EnemyAttackState::Exit()
 {
-	_animationTrigger = false;
+	m_bAnimationTrigger = false;
 }

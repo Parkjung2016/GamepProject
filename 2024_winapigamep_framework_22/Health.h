@@ -12,8 +12,10 @@ public:
 	void Render(HDC _hdc) override;
 
 public:
-	void ApplyDamage(CombatData _combatData) override;
+	virtual void ApplyDamage(CombatData _combatData) override;
 	void SetMaxHealth(int _iMaxHealth);
+	int GetCurrentHealth() const { return m_iCurrentHealth; }
+	int GetMaxHealth() const { return m_iMaxHealth; }
 	bool GetIsDead()const { return m_bIsDead; }
 	void SetDead() { m_bIsDead = true; }
 	void SetCombatData(CombatData _combatData) { m_combatData = _combatData; }
@@ -23,7 +25,7 @@ public:
 	Action<> onApplyDamaged;
 	Action<> onDead;
 
-private:
+protected:
 	CombatData m_combatData;
 	int m_iCurrentHealth;
 	int m_iMaxHealth;

@@ -36,7 +36,10 @@ void Camera::Update()
 			m_pTargetObj = nullptr;
 		}
 		else
+		{
 			m_vLookAt = m_pTargetObj->GetPos();
+			m_vPrevShakeLookAt = m_vLookAt;
+		}
 	}
 
 	CalDiff();
@@ -44,10 +47,10 @@ void Camera::Update()
 
 void Camera::Render(HDC _hdc)
 {
-	if (m_listCamEffect.empty())
+	if (m_camEffect.eEffect == CAM_EFFECT::NONE)
 		return;
 
-	tCamEffect& effect = m_listCamEffect.front();
+	tCamEffect& effect = m_camEffect;
 	effect.fCurTime += fDT;
 
 	float fRatio = 0.f;
@@ -84,14 +87,15 @@ void Camera::Render(HDC _hdc)
 		, (int)m_pVeilTex->GetWidth()
 		, (int)m_pVeilTex->GetHeight(), bf);
 
-	if (effect.fDuration < effect.fCurTime)
+	if (effect.eEffect == CAM_EFFECT::FADE_IN && effect.fDuration < effect.fCurTime)
 	{
-		m_listCamEffect.pop_front();
+		effect.eEffect = CAM_EFFECT::NONE;
 	}
 }
 
 void Camera::Shake(float _fShakeIntensity, float _fShakeTime)
 {
+	m_vPrevShakeLookAt = m_vCurLookAt;
 	m_bIsShaking = true;
 	m_fShakeTimeLeft = _fShakeTime;
 	m_fShakeIntensity = _fShakeIntensity;
@@ -110,7 +114,6 @@ void Camera::CalDiff()
 			m_vCurLookAt.x = m_vPrevShakeLookAt.x + shakeOffsetX;
 			m_vCurLookAt.y = m_vPrevShakeLookAt.y + shakeOffsetY;
 
-			//m_fShakeIntensity *= 0.9f;
 
 		}
 		else

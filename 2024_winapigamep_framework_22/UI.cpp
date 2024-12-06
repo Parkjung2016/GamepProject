@@ -65,10 +65,7 @@ void UI::Render(HDC _hdc)
 		Rectangle(_hdc, int(vPos.x), int(vPos.y), int(vPos.x + vSize.x), int(vPos.y + vSize.y));
 	}
 	else
-	{
 		Rectangle(_hdc, int(vPos.x), int(vPos.y), int(vPos.x + vSize.x), int(vPos.y + vSize.y));
-
-	}
 
 	Render_Child(_hdc);
 }
@@ -100,6 +97,7 @@ void UI::Render_Child(HDC _hdc)
 
 void UI::MouseOnCheck()
 {
+
 	Vec2 vMousePos = GET_MOUSEPOS;
 	Vec2 vSize = GetSize();
 
@@ -107,8 +105,13 @@ void UI::MouseOnCheck()
 	{
 		vMousePos = GET_SINGLE(Camera)->GetRealPos(vMousePos);
 	}
-	if (m_vFinalPos.x <= vMousePos.x && vMousePos.x <= m_vFinalPos.x + vSize.x
-		&& m_vFinalPos.y <= vMousePos.y && vMousePos.y <= m_vFinalPos.y + vSize.y)
+	RECT rect = {
+	(LONG)(m_vFinalPos.x - vSize.x / 2.f),
+	(LONG)(m_vFinalPos.y - vSize.y / 2.f),
+	(LONG)(m_vFinalPos.x + vSize.x / 2.f),
+	(LONG)(m_vFinalPos.y + vSize.y / 2.f)
+	};
+	if (PtInRect(&rect, { (LONG)vMousePos.x,(LONG)vMousePos.y }))
 	{
 		m_bMouseOn = true;
 	}

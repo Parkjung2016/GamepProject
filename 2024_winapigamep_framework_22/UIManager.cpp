@@ -79,8 +79,9 @@ void UIManager::SetFocusedUI(UI* _pUI)
 UI* UIManager::GetFocusedUI() const
 {
 	std::shared_ptr<Scene> pCurScene = GET_SINGLE(SceneManager)->GetCurrentScene();
-	vector<Object*>& vecUI = pCurScene->GetUIObjects();
-
+	if (nullptr == pCurScene)return nullptr;
+	vector<Object*> vecUI;
+	vecUI = pCurScene->GetUIObjects();
 
 	bool bLBDown = GET_KEYDOWN(KEY_TYPE::LBUTTON);
 
@@ -150,7 +151,7 @@ UI* UIManager::GetTargetedUI(UI* _pParentUI)
 		const vector<UI*>& vecChild = pUI->GetChildUI();
 		for (size_t i = 0; i < vecChild.size(); ++i)
 		{
-				list.push_back(vecChild[i]);
+			list.push_back(vecChild[i]);
 		}
 	}
 

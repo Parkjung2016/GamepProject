@@ -4,6 +4,7 @@
 #include "MapManager.h"
 
 #include "Background.h"
+#include "Boss.h"
 #include "Collider.h"
 #include "Core.h"
 #include "Enemy.h"
@@ -37,41 +38,23 @@ void MapManager::LoadMap(const std::wstring& filePath) {
 		tson::Layer* entityLayer = map->getLayer("Entity Layer");
 		tson::Layer* backgroundLayer = map->getLayer("Background Layer");
 		tson::Layer* middleGroundLayer = map->getLayer("MiddleGround Layer");
+		tson::Layer* underGroundLayer = map->getLayer("UnderGround Layer");
 		tson::Tileset* tileset = map->getTileset("Tileset");
-		std::unordered_map<std::string, tson::Object> _entityObjectMap;
-		for (auto object : entityLayer->getObjects())
-		{
-			_entityObjectMap.insert({ object.getName(),object });
-		}
 		if (mainLayer->getType() == tson::LayerType::TileLayer)
 		{
 			if (!map->isInfinite())
 			{
 				std::map<std::tuple<int, int>, tson::Tile*> tileData = mainLayer->getTileData();
-				tson::Object playerObj = _entityObjectMap["PlayerPos"];
-				Object* pPlayer = new Player;
-				pPlayer->SetName(L"Player");
-				pPlayer->SetPos({ playerObj.getPosition().x ,playerObj.getPosition().y });
-				pPlayer->SetSize({ 100.f,100.f });
-				GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pPlayer, LAYER::PLAYER);
-
-				tson::Object enemyObj = _entityObjectMap["EnemyPos"];
-				Enemy* pEnemy = new Enemy;
-				pEnemy->SetName(L"Enemy");
-				pEnemy->SetPos({ enemyObj.getPosition().x,enemyObj.getPosition().y });
-				pEnemy->SetSize({ 100.f,100.f });
-
-				GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pEnemy, LAYER::ENEMY);
-
-				std::dynamic_pointer_cast<GameScene>(GET_SINGLE(SceneManager)->GetCurrentScene())->RegisterPlayer(pPlayer);
-				GET_SINGLE(Camera)->SetTarget(pPlayer);
-
-				if (middleGroundLayer || backgroundLayer)
+				if (middleGroundLayer || backgroundLayer || underGroundLayer)
 				{
 					if (middleGroundLayer)
-						CreateBackground(middleGroundLayer, { .5f, 1.f }, LAYER::MIDDLEGROUND);
+						CreateBackground(middleGroundLayer, { .5f, 1.f }, LAYER::MIDDLEGROUND, true);
 					if (backgroundLayer)
-						CreateBackground(backgroundLayer, { .3f, 1.f }, LAYER::BACKGROUND);
+						CreateBackground(backgroundLayer, { .3f, 1.f }, LAYER::BACKGROUND, true);
+					if (underGroundLayer)
+					{
+						CreateBackground(underGroundLayer, { 1.f,1.f }, LAYER::BACKGROUND, false);
+					}
 				}
 
 				const int columns = tileset->getColumns();
@@ -80,7 +63,6 @@ void MapManager::LoadMap(const std::wstring& filePath) {
 				for (const auto& [pos, tile] : tileData)
 				{
 					if (!tile) continue;
-
 					int tileId = tile->getId();
 
 					int tileX = ((tileId - 1) % columns) * tileWidth;
@@ -91,11 +73,30 @@ void MapManager::LoadMap(const std::wstring& filePath) {
 
 					screenX += (int)(tileWidth / 2.f);
 					screenY += (int)(tileHeight / 2.f);
-					Tile* pTile = CreateTile(tile, screenX, screenY, tileX, tileY, tileWidth, tileHeight);
-					GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pTile, LAYER::GROUND);
+					CreateTile(tile, screenX, screenY, tileX, tileY, tileWidth, tileHeight);
 
 
 				}
+
+				for (auto entityObj : entityLayer->getObjects())
+				{
+					Vec2 vPos = { entityObj.getPosition().x,entityObj.getPosition().y };
+
+					if (entityObj.getClassType() == "EnemyPos")
+					{
+						CreateEnemy(vPos);
+					}
+					else if (entityObj.getClassType() == "PlayerPos")
+					{
+
+						CreatePlayer(vPos);
+					}
+					else if (entityObj.getClassType() == "BossPos")
+					{
+						CreateBoss(vPos);
+					}
+				}
+
 			}
 		}
 
@@ -106,7 +107,7 @@ void MapManager::LoadMap(const std::wstring& filePath) {
 	}
 }
 
-void MapManager::CreateBackground(tson::Layer* backgroundLayer, Vec2 vParallaxFactor, LAYER layer)
+void MapManager::CreateBackground(tson::Layer* backgroundLayer, Vec2 vParallaxFactor, LAYER layer, bool bIsTransparent)
 {
 	auto backgroundObjects = backgroundLayer->getObjects();
 	auto backgroundOffset = backgroundLayer->getOffset();
@@ -121,17 +122,52 @@ void MapManager::CreateBackground(tson::Layer* backgroundLayer, Vec2 vParallaxFa
 
 		auto vecPosition = obj.getPosition();
 		auto vecSize = obj.getSize();
-		vecPosition.x += (int)(vecSize.x / 2.f);
-		vecPosition.y -= (int)(vecSize.y / 2.f);
 		pBackground->SetPos({ (int)backgroundOffset.x + vecPosition.x ,(int)backgroundOffset.y + vecPosition.y });
 		pBackground->SetSize({ vecSize.x,vecSize.y });
 		pBackground->SetParallaxFactor(vParallaxFactor);
+		if (bIsTransparent)
+			pBackground->SetTransparent();
+		if (obj.getClassType() == "Collider")
+		{
+			pBackground->AddComponent<Collider>()->SetSize({ vecSize.x,vecSize.y });
+		}
 		GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pBackground, layer);
-
 	}
 }
 
-Tile* MapManager::CreateTile(tson::Tile* tile, int screenX, int screenY, int tileX, int tileY, int tileWidth,
+void MapManager::CreatePlayer(const Vec2& vPos)
+{
+	Object* pPlayer = new Player;
+	pPlayer->SetName(L"Player");
+	pPlayer->SetPos(vPos);
+	pPlayer->SetSize({ 100.f,100.f });
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pPlayer, LAYER::PLAYER);
+
+	std::dynamic_pointer_cast<GameScene>(GET_SINGLE(SceneManager)->GetCurrentScene())->RegisterPlayer(pPlayer);
+	GET_SINGLE(Camera)->SetTarget(pPlayer);
+}
+
+void MapManager::CreateEnemy(const Vec2& vPos)
+{
+	Enemy* pEnemy = new Enemy;
+	pEnemy->SetName(L"Enemy");
+	pEnemy->SetPos(vPos);
+	pEnemy->SetSize({ 100.f,100.f });
+
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pEnemy, LAYER::ENEMY);
+}
+
+void MapManager::CreateBoss(const Vec2& vPos)
+{
+	Boss* pBoss = new Boss;
+	pBoss->SetName(L"Boss");
+	pBoss->SetPos(vPos);
+	pBoss->SetSize({ 100.f,100.f });
+
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pBoss, LAYER::BOSS);
+}
+
+void MapManager::CreateTile(tson::Tile* tile, int screenX, int screenY, int tileX, int tileY, int tileWidth,
 	int tileHeight)
 {
 	Tile* pTile = new Tile;
@@ -140,6 +176,7 @@ Tile* MapManager::CreateTile(tson::Tile* tile, int screenX, int screenY, int til
 	pTile->SetPos({ screenX, screenY });
 	pTile->SetPos2({ tileX, tileY });
 	pTile->SetSize({ tileWidth, tileHeight });
+	pTile->SetTransparent(true);
 
 	for (const auto& object : tile->getObjectgroup().getObjects())
 	{
@@ -148,8 +185,12 @@ Tile* MapManager::CreateTile(tson::Tile* tile, int screenX, int screenY, int til
 			tson::Vector2i vecSize = object.getSize();
 			pTile->AddComponent<Collider>();
 			pTile->GetComponent<Collider>()->SetSize({ vecSize.x, vecSize.y });
+			pTile->SetTransparent(false);
+
 			break;
 		}
+
 	}
-	return pTile;
+
+	GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pTile, LAYER::TILE);
 }

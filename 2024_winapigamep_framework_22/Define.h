@@ -26,3 +26,8 @@ public:							\
 #define RECT_RENDER(hdc, posx, posy, sizex, sizey) Rectangle(hdc, (int)(posx-sizex/2), (int)(posy-sizey/2), (int)(posx+sizex/2), (int)(posy+sizey/2))
 #define ELLIPSE_RENDER(hdc, posx, posy, sizex, sizey) Ellipse(hdc, (int)(posx-sizex/2), (int)(posy-sizey/2), (int)(posx+sizex/2), (int)(posy+sizey/2))
 #define RECT_MAKE(posx, posy, sizex, sizey) {(LONG)(posx-sizex/2), (LONG)(posy-sizey/2), (LONG)(posx+sizex/2), (LONG)(posy+sizey/2)}
+static std::wstring SceneNames[] =
+{
+	L"TitleScene",
+	L"GameScene"
+};

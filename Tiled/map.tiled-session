@@ -13,15 +13,40 @@
         },
         "Background.tsx": {
             "scaleInDock": 0.5,
-            "scaleInEditor": 0.33
+            "scaleInEditor": 0.12
         },
         "Background_Tree3.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 0.5
         },
+        "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Json/Tileset.json": {
+            "expandedObjectLayers": [
+                5,
+                7
+            ],
+            "scale": 0.5,
+            "selectedLayer": 2,
+            "viewCenter": {
+                "x": 874,
+                "y": 1156
+            }
+        },
+        "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Json/Tileset.json#Background": {
+            "scaleInDock": 1
+        },
+        "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Json/Tileset.json#Tileset": {
+            "scaleInDock": 1
+        },
+        "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Json/Tileset.json#UnderGround": {
+            "scaleInDock": 1
+        },
         "Tileset.tsx": {
             "scaleInDock": 2,
-            "scaleInEditor": 4
+            "scaleInEditor": 0.12
+        },
+        "UnderGround.tsx": {
+            "scaleInDock": 0.33,
+            "scaleInEditor": 0.12
         },
         "map.tmx": {
             "expandedObjectLayers": [
@@ -30,35 +55,38 @@
             "scale": 0.33,
             "selectedLayer": 3,
             "viewCenter": {
-                "x": 1286.3636363636363,
-                "y": 893.939393939394
+                "x": 2893.939393939394,
+                "y": 1840.909090909091
             }
         }
     },
-    "last.exportedFilePath": "D:/_Github/Gamep/Output/build/Resource/Json",
-    "last.imagePath": "D:/_Github/Gamep/DarkForest1.2",
+    "last.exportedFilePath": "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Json",
+    "last.imagePath": "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Texture/Map",
     "map.height": 1,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
-    "map.lastUsedFormat": "tmx",
+    "map.lastUsedFormat": "json",
     "map.tileHeight": 32,
     "map.tileWidth": 32,
     "map.width": 80,
     "openFiles": [
-        "map.tmx",
         "Background.tsx",
-        "Tileset.tsx"
+        "Tileset.tsx",
+        "UnderGround.tsx",
+        "map.tmx"
     ],
     "project": "map.tiled-project",
     "recentFiles": [
-        "Tileset.tsx",
         "Background.tsx",
+        "Tileset.tsx",
+        "UnderGround.tsx",
         "map.tmx",
+        "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Json/Tileset.json",
         "Background_Tree3.tsx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
         "height": 288,
-        "width": 816
+        "width": 6400
     },
     "tileset.useTransparentColor": false
 }

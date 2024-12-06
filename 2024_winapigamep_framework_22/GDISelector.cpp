@@ -25,13 +25,13 @@ GDISelector::GDISelector(HDC _hdc, BRUSH_TYPE _eBrush)
 
 GDISelector::GDISelector(HDC _hdc, HFONT _font)
 	: m_hDC(_hdc)
-	, m_hDefaultBrush(nullptr)
 	, m_hDefaultPen(nullptr)
+	, m_hDefaultBrush(nullptr)
 	, m_hDefaultFont(nullptr)
 	, m_hFont(nullptr)
 {
 	m_hFont = _font;
-	m_hDefaultFont = (HFONT)SelectObject(_hdc, m_hFont);
+	m_hDefaultFont = (HFONT)SelectObject(_hdc, _font);
 	SetBkMode(_hdc, TRANSPARENT);
 }
 

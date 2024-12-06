@@ -9,6 +9,7 @@ Collider::Collider()
 	, m_vSize(30.f, 30.f),
 	m_vOffsetPos(0.f, 0.f),
 	m_vLatePos(0.f, 0.f)
+	, m_showDebug(true)
 {
 }
 
@@ -29,7 +30,7 @@ void Collider::LateUpdate()
 void Collider::Render(HDC _hdc)
 {
 	PEN_TYPE ePen = PEN_TYPE::GREEN;
-	if (m_iCol)
+	if (m_showDebug && m_iCol)
 		ePen = PEN_TYPE::RED;
 	GDISelector pen(_hdc, ePen);
 	GDISelector brush(_hdc, BRUSH_TYPE::HOLLOW);

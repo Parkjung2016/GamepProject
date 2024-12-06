@@ -23,14 +23,14 @@ void Health::ApplyDamage(CombatData _combatData)
 	if (m_bIsDead)return;
 	m_combatData = _combatData;
 	m_iCurrentHealth -= _combatData.iDamage;
-	onApplyDamaged.invoke();
-	onHealthChanged.invoke(m_iCurrentHealth);
-
 	if (m_iCurrentHealth <= 0)
 	{
+		m_iCurrentHealth = 0;
 		SetDead();
 		onDead.invoke();
 	}
+	onApplyDamaged.invoke();
+	onHealthChanged.invoke(m_iCurrentHealth);
 }
 
 void Health::SetMaxHealth(int _iMaxHealth)

@@ -23,10 +23,25 @@ void PlayerGroundState::Update()
 		GetStateMachine()->ChangeState(PLAYER_STATE::FALLING);
 		return;
 	}
-	if (GET_KEYDOWN(KEY_TYPE::A))
+	if (GetPlayer()->CanReloadGun() && GET_KEYDOWN(KEY_TYPE::R))
+	{
+		GetStateMachine()->ChangeState(PLAYER_STATE::RELOADGUN);
+		return;
+	}
+	if (GetPlayer()->CanFireGun() && GET_KEYDOWN(KEY_TYPE::A))
 	{
 		GetStateMachine()->ChangeState(PLAYER_STATE::ATTACK);
-
+		return;
+	}
+	if (GET_KEYDOWN(KEY_TYPE::X))
+	{
+		GetStateMachine()->ChangeState(PLAYER_STATE::BLOCK);
+		return;
+	}
+	if (GetPlayer()->GetDashableCount() > 0 && GET_KEYDOWN(KEY_TYPE::C))
+	{
+		GetStateMachine()->ChangeState(PLAYER_STATE::DASH);
+		return;
 	}
 	if (GET_KEYDOWN(KEY_TYPE::SPACE))
 	{

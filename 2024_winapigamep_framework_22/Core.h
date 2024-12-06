@@ -18,6 +18,7 @@ public:
 private:
 	void MainUpdate();
 	void MainRender();
+	void MainAfterRender();
 	void CreateGDI();
 
 

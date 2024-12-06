@@ -6,17 +6,16 @@ class PanelUI :
 
 public:
 	PanelUI();
-	PanelUI(bool _bCanMovePanel);
 	~PanelUI() override;
 
 public:
-	void MouseOn() override;
-	void MouseLBDown() override;
-	void MouseLBUp() override;
-	void MouseLBClicked() override;
+	void Render(HDC _hdc) override;
+
+	void SetTexture(const wstring& _wKey, const wstring& _wPath);
+
 	CLONE(PanelUI);
 private:
-	bool m_bCanMovePanel;
-	Vec2 m_vDragStart;
+	Texture* m_pTex;
+
 };
 

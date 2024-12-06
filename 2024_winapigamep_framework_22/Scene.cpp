@@ -15,13 +15,13 @@ Scene::~Scene()
 
 void Scene::Init()
 {
-	for (UINT i = 0; i < (UINT)LAYER::END; ++i)
-	{
-		for (size_t j = 0; j < m_vecObj[i].size(); ++j)
-		{
-			m_vecObj[i][j]->Start();
-		}
-	}
+	//for (UINT i = 0; i < (UINT)LAYER::END; ++i)
+	//{
+	//	for (size_t j = 0; j < m_vecObj[i].size(); ++j)
+	//	{
+	//		m_vecObj[i][j]->Start();
+	//	}
+	//}
 }
 
 void Scene::Update()
@@ -53,20 +53,19 @@ void Scene::Render(HDC _hdc)
 	auto camera = GET_SINGLE(Camera);
 	for (UINT i = 0; i < (UINT)LAYER::END; ++i)
 	{
-		bool isUILayer = (UINT)LAYER::UI == i;
+		bool isTileLayer = (UINT)LAYER::TILE == i;
 		for (size_t j = 0; j < m_vecObj[i].size();)
 		{
 			auto* obj = m_vecObj[i][j];
 
 			if (!obj->GetIsDead())
 			{
-				Vec2 objRenderPos = camera->GetRenderPos(obj->GetPos());
-				int margin =15;  // 여백 크기
+				Vec2 objRenderPos = camera->GetRenderPos(obj->GetPos()); //카메라 위치까지 적용 됨
 
-				if (isUILayer || objRenderPos.x + obj->GetSize().x > -margin &&
-					objRenderPos.x < SCREEN_WIDTH + margin &&
-					objRenderPos.y + obj->GetSize().y > -margin &&
-					objRenderPos.y < SCREEN_HEIGHT + margin)
+				if (!isTileLayer || isTileLayer && objRenderPos.x + obj->GetSize().x / 2 > 0 &&
+					objRenderPos.x - obj->GetSize().x / 2 < SCREEN_WIDTH
+					&& objRenderPos.y + obj->GetSize().y / 2 > 0 &&
+					objRenderPos.y - obj->GetSize().y / 2 < SCREEN_HEIGHT)
 				{
 					obj->Render(_hdc);
 				}
@@ -77,6 +76,17 @@ void Scene::Render(HDC _hdc)
 		}
 	}
 
+}
+
+void Scene::AfterRender()
+{
+	for (size_t i = 0; i < (UINT)LAYER::END; i++)
+	{
+		for (UINT j = 0; j < m_vecObj[i].size(); ++j)
+		{
+			m_vecObj[i][j]->AfterRender();
+		}
+	}
 }
 
 void Scene::Release()

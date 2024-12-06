@@ -30,9 +30,6 @@ void PlayerGetHitState::Update()
 	{
 		GetPlayer()->GetComponent<Rigidbody>()->SetVelocity({ 0,0 });
 		GetStateMachine()->ChangeState(PLAYER_STATE::IDLE);
-
-
-
 	}
 }
 

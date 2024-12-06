@@ -7,8 +7,7 @@
 
 Rigidbody::Rigidbody() :
 	m_fMass(1.f),
-	m_fFricCoeff(200),
-	m_vMaxVelocity({ 200.f,600.f })
+	m_fFricCoeff(200)
 {
 }
 
@@ -20,7 +19,7 @@ Rigidbody::~Rigidbody()
 void Rigidbody::LateUpdate()
 {
 	float fForce = m_vForce.Length();
- 
+
 	if (0.f != fForce)
 	{
 		m_vForce.Normalize();
@@ -52,14 +51,6 @@ void Rigidbody::LateUpdate()
 		}
 	}
 
-	if (abs(m_vMaxVelocity.x) < abs(m_vVelocity.x))
-	{
-		m_vVelocity.x = (m_vVelocity.x / abs(m_vVelocity.x)) * abs(m_vMaxVelocity.x);
-	}
-	if (abs(m_vMaxVelocity.y) < abs(m_vVelocity.y))
-	{
-		m_vVelocity.y = (m_vVelocity.y / abs(m_vVelocity.y)) * abs(m_vMaxVelocity.y);
-	}
 	Move();
 	m_vForce = Vec2(0.f, 0.f);
 

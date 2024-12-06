@@ -12,8 +12,8 @@
 #include "MapManager.h"
 #include "Texture.h"
 #include "UIManager.h"
-
-bool Core::Init(HWND _hwnd,HINSTANCE _hInst)
+void* buffer;
+bool Core::Init(HWND _hwnd, HINSTANCE _hInst)
 {
 	// 변수 초기화
 	m_hInst = _hInst;
@@ -62,6 +62,7 @@ void Core::Clear() const
 
 void Core::GameLoop()
 {
+
 	//static int callcount = 0;
 	//++callcount;
 	//static int prev = GetTickCount64();
@@ -73,7 +74,9 @@ void Core::GameLoop()
 	//}
 	MainUpdate();
 	MainRender();
+	MainAfterRender();
 	GET_SINGLE(EventManager)->Update();
+
 }
 
 
@@ -107,6 +110,13 @@ void Core::MainRender()
 	   //::PlgBlt();
 	   //::AlphaBlend();
 }
+
+void Core::MainAfterRender()
+{
+	GET_SINGLE(SceneManager)->AfterRender();
+
+}
+
 void Core::CreateGDI()
 {
 	// HOLLOW

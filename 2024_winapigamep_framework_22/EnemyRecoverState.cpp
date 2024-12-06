@@ -4,6 +4,7 @@
 #include "Animator.h"
 #include "Enemy.h"
 #include "EnemyStateMachine.h"
+#include "Rigidbody.h"
 #include "TimeManager.h"
 
 EnemyRecoverState::EnemyRecoverState() : EnemyState(ENEMY_STATE::RECOVER),
@@ -23,20 +24,17 @@ void EnemyRecoverState::Update()
 	}
 	else
 	{
-		Enemy* pEnemy = GetEnemy();
-		float fAttackRange = pEnemy->GetInfo().fAttackRange;
-		if (pEnemy->IsPlayerInRange(fAttackRange))
-		{
-			GetStateMachine()->ChangeState(ENEMY_STATE::ATTACK);
-		}
-		else
-			GetStateMachine()->ChangeState(ENEMY_STATE::IDLE);
+		GetStateMachine()->ChangeState(ENEMY_STATE::IDLE);
+
 	}
 }
 
 void EnemyRecoverState::Enter()
 {
-	m_fWaitTime = 1;
+	Rigidbody* pRigid = GetEnemy()->GetComponent<Rigidbody>();
+	Vec2 velocity = pRigid->GetVelocity();
+
+	pRigid->SetVelocity({ 0.f,velocity.y });
 	GetEnemy()->GetComponent<Animator>()->PlayAnimation(L"Idle", true);
 
 }

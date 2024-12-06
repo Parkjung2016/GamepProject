@@ -46,7 +46,12 @@ void EventManager::Excute(const tEvent& _eve)
 	}
 	break;
 	case EVENT_TYPE::SCENE_CHANGE:
+	{
+		SCENE_TYPE sceneType = (SCENE_TYPE)_eve.lParam;
+		wstring sceneName = SceneNames[(byte)sceneType];
 		GET_SINGLE(UIManager)->SetFocusedUI(nullptr);
-		break;
+		GET_SINGLE(SceneManager)->LoadScene(sceneName);
+	}
+	break;
 	}
 }

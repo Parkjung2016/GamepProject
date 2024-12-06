@@ -43,6 +43,7 @@ void EnemyGetHitState::Enter()
 {
 	GetEnemy()->GetComponent<Animator>()->SetIsHit(true);
 	GetEnemy()->GetComponent<Animator>()->PlayAnimation(L"GetHit", false);
+
 }
 
 void EnemyGetHitState::Exit()

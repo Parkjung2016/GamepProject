@@ -99,6 +99,7 @@
       <UnityFilesDirectory>$(ProjectDir)\Unity\</UnityFilesDirectory>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <OpenMPSupport>true</OpenMPSupport>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -115,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)Output\build\Resource\Fmod\inc</AdditionalIncludeDirectories>
@@ -146,6 +147,7 @@
       <MinFilesInUnityFile>10</MinFilesInUnityFile>
       <UnityFilesDirectory>$(ProjectDir)\Unity\</UnityFilesDirectory>
       <OpenMPSupport>true</OpenMPSupport>
+      <MinimalRebuild>false</MinimalRebuild>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -162,7 +164,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <PrecompiledHeader>Create</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <AdditionalIncludeDirectories>$(SolutionDir)Output\build\Resource\Fmod\inc</AdditionalIncludeDirectories>
@@ -183,8 +185,20 @@
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h" />
     <ClInclude Include="Background.h" />
+    <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossAttackState.h" />
+    <ClInclude Include="BossDashAttackState.h" />
+    <ClInclude Include="BossDeadState.h" />
+    <ClInclude Include="BossGetHitState.h" />
+    <ClInclude Include="BossIdleState.h" />
+    <ClInclude Include="BossRecoverState.h" />
+    <ClInclude Include="BossState.h" />
+    <ClInclude Include="BossStateMachine.h" />
+    <ClInclude Include="BossTraceState.h" />
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="CombatData.h" />
+    <ClInclude Include="Effect.h" />
+    <ClInclude Include="EffectManager.h" />
     <ClInclude Include="EnemyAttackState.h" />
     <ClInclude Include="EnemyDeadState.h" />
     <ClInclude Include="EnemyGetHitState.h" />
@@ -213,8 +227,13 @@
     <ClInclude Include="GDISelector.h" />
     <ClInclude Include="EnemyIdleState.h" />
     <ClInclude Include="Gravity.h" />
+    <ClInclude Include="PlayerBlockState.h" />
+    <ClInclude Include="PlayerDashState.h" />
     <ClInclude Include="PlayerDeadState.h" />
+    <ClInclude Include="PlayerHealth.h" />
+    <ClInclude Include="PlayerReloadGunState.h" />
     <ClInclude Include="PlayerRunState.h" />
+    <ClInclude Include="TextUI.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Health.h" />
     <ClInclude Include="InputManager.h" />
@@ -250,7 +269,19 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BossAttackState.cpp" />
+    <ClCompile Include="BossDashAttackState.cpp" />
+    <ClCompile Include="BossDeadState.cpp" />
+    <ClCompile Include="BossGetHitState.cpp" />
+    <ClCompile Include="BossIdleState.cpp" />
+    <ClCompile Include="BossRecoverState.cpp" />
+    <ClCompile Include="BossState.cpp" />
+    <ClCompile Include="BossStateMachine.cpp" />
+    <ClCompile Include="BossTraceState.cpp" />
     <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="Effect.cpp" />
+    <ClCompile Include="EffectManager.cpp" />
     <ClCompile Include="EnemyAttackState.cpp" />
     <ClCompile Include="EnemyDeadState.cpp" />
     <ClCompile Include="EnemyGetHitState.cpp" />
@@ -275,8 +306,13 @@
     <ClCompile Include="GDISelector.cpp" />
     <ClCompile Include="EnemyIdleState.cpp" />
     <ClCompile Include="Gravity.cpp" />
+    <ClCompile Include="PlayerBlockState.cpp" />
+    <ClCompile Include="PlayerDashState.cpp" />
     <ClCompile Include="PlayerDeadState.cpp" />
+    <ClCompile Include="PlayerHealth.cpp" />
+    <ClCompile Include="PlayerReloadGunState.cpp" />
     <ClCompile Include="PlayerRunState.cpp" />
+    <ClCompile Include="TextUI.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Health.cpp" />
     <ClCompile Include="InputManager.cpp" />

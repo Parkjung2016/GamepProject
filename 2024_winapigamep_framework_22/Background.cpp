@@ -4,9 +4,10 @@
 #include "ResourceManager.h"
 #include "Texture.h"
 
-Background::Background()
+Background::Background() :
+	m_pTex(nullptr),
+	m_bIsTransparent(false)
 {
-
 }
 
 Background::~Background()
@@ -19,23 +20,45 @@ void Background::Render(HDC _hdc)
 	Vec2 vSize = GetSize();
 	Vec2 vRenderPos = GET_SINGLE(Camera)->GetRenderPosWithParallax(vPos, m_vParallaxFactor, vSize);
 
-	::TransparentBlt(_hdc
-		, (int)(vRenderPos.x - vSize.x / 2.f)
-		, (int)(vRenderPos.y - vSize.y / 2.f)
-		, (int)vSize.x,
-		(int)vSize.y,
-		m_pTex->GetTexDC(),
-		0,
-		0,
-		(int)vSize.x,
-		(int)vSize.y,
-		RGB(255, 0, 255)
-	);
+	if (m_bIsTransparent)
+	{
+
+		::TransparentBlt(_hdc
+			, (int)vRenderPos.x
+			, (int)vRenderPos.y - vSize.y
+			, (int)vSize.x,
+			(int)vSize.y,
+			m_pTex->GetTexDC(),
+			0,
+			0,
+			(int)vSize.x,
+			(int)vSize.y,
+			RGB(255, 0, 255)
+		);
+	}
+	else
+	{
+		BitBlt
+		(
+			_hdc
+			, (int)vRenderPos.x
+			, (int)vRenderPos.y - vSize.y
+			, (int)vSize.x,
+			(int)vSize.y,
+			m_pTex->GetTexDC(),
+			0,
+			0,
+			SRCCOPY
+		);
+	}
+	ComponentRender(_hdc);
 }
 
 void Background::Update()
 {
+
 }
+
 
 void Background::SetTexture(const wstring& _wKey, const wstring& _wPath)
 {

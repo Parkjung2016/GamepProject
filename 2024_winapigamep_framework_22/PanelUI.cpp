@@ -2,12 +2,10 @@
 #include "PanelUI.h"
 
 #include "InputManager.h"
+#include "ResourceManager.h"
+#include "Texture.h"
 
 PanelUI::PanelUI() : UI(false)
-{
-}
-
-PanelUI::PanelUI(bool _bCanMovePanel) : UI(false), m_bCanMovePanel(_bCanMovePanel)
 {
 }
 
@@ -15,32 +13,30 @@ PanelUI::~PanelUI()
 {
 }
 
-void PanelUI::MouseOn()
+void PanelUI::Render(HDC _hdc)
 {
-	if (!m_bCanMovePanel)return;
-	if (IsLBDown())
-	{
-		Vec2 mousePos = GET_MOUSEPOS;
-		Vec2 vDiff = mousePos - m_vDragStart;
+	Vec2 vPos = GetFinalPos();
+	int texWidth = (int)m_pTex->GetWidth();
+	int texHeight = (int)m_pTex->GetHeight();
 
-		Vec2 vCurPos = GetPos();
-		vCurPos += vDiff;
-		SetPos(vCurPos);
 
-		m_vDragStart = mousePos;
-	}
+	TransparentBlt(_hdc,
+		(int)vPos.x- texWidth/2.f,
+		(int)vPos.y - texHeight / 2.f,
+		(int)texWidth,
+		(int)texHeight,
+		m_pTex->GetTexDC(),
+		0,
+		0,
+		(int)texWidth,
+		(int)texHeight,
+		RGB(255, 0, 255));
+	Render_Child(_hdc);
+
 }
 
-void PanelUI::MouseLBDown()
+void PanelUI::SetTexture(const wstring& _wKey, const wstring& _wPath)
 {
-	m_vDragStart = GET_MOUSEPOS;
+	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(_wKey, _wPath);
+	SetSize({ (int)m_pTex->GetWidth()  ,(int)m_pTex->GetHeight() });
 }
-
-void PanelUI::MouseLBUp()
-{
-}
-
-void PanelUI::MouseLBClicked()
-{
-}
-

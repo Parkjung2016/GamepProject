@@ -29,6 +29,10 @@ void Object::LateUpdate()
 	}
 }
 
+void Object::AfterRender()
+{
+}
+
 void Object::ComponentRender(HDC _hdc)
 {
 	for (Component* com : m_vecComponents)

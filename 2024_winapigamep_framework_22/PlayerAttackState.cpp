@@ -45,8 +45,11 @@ void PlayerAttackState::Update()
 		int halfCount = iTotalBulletCount / 2;
 		for (int i = 0; i < iTotalBulletCount; i++)
 		{
+			GetPlayer()->FireGun();
+
 			float fAngleOffset = (i - halfCount) * .3f;
 			Bullet* pBullet = new Bullet;
+			pBullet->SetOwner(GetPlayer());
 			pBullet->SetName(L"Bullet_Player");
 			pBullet->SetPos(vBulletPos);
 			pBullet->SetSize(Vec2(25.f, 25.f));

@@ -12,6 +12,7 @@ public:
 	virtual void Start() {};
 	virtual void Update() abstract;
 	virtual void LateUpdate();
+	virtual void AfterRender();
 	virtual void Render(HDC _hdc) abstract;
 	virtual Object* Clone() = 0;
 	void ComponentRender(HDC _hdc);
@@ -69,9 +70,10 @@ public:
 		}
 		return component;
 	}
-private:
+protected:
 	//POINT m_ptPos;
 	//POINT m_ptSize;
+	bool m_bInit;
 	Vec2 m_vPos;
 	Vec2 m_vSize;
 	vector<Component*> m_vecComponents;

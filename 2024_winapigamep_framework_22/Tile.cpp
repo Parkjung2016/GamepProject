@@ -6,10 +6,11 @@
 #include "ResourceManager.h"
 #include "Texture.h"
 
-Tile::Tile()
+Tile::Tile() :
+	m_bIsTransparent(false),
+	m_iTileId(0),
+	m_pTex(nullptr)
 {
-
-
 }
 
 Tile::~Tile()
@@ -18,6 +19,8 @@ Tile::~Tile()
 
 void Tile::Start()
 {
+	Vec2 vPos = GetPos();
+
 }
 
 void Tile::Render(HDC _hdc)
@@ -26,23 +29,41 @@ void Tile::Render(HDC _hdc)
 	Vec2 vPos2 = GetPos2();
 	Vec2 vSize = GetSize();
 	Vec2 vRenderPos = GET_SINGLE(Camera)->GetRenderPos(vPos);
-	TransparentBlt(_hdc,
-		(int)(vRenderPos.x - vSize.x / 2.f),
-		(int)(vRenderPos.y - vSize.y / 2.f),
-		(int)vSize.x,
-		(int)vSize.y,
-		m_pTex->GetTexDC(),
-		(int)vPos2.x,
-		(int)vPos2.y,
-		(int)vSize.x,
-		(int)vSize.y,
-		RGB(255, 0, 255));
+	if (m_bIsTransparent)
+	{
+
+		TransparentBlt(_hdc,
+			(int)(vRenderPos.x - vSize.x / 2.f),
+			(int)(vRenderPos.y - vSize.y / 2.f),
+			(int)vSize.x,
+			(int)vSize.y,
+			m_pTex->GetTexDC(),
+			(int)vPos2.x,
+			(int)vPos2.y,
+			(int)vSize.x,
+			(int)vSize.y,
+			RGB(255, 0, 255));
+	}
+	else
+	{
+		BitBlt
+		(
+			_hdc,
+			(int)(vRenderPos.x - vSize.x / 2.f),
+			(int)(vRenderPos.y - vSize.y / 2.f),
+			(int)vSize.x,
+			(int)vSize.y,
+			m_pTex->GetTexDC(),
+			(int)vPos2.x,
+			(int)vPos2.y,
+			SRCCOPY
+		);
+	}
 	ComponentRender(_hdc);
 }
 
 void Tile::EnterCollision(Collider* _other)
 {
-	//if (_other->GetCol() > 1)return;
 
 	Object* pOtherObj = _other->GetOwner();
 	Gravity* pGravity = pOtherObj->GetComponent<Gravity>();
@@ -68,7 +89,6 @@ void Tile::EnterCollision(Collider* _other)
 
 void Tile::StayCollision(Collider* _other)
 {
-	//if (_other->GetCol() > 1)return;
 
 	Object* pOtherObj = _other->GetOwner();
 	Gravity* pGravity = pOtherObj->GetComponent<Gravity>();

@@ -14,6 +14,11 @@ void ResourceManager::Init()
 	if (m_pSoundSystem != nullptr)
 		m_pSoundSystem->init((int)SOUND_CHANNEL::END, FMOD_INIT_NORMAL, nullptr);
 
+	wstring fontPath = m_resourcePath;
+	fontPath += L"Font\\NeoDunggeunmoPro-Regular.ttf";
+	AddFontResourceEx(fontPath.c_str(), FR_PRIVATE, 0);
+
+
 }
 
 Texture* ResourceManager::TextureLoad(const wstring& _key, const wstring& _path)
@@ -64,7 +69,9 @@ void ResourceManager::Release()
 {
 	SafeDeleteMap(m_mapTextures);
 	SafeDeleteMap(m_mapSounds);
-
+	wstring fontPath = m_resourcePath;
+	fontPath += L"Font\\NeoDunggeunmoPro-Regular.ttf";
+	RemoveFontResourceEx(fontPath.c_str(), FR_PRIVATE, 0);
 	// 다 쓰고 난 후 시스템 닫고 반환
 	m_pSoundSystem->close();
 	m_pSoundSystem->release();

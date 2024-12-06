@@ -7,21 +7,31 @@
 #include "Texture.h"
 #include "TimeManager.h"
 Animation::Animation()
-	: m_pAnimator(nullptr)
-	, m_CurFrame(0)
-	, m_pTex(nullptr)
-	, m_fAccTime(0.f)
+	: m_hdcTemp(nullptr), m_hbmTemp(nullptr), m_CurFrame(0)
+	, m_fAlpha(0)
+	, m_fAccTime(0.f), m_repeatcnt(0)
+	, m_bFinished(false),
+	m_pAnimator(nullptr), m_pTex(nullptr)
 {
 }
+
 Animation::~Animation()
 {
+	if (m_hbmTemp) {
+		DeleteObject(m_hbmTemp);
+		m_hbmTemp = nullptr;
+	}
+
+	if (m_hdcTemp) {
+		DeleteDC(m_hdcTemp);
+		m_hdcTemp = nullptr;
+	}
 }
 
 void Animation::Update()
 {
 	if (m_pAnimator->GetRepeatcnt() <= 0)
 	{
-		m_CurFrame = m_vecAnimFrame.size() - 1;
 		return;
 	}
 	m_fAccTime += fDT;
@@ -47,6 +57,10 @@ void Animation::Update()
 
 void Animation::Render(HDC _hdc)
 {
+	if (m_pAnimator->GetRepeatcnt() <= 0)
+	{
+		m_CurFrame = m_vecAnimFrame.size() - 1;
+	}
 	Object* pObj = m_pAnimator->GetOwner();
 	Vec2 vPos = pObj->GetPos();
 	vPos = vPos + m_vecAnimFrame[m_CurFrame].vOffset;
@@ -91,27 +105,37 @@ void Animation::Render(HDC _hdc)
 
 void Animation::DrawAlphaBlendedAndStretched(HDC hdcDest, int xDest, int yDest, int destWidth, int destHeight, HDC hdcSrc, int xSrc, int ySrc, int srcWidth, int srcHeight, BYTE transparency, bool isHit)
 {
-	HDC hdcTemp = CreateCompatibleDC(hdcDest);
-	// DIBSection을 사용하여 비트맵 데이터를 메모리에서 효율적으로 처리
+	if (!hdcDest) {
+		cout << "Invalid hdcDest detected!\n";
+		return;
+	}
+	m_hdcTemp = CreateCompatibleDC(hdcDest);
+	if (!m_hdcTemp) {
+		DWORD gdiUsage = GetGuiResources(GetCurrentProcess(), GR_GDIOBJECTS);
+		cout << "Current GDI Objects in use: " << gdiUsage << endl;
+
+		return;
+	}
 	BITMAPINFO bmi = { 0 };
 	bmi.bmiHeader.biSize = sizeof(BITMAPINFOHEADER);
 	bmi.bmiHeader.biWidth = destWidth;
-	bmi.bmiHeader.biHeight = -destHeight; // 하단에서 상단으로 비트맵을 저장
+	bmi.bmiHeader.biHeight = -destHeight;
 	bmi.bmiHeader.biPlanes = 1;
-	bmi.bmiHeader.biBitCount = 32; // 32비트 컬러
+	bmi.bmiHeader.biBitCount = 32;
 	bmi.bmiHeader.biCompression = BI_RGB;
 
 	void* pBits = nullptr;
 
-	HBITMAP hbmTemp = CreateDIBSection(hdcDest, &bmi, DIB_RGB_COLORS, &pBits, nullptr, 0);
-	HBITMAP hbmOld = (HBITMAP)SelectObject(hdcTemp, hbmTemp);
+
+	m_hbmTemp = CreateDIBSection(hdcDest, &bmi, DIB_RGB_COLORS, &pBits, nullptr, 0);
+	HBITMAP hbmOld = (HBITMAP)SelectObject(m_hdcTemp, m_hbmTemp);
 	bool bIsRotate = m_pAnimator->GetIsRotate();
 
 	int stretchWidth = bIsRotate ? -destWidth : destWidth;
 	int xPosition = bIsRotate ? destWidth - 1 : 0;
 
-	SetStretchBltMode(hdcTemp, HALFTONE);
-	StretchBlt(hdcTemp,
+	SetStretchBltMode(m_hdcTemp, HALFTONE);
+	StretchBlt(m_hdcTemp,
 		xPosition,
 		0,
 		stretchWidth,
@@ -122,7 +146,6 @@ void Animation::DrawAlphaBlendedAndStretched(HDC hdcDest, int xDest, int yDest, 
 		srcWidth,
 		srcHeight,
 		SRCCOPY);
-
 
 
 	if (isHit)
@@ -156,16 +179,16 @@ void Animation::DrawAlphaBlendedAndStretched(HDC hdcDest, int xDest, int yDest, 
 		yDest,
 		destWidth,
 		destHeight,
-		hdcTemp,
+		m_hdcTemp,
 		0,
 		0,
 		destWidth,
 		destHeight,
 		RGB(255, 0, 255));
 
-	SelectObject(hdcTemp, hbmOld);
-	DeleteObject(hbmTemp);
-	DeleteDC(hdcTemp);
+	SelectObject(m_hdcTemp, hbmOld);
+	DeleteObject(m_hbmTemp);
+	DeleteDC(m_hdcTemp);
 }
 
 void Animation::Save(const wstring& _strRelativePath)

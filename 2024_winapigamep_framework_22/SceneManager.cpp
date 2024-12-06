@@ -31,6 +31,11 @@ void SceneManager::Render(HDC _hdc)
 	m_pCurrentScene->Render(_hdc);
 }
 
+void SceneManager::AfterRender()
+{
+	m_pCurrentScene->AfterRender();
+}
+
 void SceneManager::RegisterScene(const wstring& _sceneName, std::shared_ptr<Scene> _scene)
 {
 	if (_sceneName.empty() || _scene == nullptr)

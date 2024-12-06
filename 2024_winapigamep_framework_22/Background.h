@@ -16,12 +16,12 @@ public:
 	Texture* GetTexture() const { return m_pTex; }
 private:
 	Texture* m_pTex;
-
+	bool m_bIsTransparent;
 	Vec2 m_vParallaxFactor;
 	CLONE(Background)
 
 public:
 	void SetParallaxFactor(const Vec2& vParallaxFactor) { m_vParallaxFactor = vParallaxFactor; }
-
+	void SetTransparent() { m_bIsTransparent = true; }
 };
 

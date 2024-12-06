@@ -7,6 +7,7 @@ public:
 	void Init(); // start
 	void Update();
 	void Render(HDC _hdc);
+	void AfterRender();
 public:
 	void RegisterScene(const wstring& _sceneName, 
 					std::shared_ptr<Scene> _scene);

@@ -23,7 +23,7 @@ void EnemyTraceState::Update()
 	Enemy* pEnemy = GetEnemy();
 	float fRecogRange = pEnemy->GetInfo().fRecogRange;
 	float fAttackRange = pEnemy->GetInfo().fAttackRange;
-	Player* pPlayer = GetEnemy()->GetPlayer();
+	Player* pPlayer = pEnemy->GetPlayer();
 
 	Vec2 vPlayerpos = pPlayer->GetPos();
 

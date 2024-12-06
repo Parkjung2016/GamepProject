@@ -12,6 +12,6 @@ public:
 	void Exit() override;
 
 private:
-	bool _animationTrigger;
+	bool  m_bAnimationTrigger;
 };
 

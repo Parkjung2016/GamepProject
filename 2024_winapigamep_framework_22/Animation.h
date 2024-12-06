@@ -30,6 +30,7 @@ public:
 	void SetAnimator(Animator* _animator) { m_pAnimator = _animator; }
 	void SetFrame(int _frame) { m_CurFrame = _frame; }
 	void SetFrameOffset(int _index, Vec2 _offset) { m_vecAnimFrame[_index].vOffset = _offset; }
+	void SetAlpha(float _alpha) { m_fAlpha = _alpha; }
 	const UINT GetCurFrame() const { return m_CurFrame; }
 	const size_t& GetMaxFrame() { return m_vecAnimFrame.size(); }
 
@@ -47,7 +48,10 @@ private:
 		BYTE transparency,
 		bool isHit);
 private:
+	HDC m_hdcTemp;       // DC 핸들
+	HBITMAP m_hbmTemp;   // 비트맵 핸들
 	UINT   m_CurFrame; // 현재 프레임
+	float m_fAlpha;
 	float  m_fAccTime; // 누적 시간
 	int	   m_repeatcnt; // 반복 횟수
 	bool m_bFinished;

@@ -179,6 +179,57 @@
     <Filter Include="Engine\07. Module\StateMachine\Player\State\Run">
       <UniqueIdentifier>{62a02802-337e-4f5a-b417-75953541a3a4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Player\State\Dash">
+      <UniqueIdentifier>{57b5617f-6c05-48e3-a51f-2a1921ecdc31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Player\State\Reload">
+      <UniqueIdentifier>{cf31ae31-31d4-4c8b-a6e4-4fbd0758cca8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Boss">
+      <UniqueIdentifier>{db9ead27-6ce2-42dd-85fd-d7aa4248d366}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Boss">
+      <UniqueIdentifier>{66ceda52-d07c-4474-9426-9bb26bc5529e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Boss\State">
+      <UniqueIdentifier>{b9fe2b3c-d50d-40db-9a6e-2c9e70f7248a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Boss\State\Idle">
+      <UniqueIdentifier>{0672183b-13bb-451c-8eda-fd8361984ef6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Boss\State\Trace">
+      <UniqueIdentifier>{ac0e952f-8865-4a29-b726-6fd5f0b582ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Boss\State\Attack">
+      <UniqueIdentifier>{a643b2da-5a5e-48f6-ac5b-a5ba691b7683}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Boss\State\GetHit">
+      <UniqueIdentifier>{713df300-4f0f-4eaa-9964-78f72f851ec9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Boss\State\Recover">
+      <UniqueIdentifier>{6c564a55-b895-436d-beee-d4793e4d40c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Effect">
+      <UniqueIdentifier>{ef10afe4-08c3-49dd-9216-c32094339528}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02. Manager\EffectManager">
+      <UniqueIdentifier>{da2795d4-d1ae-4280-b318-6f4b92d774b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Boss\State\DashAttack">
+      <UniqueIdentifier>{8e8ddc66-86fb-4aa0-b884-ad0e5ba9c7e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Boss\State\Dead">
+      <UniqueIdentifier>{372a1b4d-4a0d-4a50-9d0d-d25aa484f37f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\UI\Text">
+      <UniqueIdentifier>{dee80aca-f074-4183-b148-d38226933e16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\07. Module\StateMachine\Player\State\Block">
+      <UniqueIdentifier>{57716498-84b4-4c44-802e-24e1ab8992ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06. Component\PlayerHealth">
+      <UniqueIdentifier>{4665c4e3-732c-4139-8b7c-919dc7d512b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="2024_winapigamep_framework_22.h">
@@ -379,6 +430,57 @@
     <ClInclude Include="PlayerRunState.h">
       <Filter>Engine\07. Module\StateMachine\Player\State\Run</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerDashState.h">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Dash</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerReloadGunState.h">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Reload</Filter>
+    </ClInclude>
+    <ClInclude Include="Boss.h">
+      <Filter>Engine\03. Object\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="BossStateMachine.h">
+      <Filter>Engine\07. Module\StateMachine\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="BossState.h">
+      <Filter>Engine\07. Module\StateMachine\Boss\State</Filter>
+    </ClInclude>
+    <ClInclude Include="BossIdleState.h">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="BossTraceState.h">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\Trace</Filter>
+    </ClInclude>
+    <ClInclude Include="BossAttackState.h">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="BossRecoverState.h">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\Recover</Filter>
+    </ClInclude>
+    <ClInclude Include="BossGetHitState.h">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\GetHit</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectManager.h">
+      <Filter>Engine\02. Manager\EffectManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Effect.h">
+      <Filter>Engine\03. Object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="BossDashAttackState.h">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\DashAttack</Filter>
+    </ClInclude>
+    <ClInclude Include="BossDeadState.h">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\Dead</Filter>
+    </ClInclude>
+    <ClInclude Include="TextUI.h">
+      <Filter>Engine\03. Object\UI\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerBlockState.h">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Block</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerHealth.h">
+      <Filter>Engine\06. Component\PlayerHealth</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="2024_winapigamep_framework_22.rc">
@@ -564,6 +666,57 @@
     </ClCompile>
     <ClCompile Include="PlayerRunState.cpp">
       <Filter>Engine\07. Module\StateMachine\Player\State\Run</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerDashState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Dash</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerReloadGunState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Reload</Filter>
+    </ClCompile>
+    <ClCompile Include="BossStateMachine.cpp">
+      <Filter>Engine\07. Module\StateMachine\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BossState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Boss\State</Filter>
+    </ClCompile>
+    <ClCompile Include="Boss.cpp">
+      <Filter>Engine\03. Object\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="BossIdleState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="BossTraceState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\Trace</Filter>
+    </ClCompile>
+    <ClCompile Include="BossAttackState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="BossRecoverState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\Recover</Filter>
+    </ClCompile>
+    <ClCompile Include="BossGetHitState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\GetHit</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectManager.cpp">
+      <Filter>Engine\02. Manager\EffectManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Effect.cpp">
+      <Filter>Engine\03. Object\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="BossDashAttackState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\DashAttack</Filter>
+    </ClCompile>
+    <ClCompile Include="BossDeadState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Boss\State\Dead</Filter>
+    </ClCompile>
+    <ClCompile Include="TextUI.cpp">
+      <Filter>Engine\03. Object\UI\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerBlockState.cpp">
+      <Filter>Engine\07. Module\StateMachine\Player\State\Block</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerHealth.cpp">
+      <Filter>Engine\06. Component\PlayerHealth</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

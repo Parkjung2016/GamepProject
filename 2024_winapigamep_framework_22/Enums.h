@@ -4,12 +4,14 @@ enum class LAYER
 	DEFAULT,
 	BACKGROUND,
 	MIDDLEGROUND,
-	GROUND,
-	PLAYER,
+	TILE,
 	BULLET,
 	ENEMY,
+	BOSS,
+	PLAYER,
+	EFFECT,
 	UI,
-	END = 30
+	END
 };
 
 enum class PEN_TYPE
@@ -24,13 +26,17 @@ enum class BRUSH_TYPE
 	BLUE, YELLOW, END
 };
 
-
 enum class EVENT_TYPE
 {
 	CREATE_OBJECT,
 	DELETE_OBJECT,
 	SCENE_CHANGE,
 	END,
+};
+enum class SCENE_TYPE
+{
+	Title,
+	InGame
 };
 
 enum class ENEMY_STATE
@@ -43,15 +49,27 @@ enum class ENEMY_STATE
 	RECOVER,
 	DEAD,
 };
-
+enum class BOSS_STATE
+{
+	IDLE,
+	TRACE,
+	GETHIT,
+	ATTACK,
+	DASHATTACK,
+	RECOVER,
+	DEAD,
+};
 enum class PLAYER_STATE
 {
 	IDLE,
 	WALK,
 	RUN,
+	DASH,
 	JUMP,
 	FALLING,
 	ATTACK,
+	BLOCK,
+	RELOADGUN,
 	GETHIT,
 	DEAD,
 };
