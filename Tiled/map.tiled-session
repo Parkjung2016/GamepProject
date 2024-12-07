@@ -53,14 +53,14 @@
                 3
             ],
             "scale": 0.33,
-            "selectedLayer": 3,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 2893.939393939394,
-                "y": 1840.909090909091
+                "x": 5234.848484848485,
+                "y": 1172.7272727272727
             }
         }
     },
-    "last.exportedFilePath": "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Json",
+    "last.exportedFilePath": "D:/_Github/Gamep/Output/build/Resource/Json",
     "last.imagePath": "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Texture/Map",
     "map.height": 1,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",
@@ -70,15 +70,15 @@
     "map.width": 80,
     "openFiles": [
         "Background.tsx",
-        "Tileset.tsx",
         "UnderGround.tsx",
-        "map.tmx"
+        "map.tmx",
+        "Tileset.tsx"
     ],
     "project": "map.tiled-project",
     "recentFiles": [
         "Background.tsx",
-        "Tileset.tsx",
         "UnderGround.tsx",
+        "Tileset.tsx",
         "map.tmx",
         "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Json/Tileset.json",
         "Background_Tree3.tsx"

@@ -1,4 +1,5 @@
 #pragma once
+
 enum class LAYER
 {
 	DEFAULT,
@@ -25,7 +26,16 @@ enum class BRUSH_TYPE
 	HOLLOW, BLACK, RED, GREEN,
 	BLUE, YELLOW, END
 };
-
+enum class BOSS_STATE : int
+{
+	IDLE,
+	TRACE,
+	GETHIT,
+	ATTACK,
+	ATTACKD,
+	RECOVER,
+	DEAD,
+};
 enum class EVENT_TYPE
 {
 	CREATE_OBJECT,
@@ -46,16 +56,6 @@ enum class ENEMY_STATE
 	TRACE,
 	GETHIT,
 	ATTACK,
-	RECOVER,
-	DEAD,
-};
-enum class BOSS_STATE
-{
-	IDLE,
-	TRACE,
-	GETHIT,
-	ATTACK,
-	DASHATTACK,
 	RECOVER,
 	DEAD,
 };

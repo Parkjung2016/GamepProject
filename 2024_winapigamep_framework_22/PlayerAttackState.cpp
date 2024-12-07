@@ -3,12 +3,13 @@
 
 #include "Animation.h"
 #include "Animator.h"
+#include "Audio.h"
 #include "Bullet.h"
-#include "EventManager.h"
 #include "MyFunc.h"
 #include "Player.h"
 #include "PlayerStateMachine.h"
 #include "Rigidbody.h"
+
 
 PlayerAttackState::PlayerAttackState() : PlayerState(PLAYER_STATE::ATTACK)
 {
@@ -35,6 +36,9 @@ void PlayerAttackState::Update()
 	if (!m_bIsFired && currentAnim->GetCurFrame() == 2)
 	{
 		m_bIsFired = true;
+		GetPlayer()->GetComponent<Audio>()->PlayEvent("event:/SFX/Player/FireShotGun", GET_SINGLE(Camera)->GetLookAt());
+
+
 		float xDir = GetPlayer()->GetComponent<Animator>()->GetIsRotate() ? -1 : 1;
 		Vec2 vBulletPos = GetPlayer()->GetPos();
 		vBulletPos.y += 25;

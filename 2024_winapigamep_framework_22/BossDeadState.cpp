@@ -12,7 +12,8 @@
 #include "Rigidbody.h"
 #include "TimeManager.h"
 
-BossDeadState::BossDeadState() : BossState(BOSS_STATE::DEAD)
+BossDeadState::BossDeadState() : BossState(BOSS_STATE::DEAD), m_fCurrentChangeSceneTime(0), m_fCurrentDestroyTime(0),
+m_bTriggered(false)
 {
 }
 
@@ -22,10 +23,6 @@ BossDeadState::~BossDeadState()
 
 void BossDeadState::Update()
 {
-	Animator* pAnimator = GetBoss()->GetPlayer()->GetComponent<Animator>();
-	if (!pAnimator->GetCurrentAnim()->IsFinished())return;
-
-
 	if (m_bTriggered)
 	{
 		if (m_fCurrentChangeSceneTime <= 2)
@@ -39,8 +36,10 @@ void BossDeadState::Update()
 			evt.eveType = EVENT_TYPE::SCENE_CHANGE;
 			GET_SINGLE(EventManager)->AddEvent(evt);
 		}
+		return;
 	}
-	if (m_fCurrentDestroyTime <= 1.5f)
+
+	if (m_fCurrentDestroyTime <= 1.f)
 	{
 		m_fCurrentDestroyTime += fDT;
 	}

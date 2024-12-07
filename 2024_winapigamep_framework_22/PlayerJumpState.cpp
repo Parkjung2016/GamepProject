@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "PlayerJumpState.h"
 #include "Animator.h"
+#include "Audio.h"
 #include "Gravity.h"
 #include "Player.h"
 #include "PlayerStateMachine.h"
@@ -34,6 +35,9 @@ void PlayerJumpState::Update()
 void PlayerJumpState::Enter()
 {
 	PlayerAirState::Enter();
+	GetPlayer()->GetComponent<Audio>()->PlayEvent("event:/SFX/Footstep", GET_SINGLE(Camera)->GetLookAt());
+
+
 	float fJumpPower = -GetPlayer()->GetInfo().fJumpPower;
 	GetPlayer()->GetComponent<Rigidbody>()->AddVelocity({ 0.f,fJumpPower });
 	GetPlayer()->GetComponent<Animator>()->PlayAnimation(L"JumpUp", false);

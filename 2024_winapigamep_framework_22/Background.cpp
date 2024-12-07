@@ -6,7 +6,8 @@
 
 Background::Background() :
 	m_pTex(nullptr),
-	m_bIsTransparent(false)
+	m_bIsTransparent(false),
+	m_vParallaxFactor({ 1,1 })
 {
 }
 
@@ -18,7 +19,7 @@ void Background::Render(HDC _hdc)
 {
 	Vec2 vPos = GetPos();
 	Vec2 vSize = GetSize();
-	Vec2 vRenderPos = GET_SINGLE(Camera)->GetRenderPosWithParallax(vPos, m_vParallaxFactor, vSize);
+	Vec2 vRenderPos = GET_SINGLE(Camera)->GetRenderPosWithParallax(vPos, m_vParallaxFactor);
 
 	if (m_bIsTransparent)
 	{
@@ -51,7 +52,6 @@ void Background::Render(HDC _hdc)
 			SRCCOPY
 		);
 	}
-	ComponentRender(_hdc);
 }
 
 void Background::Update()
@@ -63,6 +63,7 @@ void Background::Update()
 void Background::SetTexture(const wstring& _wKey, const wstring& _wPath)
 {
 	m_pTex = GET_SINGLE(ResourceManager)->TextureLoad(_wKey, _wPath);
+	m_vSize = { (int)m_pTex->GetWidth() ,(int)m_pTex->GetHeight() };
 }
 
 

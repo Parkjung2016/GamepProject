@@ -5,6 +5,7 @@
 #include "ResourceManager.h"
 #include "Collider.h"
 #include "Animator.h"
+#include "Audio.h"
 #include "Gravity.h"
 #include "Health.h"
 #include "PlayerAttackState.h"
@@ -38,11 +39,13 @@ Player::~Player()
 
 void Player::Start()
 {
+
 	Health* pHealth = this->AddComponent<PlayerHealth>();
 	pHealth->SetMaxHealth(30);
-	this->AddComponent<Animator>();
-	this->AddComponent<Gravity>()->SetCanGravity(false);
-	this->AddComponent<Rigidbody>();
+	AddComponent<Audio>();
+	AddComponent<Animator>();
+	AddComponent<Gravity>()->SetCanGravity(false);
+	AddComponent<Rigidbody>();
 	Collider* collider = this->AddComponent<Collider>();
 	collider->SetSize({ 30,86 });
 	collider->SetOffSetPos({ 0,20 });

@@ -18,3 +18,16 @@ Boss* BossState::GetBoss() const
 {
 	return m_pStateMachine->GetOwner();
 }
+
+void BossState::Update()
+{
+}
+
+void BossState::Enter()
+{
+}
+
+void BossState::Exit()
+{
+}
+

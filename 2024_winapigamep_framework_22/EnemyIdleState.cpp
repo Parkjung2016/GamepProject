@@ -2,13 +2,12 @@
 #include "EnemyIdleState.h"
 
 #include "Animator.h"
+#include "Audio.h"
 #include "EnemyStateMachine.h"
 #include "Enemy.h"
 #include "Health.h"
 #include "Player.h"
 #include "Rigidbody.h"
-#include "SceneManager.h"
-#include "TitleScene.h"
 
 
 EnemyIdleState::EnemyIdleState()
@@ -28,6 +27,9 @@ void EnemyIdleState::Update()
 
 	if (!bPlayerIsDead && pEnemy->IsPlayerInRange(fRecogRange))
 	{
+		GetEnemy()->GetComponent<Audio>()->PlayEvent("event:/SFX/Zombie/ZombieFindPlayer");
+
+
 		GetStateMachine()->ChangeState(ENEMY_STATE::TRACE);
 	}
 
@@ -35,6 +37,7 @@ void EnemyIdleState::Update()
 
 void EnemyIdleState::Enter()
 {
+
 	Rigidbody* pRigid = GetEnemy()->GetComponent<Rigidbody>();
 	Vec2 velocity = pRigid->GetVelocity();
 

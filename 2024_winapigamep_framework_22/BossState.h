@@ -15,9 +15,9 @@ public:
 	Boss* GetBoss() const;
 
 public:
-	virtual void Update() = 0;
-	virtual void Enter() = 0;
-	virtual void Exit() = 0;
+	virtual void Update();
+	virtual void Enter();
+	virtual void Exit();
 public:
 	BossState(BOSS_STATE _eState);
 	virtual ~BossState();

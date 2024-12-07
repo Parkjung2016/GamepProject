@@ -1,4 +1,5 @@
 #pragma once
+#include "Enums.h"
 class Boss;
 class BossState;
 class BossStateMachine

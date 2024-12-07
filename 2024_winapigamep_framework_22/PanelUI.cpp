@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "PanelUI.h"
 
-#include "InputManager.h"
 #include "ResourceManager.h"
 #include "Texture.h"
 

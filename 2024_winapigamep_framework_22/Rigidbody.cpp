@@ -69,11 +69,6 @@ void Rigidbody::Move()
 
 	if (0.f != fSpeed)
 	{
-
-		Vec2 vDir = m_vVelocity;
-		vDir.Normalize();
-
-
 		Vec2 vPos = GetOwner()->GetPos();
 
 		vPos += m_vVelocity * fDT;

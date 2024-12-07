@@ -2,6 +2,7 @@
 #include "Boss.h"
 
 #include "Animator.h"
+#include "Audio.h"
 #include "BossAttackState.h"
 #include "BossDashAttackState.h"
 #include "BossDeadState.h"
@@ -36,6 +37,7 @@ Boss::~Boss()
 void Boss::Start()
 {
 	this->AddComponent<Animator>();
+	this->AddComponent<Audio>();
 	this->AddComponent<Gravity>()->SetCanGravity(false);
 	this->AddComponent<Rigidbody>();
 	this->AddComponent<Health>()->SetMaxHealth(50);

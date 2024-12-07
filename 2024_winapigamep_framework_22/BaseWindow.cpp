@@ -62,7 +62,7 @@ ATOM BaseWindow::MyRegisterClass()
 	wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)GetStockObject(BLACK_BRUSH);
 	wcex.lpszMenuName = nullptr;
-	wcex.lpszClassName = L"platformer";
+	wcex.lpszClassName = L"Shoot";
 	wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
 	return RegisterClassExW(&wcex);
@@ -77,8 +77,8 @@ void BaseWindow::createWindow()
 	int Winposy = ResolutionY / 2 - SCREEN_HEIGHT / 2;
 
 	m_hWnd = CreateWindowW(
-		L"platformer", // 윈도우 클래스 식별자
-		L"platformer",   // 제목
+		L"Shoot", // 윈도우 클래스 식별자
+		L"Shoot",   // 제목
 		WS_OVERLAPPEDWINDOW, // 윈도우 어떤 스타일로 만들것인가
 		Winposx,  // ★ 띄울 위치의 LEFT
 		Winposy,             // ★ 띄울 위치의 TOP

@@ -2,11 +2,15 @@
 #include "BossIdleState.h"
 
 #include "Animator.h"
+#include "Audio.h"
 #include "Boss.h"
 #include "BossStateMachine.h"
+#include "GameScene.h"
 #include "Health.h"
 #include "Player.h"
 #include "Rigidbody.h"
+#include "SceneManager.h"
+#include "SoundObject.h"
 
 BossIdleState::BossIdleState() : BossState(BOSS_STATE::IDLE)
 {
@@ -24,6 +28,11 @@ void BossIdleState::Update()
 
 	if (!bPlayerIsDead && pBoss->IsPlayerInRange(fRecogRange))
 	{
+		if (!m_bIsInit)
+		{
+			m_bIsInit = true;
+			std::dynamic_pointer_cast<GameScene>(GET_SINGLE(SceneManager)->GetCurrentScene())->GetBGMSoundObject()->GetSoundEvent().SetParameterWithLabel("Type", "Boss");
+		}
 		GetStateMachine()->ChangeState(BOSS_STATE::TRACE);
 	}
 }

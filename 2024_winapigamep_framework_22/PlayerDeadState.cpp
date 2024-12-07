@@ -3,6 +3,7 @@
 
 #include "Animation.h"
 #include "Animator.h"
+#include "AudioSystem.h"
 #include "Collider.h"
 #include "EventManager.h"
 #include "Gravity.h"
@@ -54,6 +55,10 @@ void PlayerDeadState::Update()
 
 void PlayerDeadState::Enter()
 {
+	GET_SINGLE(AudioSystem)->SetBusVolume("bus:/", 0);
+	//GET_SINGLE(ResourceManager)->Stop(SOUND_CHANNEL::BGM);
+	//GET_SINGLE(ResourceManager)->Stop(SOUND_CHANNEL::EFFECT);
+
 	GetStateMachine()->SetCanChangeState(false);
 	GetPlayer()->GetComponent<Health>()->SetDead();
 	GetPlayer()->RemoveComponent<Collider>();

@@ -2,7 +2,6 @@
 #include <cstdio>
 #include <string>
 
-#include "Object.h"
 class EnemyStateMachine;
 
 void CreateObject(Object* _pObj, LAYER _eLayer);

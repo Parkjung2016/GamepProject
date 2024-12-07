@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "BossTraceState.h"
 
+#include "Animation.h"
 #include "Animator.h"
+#include "Audio.h"
 #include "Boss.h"
 #include "BossStateMachine.h"
 #include "Player.h"
@@ -22,7 +24,42 @@ void BossTraceState::Update()
 	float fAttackRange = pBoss->GetInfo().fAttackRange;
 	float fDashAttackRange = pBoss->GetInfo().fDashAttackRange;
 	Player* pPlayer = pBoss->GetPlayer();
+	Animation* currentAnim = GetBoss()->GetComponent<Animator>()->GetCurrentAnim();
+	size_t curFrame = currentAnim->GetCurFrame();
+	if (GetBoss()->IsStep2())
+	{
+		if ((curFrame == 2 || curFrame == 7))
+		{
+			if (!m_bIsSoundTriggered)
+			{
 
+				m_bIsSoundTriggered = true;
+				GetBoss()->GetComponent<Audio>()->PlayEvent("event:/SFX/Footstep");
+			}
+		}
+		else
+		{
+			m_bIsSoundTriggered = false;
+
+		}
+	}
+	else
+	{
+		if ((curFrame == 1 || curFrame == 3))
+		{
+			if (!m_bIsSoundTriggered)
+			{
+
+				m_bIsSoundTriggered = true;
+				GetBoss()->GetComponent<Audio>()->PlayEvent("event:/SFX/Footstep");
+			}
+		}
+		else
+		{
+			m_bIsSoundTriggered = false;
+
+		}
+	}
 	Vec2 vPlayerpos = pPlayer->GetPos();
 
 	Vec2 vEnemyPos = pBoss->GetPos();
@@ -40,7 +77,7 @@ void BossTraceState::Update()
 	}
 	if (pBoss->IsStep2() && !pBoss->IsPlayerInRange(fDashAttackRange * .9f) && pBoss->IsPlayerInRange(fDashAttackRange))
 	{
-		GetStateMachine()->ChangeState(BOSS_STATE::DASHATTACK);
+		GetStateMachine()->ChangeState(BOSS_STATE::ATTACKD);
 		return;
 	}
 

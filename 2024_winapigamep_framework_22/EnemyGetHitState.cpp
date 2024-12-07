@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "EnemyGetHitState.h"
 
-#include "Animation.h"
 #include "Animator.h"
+#include "Audio.h"
 #include "Enemy.h"
 #include "EnemyRecoverState.h"
 #include "EnemyStateMachine.h"
@@ -41,6 +41,8 @@ void EnemyGetHitState::Update()
 
 void EnemyGetHitState::Enter()
 {
+	GetEnemy()->GetComponent<Audio>()->PlayEvent("event:/SFX/Zombie/ZombieImpact");
+
 	GetEnemy()->GetComponent<Animator>()->SetIsHit(true);
 	GetEnemy()->GetComponent<Animator>()->PlayAnimation(L"GetHit", false);
 

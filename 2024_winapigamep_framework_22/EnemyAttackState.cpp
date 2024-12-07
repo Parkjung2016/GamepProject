@@ -3,6 +3,7 @@
 
 #include "Animation.h"
 #include "Animator.h"
+#include "Audio.h"
 #include "Enemy.h"
 #include "EnemyStateMachine.h"
 #include "Health.h"
@@ -26,7 +27,8 @@ void EnemyAttackState::Update()
 	if (!playerHealth->GetIsDead() && pAnimator->GetCurrentAnim()->GetCurFrame() == 2 && !m_bAnimationTrigger)
 	{
 		m_bAnimationTrigger = true;
-		float fAttackRange = GetEnemy()->GetInfo().fAttackRange;
+		float fAttackRange = GetEnemy()->GetInfo().fAttackRange + 50;
+		GetEnemy()->GetComponent<Audio>()->PlayEvent("event:/SFX/Zombie/ZombieBite");
 
 		if (GetEnemy()->IsPlayerInFront() && GetEnemy()->IsPlayerInRange(fAttackRange))
 		{

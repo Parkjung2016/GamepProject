@@ -1,5 +1,4 @@
 #include "pch.h"
-#include <algorithm>
 
 #include "MapManager.h"
 
@@ -13,6 +12,7 @@
 #include "Tile.h"
 #include "Scene.h"
 #include "SceneManager.h"
+#include "Wall.h"
 
 MapManager::~MapManager()
 {
@@ -39,12 +39,31 @@ void MapManager::LoadMap(const std::wstring& filePath) {
 		tson::Layer* backgroundLayer = map->getLayer("Background Layer");
 		tson::Layer* middleGroundLayer = map->getLayer("MiddleGround Layer");
 		tson::Layer* underGroundLayer = map->getLayer("UnderGround Layer");
+		tson::Layer* wallLayer = map->getLayer("Wall Layer");
 		tson::Tileset* tileset = map->getTileset("Tileset");
 		if (mainLayer->getType() == tson::LayerType::TileLayer)
 		{
 			if (!map->isInfinite())
 			{
 				std::map<std::tuple<int, int>, tson::Tile*> tileData = mainLayer->getTileData();
+
+				auto wallLayerObjects = wallLayer->getObjects();
+
+
+				for (auto& obj : wallLayerObjects)
+				{
+					Wall* pWall = new Wall;
+					wstring name = wstring(obj.getName().begin(), obj.getName().end());
+					pWall->SetName(name);
+
+					auto vecPosition = obj.getPosition();
+					auto vecSize = obj.getSize();
+					pWall->SetPos({ (int)vecPosition.x ,(int)vecPosition.y });
+					pWall->SetSize({ vecSize.x,vecSize.y });
+
+					pWall->AddComponent<Collider>()->SetSize({ vecSize.x,vecSize.y });
+					GET_SINGLE(SceneManager)->GetCurrentScene()->AddObject(pWall, LAYER::TILE);
+				}
 				if (middleGroundLayer || backgroundLayer || underGroundLayer)
 				{
 					if (middleGroundLayer)

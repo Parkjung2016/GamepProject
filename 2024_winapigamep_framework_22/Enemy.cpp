@@ -2,6 +2,7 @@
 #include "Enemy.h"
 
 #include "Animator.h"
+#include "Audio.h"
 #include "EnemyStateMachine.h"
 #include "Collider.h"
 #include "EnemyAttackState.h"
@@ -21,7 +22,7 @@
 #include "TimeManager.h"
 
 Enemy::Enemy()
-	: m_pTex(nullptr),
+	: m_fFreezeTime(0), m_pTex(nullptr),
 	m_tInfo{},
 	m_pStateMachine(nullptr)
 {
@@ -82,10 +83,12 @@ void Enemy::HandleDead() const
 
 void Enemy::Start()
 {
-	this->AddComponent<Animator>();
-	this->AddComponent<Gravity>()->SetCanGravity(false);
-	this->AddComponent<Rigidbody>();
-	this->AddComponent<Health>()->SetMaxHealth(30);
+	AddComponent<Audio>()->PlayEvent("event:/SFX/Zombie/ZombieBreath", true);
+
+	AddComponent<Animator>();
+	AddComponent<Gravity>()->SetCanGravity(false);
+	AddComponent<Rigidbody>();
+	AddComponent<Health>()->SetMaxHealth(30);
 	Collider* collider = this->AddComponent<Collider>();
 	collider->SetSize({ 30,50 });
 	collider->SetOffSetPos({ 0,21 });
@@ -102,7 +105,7 @@ void Enemy::Start()
 		Vec2(96.f, 96.f), Vec2(96.f, 0.f), 5, 0.1f);
 	tEnemyInfo info;
 	info.fSpeed = 200;
-	info.fRecogRange = 400;
+	info.fRecogRange = 600;
 	info.fAttackRange = 50;
 	info.iPower = 5;
 	info.fAttackKnockBackPower = 200;
@@ -126,6 +129,7 @@ void Enemy::Update()
 	if (m_fFreezeTime > 0)
 	{
 		Rigidbody* pRigidbody = GetComponent<Rigidbody>();
+		if (!pRigidbody)return;
 		float fVelocityY = pRigidbody->GetVelocity().y;
 		pRigidbody->SetVelocity({ 0.f,fVelocityY });
 		m_fFreezeTime -= fDT;

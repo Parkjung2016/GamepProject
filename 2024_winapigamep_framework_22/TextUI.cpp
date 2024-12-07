@@ -22,6 +22,27 @@ m_fCurrentDestroyTime(0)
 
 TextUI::~TextUI()
 {
+	DeleteObject(m_font);
+
+}
+
+void TextUI::Start()
+{
+	m_font = CreateFont(
+		m_fFontSize,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		0,
+		HANGEUL_CHARSET,
+		0,
+		0,
+		0,
+		VARIABLE_PITCH | FF_ROMAN,
+		TEXT("Neo둥근모 Pro"));
 }
 
 void TextUI::Update()
@@ -54,20 +75,17 @@ void TextUI::Update()
 
 void TextUI::Render(HDC _hdc)
 {
-	HFONT font = CreateFont(
-		m_fFontSize, 0, 0, 0, 0, 0, 0, 0, HANGEUL_CHARSET, 0, 0, 0, VARIABLE_PITCH | FF_ROMAN, TEXT("Neo둥근모 Pro"));
 	Vec2 vPos;
 	if (m_bIsPopup)
 		vPos = GET_SINGLE(Camera)->GetRenderPos(GetPos());
 	else
 		vPos = GetFinalPos();
 
-	HFONT oldFont = (HFONT)SelectObject(_hdc, font);
+	HFONT oldFont = (HFONT)SelectObject(_hdc, m_font);
 	SetTextAlign(_hdc, m_uAlign);
 	SetTextColor(_hdc, RGB(255, 255, 255));
 	SetBkMode(_hdc, TRANSPARENT);
 	TextOut(_hdc, vPos.x, vPos.y, m_wText.c_str(), m_wText.size());
 
 	SelectObject(_hdc, oldFont);
-	DeleteObject(font);
 }

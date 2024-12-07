@@ -11,5 +11,7 @@ public:
 	void Update() override;
 	void Enter() override;
 	void Exit() override;
+private:
+	bool m_bIsSoundTriggered;
 };
 

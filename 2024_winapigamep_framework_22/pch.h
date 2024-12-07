@@ -1,6 +1,7 @@
 #pragma once
 
 // 각종 include
+#include "fmod_studio.hpp"
 #include<Windows.h>
 #include<tchar.h>
 #include<memory>
@@ -27,7 +28,8 @@
 #pragma comment(lib, "msimg32.lib") // transparent 등 blt에 사용
 #pragma comment(lib, "fmod_vc.lib") 
 #pragma comment(lib, "fmodL_vc.lib")
-
+#pragma comment(lib, "fmodstudioL_vc.lib") 
+#pragma comment(lib, "fmodstudio_vc.lib")
 // 각종 using
 using std::vector;
 using std::map;

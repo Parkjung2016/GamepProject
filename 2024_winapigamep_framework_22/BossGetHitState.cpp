@@ -2,6 +2,7 @@
 #include "BossGetHitState.h"
 
 #include "Animator.h"
+#include "Audio.h"
 #include "Boss.h"
 #include "BossRecoverState.h"
 #include "BossStateMachine.h"
@@ -40,6 +41,8 @@ void BossGetHitState::Update()
 
 void BossGetHitState::Enter()
 {
+	GetBoss()->GetComponent<Audio>()->PlayEvent("event:/SFX/Zombie/ZombieImpact");
+
 	GetBoss()->GetComponent<Animator>()->SetIsHit(true);
 	GetBoss()->GetComponent<Animator>()->PlayAnimation(L"GetHit", false);
 }

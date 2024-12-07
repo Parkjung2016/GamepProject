@@ -1,0 +1,732 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="BaseWindow" Collapsed="true">
+    <Position X="35.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gEAAAAAAACAACAABAAAAACBAAAAAAAgAAAAAQAQAAAI=</HashCode>
+      <FileName>BaseWindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core" Collapsed="true">
+    <Position X="35.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gCAAABAAACAAAgAAQRAAIAAMoAAAAAAAAAAiAFBAAIA=</HashCode>
+      <FileName>Core.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundEvent" Collapsed="true">
+    <Position X="37.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAQGAABAAAAhEAAAAwgAAACAAABCACAIAAAAAIAAAA=</HashCode>
+      <FileName>SoundEvent.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CollisionManager" Collapsed="true">
+    <Position X="32" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEQgAAAAAAAIAAAAAAAAAAAACAAAAAABAQAAAAAA=</HashCode>
+      <FileName>CollisionManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EventManager" Collapsed="true">
+    <Position X="33.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAABAAAAAAAAAAAABAAAAAABAQAAAAAg=</HashCode>
+      <FileName>EventManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InputManager" Collapsed="true">
+    <Position X="28.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQBAAAAAAAAAAAAAAAAIAQAAAAAAAAAAADCAQAAAAA=</HashCode>
+      <FileName>InputManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ResourceManager" Collapsed="true">
+    <Position X="33.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAIAABAAAAAAAEAAAAAAAAAQAAAACABABAAA=</HashCode>
+      <FileName>ResourceManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneManager" Collapsed="true">
+    <Position X="35.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAkAAAgIAACCAAAAAAAAAAAABBCAAAAAAA=</HashCode>
+      <FileName>SceneManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TimeManager" Collapsed="true">
+    <Position X="32" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAACAAAAAAAAAAAACAAAEBAAAAAgFARCAAAAAAA=</HashCode>
+      <FileName>TimeManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Camera" Collapsed="true">
+    <Position X="30.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQSCCAECAAGCAAIAACAAEAAogAAAAABBEJECAAAAAEo=</HashCode>
+      <FileName>Camera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UIManager" Collapsed="true">
+    <Position X="33.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIAAAAAAAAAAAAAAAQAAABAAAAAAAAAACAAAAAEA=</HashCode>
+      <FileName>UIManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MapManager" Collapsed="true">
+    <Position X="30.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQEAEQIAAAAAAAAEAAAAEAAAEgAAgAAABCEAABBAE=</HashCode>
+      <FileName>MapManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EffectManager" Collapsed="true">
+    <Position X="37.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EffectManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AudioSystem" Collapsed="true">
+    <Position X="32" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CQQIAEAEBAgQAQEIACAAQAAAQgAAABCAIAACAhQAAAg=</HashCode>
+      <FileName>AudioSystem.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Action&lt;...Args&gt;" Collapsed="true">
+    <Position X="28.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAQAAAAAAIAABAAAAAAAAAAA=</HashCode>
+      <FileName>Action.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IDamageable" Collapsed="true">
+    <Position X="9" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAEAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Interfaces.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Object" Collapsed="true">
+    <Position X="13.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kIQAAAAAASAMEAChEICIJAgAAAAAAAAEABAAwAAABBA=</HashCode>
+      <FileName>Object.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="UI" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICQAAEAAAAADE2AAAQEAICAYEAiAABAABBAAEAQAUBA=</HashCode>
+      <FileName>UI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PanelUI" Collapsed="true">
+    <Position X="1.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAAAAAAAAAAAAIAACAAAAAAABAAAAACAAA=</HashCode>
+      <FileName>PanelUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BtnUI" Collapsed="true">
+    <Position X="3.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAABAAAAAAAQAQAAAAAICAARAgQBBAAACEAAQ=</HashCode>
+      <FileName>BtnUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TextUI" Collapsed="true">
+    <Position X="5.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAIEBAAAAAAAAAAIAAAAAAAAAAAAAECBACCAAAAEA=</HashCode>
+      <FileName>TextUI.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player" Collapsed="true">
+    <Position X="19.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAABMBACgkMAgAABIQAAAgAAAIlFEgABAAAwAGADI=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bullet" Collapsed="true">
+    <Position X="21.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAIACABGAAAAgQAUJAAEAAAAAAEAJAAAAASAEA=</HashCode>
+      <FileName>Bullet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Enemy" Collapsed="true">
+    <Position X="23.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AsQAAgAAACgEkAAAAAEAABIIAAEABEAAIBEAAAAGAAA=</HashCode>
+      <FileName>Enemy.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Background" Collapsed="true">
+    <Position X="26" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEACEAAAAAAAAACAAgAAACAAAAAAEBAgAAACAAA=</HashCode>
+      <FileName>Background.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Tile" Collapsed="true">
+    <Position X="8" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQACEAAACAAEAAAAACAAACIAKAAAAAAgDAAACACAQA=</HashCode>
+      <FileName>Tile.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Boss" Collapsed="true">
+    <Position X="10.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAACgEgAQAQAEAAAAIAAEABFIAIBAAAAAGgCA=</HashCode>
+      <FileName>Boss.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Effect" Collapsed="true">
+    <Position X="12.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQAAAEAACgIBBAAgAAQAACAAAAAAAAAAFAAgACCAQA=</HashCode>
+      <FileName>Effect.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SoundObject" Collapsed="true">
+    <Position X="14.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIIAAAAAAAAAAAAgAABAAAAAAAAAAAABAAAAAAgAA=</HashCode>
+      <FileName>SoundObject.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Wall" Collapsed="true">
+    <Position X="17" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAEAAAAAAAAAAACAAAAAQAABAAAAAAAAA=</HashCode>
+      <FileName>Wall.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scene" Collapsed="true">
+    <Position X="16.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QA4AAAAAAAAEAAAAgAAAIAAARAAAQAAAABACABAAAAA=</HashCode>
+      <FileName>Scene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameScene" Collapsed="true">
+    <Position X="15" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAFAgAAAAFAJAAAAIAAAAAABBASAAAAAAA=</HashCode>
+      <FileName>GameScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TitleScene" Collapsed="true">
+    <Position X="17.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAABAAAAAAAAAAAAABAACAAAAAAA=</HashCode>
+      <FileName>TitleScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ResourceBase" Collapsed="true">
+    <Position X="16" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAgAAAAAQAAAAAAAQAAAACIAAAAAAAiAAAAAA=</HashCode>
+      <FileName>ResourceBase.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Texture" Collapsed="true">
+    <Position X="16" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAQAAggAAAAAAAABAAAAAAMAAAAIAAEAAAAA=</HashCode>
+      <FileName>Texture.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Component" Collapsed="true">
+    <Position X="6" Y="14.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAIAIAIAAAAAAAAIAAAAAAAAAAAABBAAAAAAAA=</HashCode>
+      <FileName>Component.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animation" Collapsed="true">
+    <Position X="30.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABTCgIEAAQAAEAAAwAAgBABQgAAAAEABBBAMQAACRAE=</HashCode>
+      <FileName>Animation.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Animator" Collapsed="true">
+    <Position X="1.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAABAAAAAAgAAAAIAJRAQgACigIAMABAABAUAAAA=</HashCode>
+      <FileName>Animator.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Collider" Collapsed="true">
+    <Position X="3.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAEICgAAQIsAAAVAAAAAAUABAEAAQQQAA=</HashCode>
+      <FileName>Collider.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Rigidbody" Collapsed="true">
+    <Position X="8.25" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAgAAAEgOAAAAgAAAAAIAAAAAAAAEAQABAAAEAACAE=</HashCode>
+      <FileName>Rigidbody.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Gravity" Collapsed="true">
+    <Position X="10.5" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAIAAAAAAAAIAAAACAAAACAABACCAABAAA=</HashCode>
+      <FileName>Gravity.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CombatData" Collapsed="true">
+    <Position X="33.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAEACAAAAAAAAAAAACAAAAABA=</HashCode>
+      <FileName>CombatData.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Health" Collapsed="true">
+    <Position X="6" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQCAAAAiAAJA6BQIAAIAAAAEAAAIAAAFAAACAAAAA=</HashCode>
+      <FileName>Health.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerHealth" Collapsed="true">
+    <Position X="6" Y="17.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAABAIAAgAAAAAAAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PlayerHealth.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Audio" Collapsed="true">
+    <Position X="12.75" Y="15.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAEAAAAAAAACAECIAEAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Audio.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GDISelector" Collapsed="true">
+    <Position X="37.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAACAAIgAAAIAAAAAAABAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>GDISelector.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerStateMachine" Collapsed="true">
+    <Position X="32" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAEAACIAIBAAABAAAAAAAAAFAAAAEAAAABAAACAA=</HashCode>
+      <FileName>PlayerStateMachine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAirState" Collapsed="true">
+    <Position X="4.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAIAAAAAAAAAAABAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>PlayerAirState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerGroundState" Collapsed="true">
+    <Position X="12.25" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAQAAAAIAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>PlayerGroundState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerState" Collapsed="true">
+    <Position X="12.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAABAAAAiBAAAAAAEAAAAAAAAEAAEAYAAAAAAAAAA=</HashCode>
+      <FileName>PlayerState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerIdleState" Collapsed="true">
+    <Position X="12.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAYAAAAAAAAAA=</HashCode>
+      <FileName>PlayerIdleState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerWalkState" Collapsed="true">
+    <Position X="14.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAIAAACAAAAAAAAAAEAEAAIAAAAAAAAAA=</HashCode>
+      <FileName>PlayerWalkState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerJumpState" Collapsed="true">
+    <Position X="3.25" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQIAAAAAAIAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>PlayerJumpState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerFallingState" Collapsed="true">
+    <Position X="5.5" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQACAAAAAAAAAAAAAAAAAAAAAAEAAAAIAACAAAAAAA=</HashCode>
+      <FileName>PlayerFallingState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerAttackState" Collapsed="true">
+    <Position X="21.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAgAAAAAAgACAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>PlayerAttackState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerGetHitState" Collapsed="true">
+    <Position X="23.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAiAAAAAAAAAAEAAAAIAAAAAgAAAA=</HashCode>
+      <FileName>PlayerGetHitState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerDeadState" Collapsed="true">
+    <Position X="1" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAACAAAACEAAAAMAAAAAAgAEA=</HashCode>
+      <FileName>PlayerDeadState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerRunState" Collapsed="true">
+    <Position X="10" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAIAAIAAAAAAAAAAAAAAUAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>PlayerRunState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerDashState" Collapsed="true">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIEAAAAAACAA=</HashCode>
+      <FileName>PlayerDashState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerReloadGunState" Collapsed="true">
+    <Position X="16.75" Y="5.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAEIIAAMAAAAAAAAAA=</HashCode>
+      <FileName>PlayerReloadGunState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PlayerBlockState" Collapsed="true">
+    <Position X="19.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEQAAAAAAAAAAAAAAAAAAAAAAAAEAAAAIBAAAAAAAAA=</HashCode>
+      <FileName>PlayerBlockState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyStateMachine" Collapsed="true">
+    <Position X="28.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAEAAAIAIBAAABAAABAAAAABAAAAEAAABBAAACAA=</HashCode>
+      <FileName>EnemyStateMachine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyState" Collapsed="true">
+    <Position X="6.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAACiAAAAIAAAAAAAAAAAEAAEAYAAAAAAAAAA=</HashCode>
+      <FileName>EnemyState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyIdleState" Collapsed="true">
+    <Position X="5.25" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAAAAAAAAAgAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>EnemyIdleState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyDeadState" Collapsed="true">
+    <Position X="7.5" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAQAAAAAEAAACIAQAAAAAAEA=</HashCode>
+      <FileName>EnemyDeadState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyAttackState" Collapsed="true">
+    <Position X="9.75" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAQAEAIACIAAAAAAAAAA=</HashCode>
+      <FileName>EnemyAttackState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyTraceState" Collapsed="true">
+    <Position X="12" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAIAAAAAAAAAIAAAAEAACAIAAAAAAAAAA=</HashCode>
+      <FileName>EnemyTraceState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyRecoverState" Collapsed="true">
+    <Position X="0.5" Y="12.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQAAAAAAAAAAACAAAAAABAAEAAAAIgAAAAAAAAE=</HashCode>
+      <FileName>EnemyRecoverState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EnemyGetHitState" Collapsed="true">
+    <Position X="3" Y="12.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAEAAAAAAAAAAAEAAAAIAAAAAgAAgA=</HashCode>
+      <FileName>EnemyGetHitState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossStateMachine" Collapsed="true">
+    <Position X="37.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAEAAAIAIRAAABAAAAAAAAABAAAAEAAAABAgACAA=</HashCode>
+      <FileName>BossStateMachine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossState" Collapsed="true">
+    <Position X="7.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAQAAAAAiAAAAAAAAAAAAEAEAEAAEAYAAAAAAAAAA=</HashCode>
+      <FileName>BossState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossIdleState" Collapsed="true">
+    <Position X="0.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQQAAAAAgAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAE=</HashCode>
+      <FileName>BossIdleState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossTraceState" Collapsed="true">
+    <Position X="2.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAABAAAAAIQAAAAAAAAAAAAAEAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>BossTraceState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossAttackState" Collapsed="true">
+    <Position X="5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAQAAAAAAAAAEAIAAIAAAAAAAIAA=</HashCode>
+      <FileName>BossAttackState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossGetHitState" Collapsed="true">
+    <Position X="7.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAEACAAAAAAAAAAAAAAAEAAAAIAAAAAgAAAA=</HashCode>
+      <FileName>BossGetHitState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossRecoverState" Collapsed="true">
+    <Position X="9.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAQAIgAAAAAAAAAAAAAAAAAAEAAAAIgAAAAAAAAE=</HashCode>
+      <FileName>BossRecoverState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossDashAttackState" Collapsed="true">
+    <Position X="11.75" Y="9.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAgAAAAAAAAAAEAIAAIAAAAAAgAAA=</HashCode>
+      <FileName>BossDashAttackState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BossDeadState" Collapsed="true">
+    <Position X="14.25" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAQCAAAAAEAAAAMAAACAAAAEA=</HashCode>
+      <FileName>BossDeadState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FMOD::System" Collapsed="true">
+    <Position X="30.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GCCaUJIqEuJgARqBFwGMUg5ADQBPAAoQoKArEZgEwR4=</HashCode>
+      <FileName>D:\_Github\Gamep\Output\build\Resource\FMOD\core\inc\fmod.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FMOD::Studio::Bank" Collapsed="true">
+    <Position X="33.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\_Github\Gamep\Output\build\Resource\FMOD\studio\inc\fmod_studio.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FMOD::Studio::EventDescription" Collapsed="true">
+    <Position X="30.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\_Github\Gamep\Output\build\Resource\FMOD\studio\inc\fmod_studio.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FMOD::Studio::EventInstance" Collapsed="true">
+    <Position X="32" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\_Github\Gamep\Output\build\Resource\FMOD\studio\inc\fmod_studio.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FMOD::Studio::System" Collapsed="true">
+    <Position X="28.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\_Github\Gamep\Output\build\Resource\FMOD\studio\inc\fmod_studio.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FMOD::Studio::Bus" Collapsed="true">
+    <Position X="28.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>D:\_Github\Gamep\Output\build\Resource\FMOD\studio\inc\fmod_studio.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="tEvent" Collapsed="true">
+    <Position X="35.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAQAAAAAQAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EventManager.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="tKeyInfo" Collapsed="true">
+    <Position X="37.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>InputManager.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="tCamEffect" Collapsed="true">
+    <Position X="32" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAAAAAAAAAAAAAIAgAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Camera.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Vec2" Collapsed="true">
+    <Position X="30.25" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAQBACAAAAAAAAADggAAAACA=</HashCode>
+      <FileName>Vec2.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="tPlayerInfo" Collapsed="true">
+    <Position X="28.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAgAAAgDAIAAAAAAQAACgAAAQIAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="tEnemyInfo" Collapsed="true">
+    <Position X="33.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAQAAAAAAAACAAAAAAABACAAgAAAAAIAAA=</HashCode>
+      <FileName>Enemy.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="tBossInfo" Collapsed="true">
+    <Position X="30.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAQAAAAQAAAAASAACAAAAAAABACAAgAAAAAIAAA=</HashCode>
+      <FileName>Boss.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="tAnimFrame" Collapsed="true">
+    <Position X="28.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAABAAAADAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animation.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Typedef Name="BTN_FUNC" Collapsed="true">
+    <Position X="28.5" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BtnUI.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="KEY_TYPE" Collapsed="true">
+    <Position X="28.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IgAACAAAAAAAQhAABAAAAAQAAAICgAAggAAAvv//YQE=</HashCode>
+      <FileName>InputManager.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="KEY_STATE" Collapsed="true">
+    <Position X="37.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAQAAAAAAgAICAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>InputManager.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="CAM_EFFECT" Collapsed="true">
+    <Position X="32" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAQAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>Camera.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="LAYER" Collapsed="true">
+    <Position X="30.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAMAACAIAAAAAAhAgQAAAAAAAAAAAEAAEAA=</HashCode>
+      <FileName>Enums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PEN_TYPE" Collapsed="true">
+    <Position X="32" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAIAAAAAAAAAAggQAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Enums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BRUSH_TYPE" Collapsed="true">
+    <Position X="30.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAIAAAAAAAABAggQAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>Enums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EVENT_TYPE" Collapsed="true">
+    <Position X="35.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAoAAAAAAAAAAAgAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Enums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="SCENE_TYPE" Collapsed="true">
+    <Position X="35.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ENEMY_STATE" Collapsed="true">
+    <Position X="33.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACUAAAAAAAEAAAAAAEAgAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="BOSS_STATE" Collapsed="true">
+    <Position X="28.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACUAAAAAAAAAAAAAAEAgAAAAAAgBAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Enums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="PLAYER_STATE" Collapsed="true">
+    <Position X="33.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACEAAAAAAAAgAAAAAIAgABACACgAAAgCAAAAAAAAAA=</HashCode>
+      <FileName>Enums.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

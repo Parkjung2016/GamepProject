@@ -1,13 +1,18 @@
 #include "pch.h"
 #include "EnemyTraceState.h"
 
+#include "Animation.h"
 #include "Animator.h"
+#include "Audio.h"
+#include "AudioSystem.h"
 #include "Enemy.h"
 #include "EnemyStateMachine.h"
 #include "GameScene.h"
 #include "Player.h"
+#include "ResourceManager.h"
 #include "Rigidbody.h"
 #include "SceneManager.h"
+#include "SoundEvent.h"
 
 EnemyTraceState::EnemyTraceState()
 	:EnemyState(ENEMY_STATE::TRACE)
@@ -24,7 +29,19 @@ void EnemyTraceState::Update()
 	float fRecogRange = pEnemy->GetInfo().fRecogRange;
 	float fAttackRange = pEnemy->GetInfo().fAttackRange;
 	Player* pPlayer = pEnemy->GetPlayer();
+	Animation* currentAnim = GetEnemy()->GetComponent<Animator>()->GetCurrentAnim();
+	size_t curFrame = currentAnim->GetCurFrame();
+	if ((curFrame == 2 || curFrame == 7))
+	{
+		if (!m_bIsSoundTriggered)
+		{
 
+			m_bIsSoundTriggered = true;
+			GetEnemy()->GetComponent<Audio>()->PlayEvent("event:/SFX/Footstep");
+		}
+	}
+	else
+		m_bIsSoundTriggered = false;
 	Vec2 vPlayerpos = pPlayer->GetPos();
 
 	Vec2 vEnemyPos = pEnemy->GetPos();

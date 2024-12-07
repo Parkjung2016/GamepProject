@@ -1,10 +1,17 @@
 #include "pch.h"
 #include "BtnUI.h"
 
+#include "AudioSystem.h"
 #include "ResourceManager.h"
+#include "SoundEvent.h"
 #include "Texture.h"
 
-BtnUI::BtnUI() : UI(false), m_pFunc(nullptr), m_param1(0), m_param2(0)
+BtnUI::BtnUI() : UI(false),
+m_pNormalTex(nullptr),
+m_pPressTex(nullptr
+), m_pFunc(nullptr),
+m_param1(0),
+m_param2(0)
 {
 }
 
@@ -27,6 +34,9 @@ void BtnUI::MouseLBUp()
 
 void BtnUI::MouseLBClicked()
 {
+
+	GET_SINGLE(AudioSystem)->PlayEvent("event:/UI/ClickBtn");
+
 	if (nullptr != m_pFunc)
 	{
 		m_pFunc(m_param1, m_param2);
@@ -48,7 +58,7 @@ void BtnUI::Render(HDC _hdc)
 
 
 	TransparentBlt(_hdc,
-		(int)vPos.x- texWidth /2.f,
+		(int)vPos.x - texWidth / 2.f,
 		(int)vPos.y - texHeight / 2.f,
 		(int)texWidth,
 		(int)texHeight,

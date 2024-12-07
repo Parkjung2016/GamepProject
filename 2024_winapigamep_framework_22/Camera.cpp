@@ -7,7 +7,7 @@
 #include "Texture.h"
 
 
-Vec2 Camera::GetRenderPosWithParallax(Vec2 _vObjPos, Vec2 _vParallaxFactor, Vec2 _vImageSize)
+Vec2 Camera::GetRenderPosWithParallax(Vec2 _vObjPos, Vec2 _vParallaxFactor)
 {
 	Vec2 vParallaxAdjustedDiff = m_vDiff * (_vParallaxFactor);
 
@@ -19,7 +19,7 @@ Vec2 Camera::GetRenderPosWithParallax(Vec2 _vObjPos, Vec2 _vParallaxFactor, Vec2
 void Camera::Init()
 {
 	m_pTargetObj = nullptr;
-	m_fTime = .5f;
+	m_fTime = .0f;
 	m_fSpeed = 0.f;
 	m_fAccTime = 0.f;
 	m_bIsShaking = false;

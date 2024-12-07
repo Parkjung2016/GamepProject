@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Core.h"
 
+#include "AudioSystem.h"
 #include "Camera.h"
 #include "TimeManager.h"
 #include "InputManager.h"
@@ -25,6 +26,8 @@ bool Core::Init(HWND _hwnd, HINSTANCE _hInst)
 	CreateGDI();
 	// === Manager Init === 
 	GET_SINGLE(TimeManager)->Init();
+	GET_SINGLE(AudioSystem)->Init();
+
 	GET_SINGLE(InputManager)->Init();
 	GET_SINGLE(MapManager)->Init();
 	GET_SINGLE(ResourceManager)->Init();
@@ -49,6 +52,8 @@ void Core::CleanUp()
 		// Hollow 제외하고
 		DeleteObject(m_colorBrushs[i]);
 	}
+
+	GET_SINGLE(AudioSystem)->Release();
 
 	GET_SINGLE(ResourceManager)->Release();
 }
@@ -90,6 +95,7 @@ void Core::MainUpdate()
 	GET_SINGLE(CollisionManager)->Update();
 	GET_SINGLE(UIManager)->Update();
 	GET_SINGLE(Camera)->Update();
+	GET_SINGLE(AudioSystem)->Update();
 
 
 }

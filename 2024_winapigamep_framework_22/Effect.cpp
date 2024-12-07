@@ -16,12 +16,11 @@ Effect::Effect()
 
 Effect::~Effect()
 {
-	
+
 }
 
 void Effect::Start()
 {
-	GetComponent<Animator>()->PlayAnimation(L"Effect", nullptr != m_parentObject);
 
 }
 
@@ -53,6 +52,8 @@ void Effect::Render(HDC _hdc)
 void Effect::SetEffectAnimation(Vec2 _vLT, Vec2 _vSliceSize, Vec2 _vStep, UINT _frameCount, float _fDuration)
 {
 	AddComponent<Animator>()->CreateAnimation(L"Effect", m_pTex, _vLT, _vSliceSize, _vStep, _frameCount, _fDuration);
+	GetComponent<Animator>()->PlayAnimation(L"Effect", nullptr != m_parentObject);
+
 }
 
 void Effect::SetAlpha(float _fAlpha)
@@ -62,7 +63,9 @@ void Effect::SetAlpha(float _fAlpha)
 
 void Effect::DestroyObject()
 {
+	SafeDeleteVec(m_vecComponents);
 	tEvent evt;
+
 	evt.eveType = EVENT_TYPE::DELETE_OBJECT;
 	evt.lParam = (DWORD_PTR)this;
 	GET_SINGLE(EventManager)->AddEvent(evt);

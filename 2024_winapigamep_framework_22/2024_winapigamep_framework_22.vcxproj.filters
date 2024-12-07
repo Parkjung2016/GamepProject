@@ -164,9 +164,6 @@
     <Filter Include="Engine\02. Manager\MapManager">
       <UniqueIdentifier>{cba882d0-80a3-4ddd-b478-ffa1e3bdd92a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\02. Manager\GameManager">
-      <UniqueIdentifier>{a83bd53f-a63c-4ae6-b3c8-6abe2bc14efd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\03. Object\Tile">
       <UniqueIdentifier>{2c958938-95d9-4dfd-9d5d-6332f2433f4b}</UniqueIdentifier>
     </Filter>
@@ -229,6 +226,21 @@
     </Filter>
     <Filter Include="Engine\06. Component\PlayerHealth">
       <UniqueIdentifier>{4665c4e3-732c-4139-8b7c-919dc7d512b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\02. Manager\AudioSystem">
+      <UniqueIdentifier>{52e84afc-021d-40b3-a735-17c8346bedcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\01. Core\SoundEvent">
+      <UniqueIdentifier>{94762bd6-b269-4a32-97e6-800245016155}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\06. Component\Audio">
+      <UniqueIdentifier>{c48a2f9d-7dd8-4698-952b-5585cc5247cc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\SoundObject">
+      <UniqueIdentifier>{9925ce43-4bc8-4770-b49c-2df70c50b6f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\03. Object\Wall">
+      <UniqueIdentifier>{8de85a6b-96ff-44e1-b7a3-0b5fa93e142f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -409,9 +421,6 @@
     <ClInclude Include="Action.h">
       <Filter>Engine\99. Header</Filter>
     </ClInclude>
-    <ClInclude Include="GameManager.h">
-      <Filter>Engine\02. Manager\GameManager</Filter>
-    </ClInclude>
     <ClInclude Include="Interfaces.h">
       <Filter>Engine\99. Header</Filter>
     </ClInclude>
@@ -480,6 +489,21 @@
     </ClInclude>
     <ClInclude Include="PlayerHealth.h">
       <Filter>Engine\06. Component\PlayerHealth</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioSystem.h">
+      <Filter>Engine\02. Manager\AudioSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEvent.h">
+      <Filter>Engine\01. Core\SoundEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="Audio.h">
+      <Filter>Engine\06. Component\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundObject.h">
+      <Filter>Engine\03. Object\SoundObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Engine\03. Object\Wall</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -652,9 +676,6 @@
     <ClCompile Include="Action.cpp">
       <Filter>Engine\99. Header</Filter>
     </ClCompile>
-    <ClCompile Include="GameManager.cpp">
-      <Filter>Engine\02. Manager\GameManager</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyGetHitState.cpp">
       <Filter>Engine\07. Module\StateMachine\Enemy\State\GetHit</Filter>
     </ClCompile>
@@ -718,5 +739,23 @@
     <ClCompile Include="PlayerHealth.cpp">
       <Filter>Engine\06. Component\PlayerHealth</Filter>
     </ClCompile>
+    <ClCompile Include="AudioSystem.cpp">
+      <Filter>Engine\02. Manager\AudioSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundEvent.cpp">
+      <Filter>Engine\01. Core\SoundEvent</Filter>
+    </ClCompile>
+    <ClCompile Include="Audio.cpp">
+      <Filter>Engine\06. Component\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundObject.cpp">
+      <Filter>Engine\03. Object\SoundObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Engine\03. Object\Wall</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 #pragma once
 #include "EnemyState.h"
 class EnemyTraceState :
-    public EnemyState
+	public EnemyState
 {
 
 public:
@@ -11,6 +11,7 @@ public:
 	virtual void Update();
 	virtual void Enter();
 	virtual void Exit();
-
+private:
+	bool m_bIsSoundTriggered;
 };
 

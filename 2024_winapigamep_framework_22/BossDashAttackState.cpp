@@ -3,6 +3,7 @@
 
 #include "Animation.h"
 #include "Animator.h"
+#include "Audio.h"
 #include "Boss.h"
 #include "BossRecoverState.h"
 #include "BossStateMachine.h"
@@ -10,7 +11,7 @@
 #include "Player.h"
 #include "Rigidbody.h"
 
-BossDashAttackState::BossDashAttackState() : BossState(BOSS_STATE::DASHATTACK)
+BossDashAttackState::BossDashAttackState() : BossState(BOSS_STATE::ATTACKD)
 {
 }
 
@@ -25,6 +26,7 @@ void BossDashAttackState::Update()
 	if (pAnimator->GetCurrentAnim()->GetCurFrame() == 2 && !m_bAnimationTrigger)
 	{
 		m_bAnimationTrigger = true;
+			GetBoss()->GetComponent<Audio>()->PlayEvent("event:/SFX/Boss/DashAttackSwing");
 		auto info = GetBoss()->GetInfo();
 		Rigidbody* pRigid = GetBoss()->GetComponent<Rigidbody>();
 		int dashDir = pAnimator->GetIsRotate() ? -1 : 1;

@@ -24,7 +24,7 @@ public:
 
 	void SetNormalTexture(const wstring& _wKey, const wstring& _wPath);
 	void SetPressTexture(const wstring& _wKey, const wstring& _wPath);
-	CLONE(BtnUI);
+	CLONE(BtnUI)
 
 private:
 	Texture* m_pNormalTex;

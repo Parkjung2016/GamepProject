@@ -2,6 +2,7 @@
 #include "PlayerFallingState.h"
 
 #include "Animator.h"
+#include "Audio.h"
 #include "Gravity.h"
 #include "Player.h"
 #include "PlayerStateMachine.h"
@@ -20,6 +21,8 @@ void PlayerFallingState::Update()
 	bool bIsGrounded = GetPlayer()->GetComponent<Gravity>()->IsGrounded();
 	if (bIsGrounded)
 	{
+		GetPlayer()->GetComponent<Audio>()->PlayEvent("event:/SFX/Footstep", GET_SINGLE(Camera)->GetLookAt());
+
 		GetStateMachine()->ChangeState(PLAYER_STATE::IDLE);
 	}
 }

@@ -1,5 +1,4 @@
 #pragma once
-#include "Interfaces.h"
 #include "Object.h"
 
 class Texture;

@@ -1,7 +1,9 @@
 #include "pch.h"
 #include "PlayerRunState.h"
 
+#include "Animation.h"
 #include "Animator.h"
+#include "Audio.h"
 #include "Player.h"
 #include "PlayerStateMachine.h"
 #include "Rigidbody.h"
@@ -19,7 +21,20 @@ void PlayerRunState::Update()
 	PlayerGroundState::Update();
 	Player* player = GetPlayer();
 	Rigidbody* pRigid = player->GetComponent<Rigidbody>();
+	Animation* currentAnim = GetPlayer()->GetComponent<Animator>()->GetCurrentAnim();
+	size_t curFrame = currentAnim->GetCurFrame();
+	if ((curFrame == 4 || curFrame == 9))
+	{
+		if (!m_bIsSoundTriggered)
+		{
 
+			m_bIsSoundTriggered = true;
+			GetPlayer()->GetComponent<Audio>()->PlayEvent("event:/SFX/Footstep", GET_SINGLE(Camera)->GetLookAt());
+
+		}
+	}
+	else
+		m_bIsSoundTriggered = false;
 	int iInput = player->GetMoveInput();
 	if (iInput == 0)
 	{

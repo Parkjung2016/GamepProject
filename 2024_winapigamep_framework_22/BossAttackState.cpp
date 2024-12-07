@@ -3,6 +3,7 @@
 
 #include "Animation.h"
 #include "Animator.h"
+#include "Audio.h"
 #include "Boss.h"
 #include "BossStateMachine.h"
 #include "Health.h"
@@ -31,6 +32,7 @@ void BossAttackState::Update()
 	{
 		m_bAnimationTrigger = true;
 		float fAttackRange = GetBoss()->GetInfo().fAttackRange;
+		GetBoss()->GetComponent<Audio>()->PlayEvent("event:/SFX/Boss/AttackSwing");
 
 		if (GetBoss()->IsPlayerInFront() && GetBoss()->IsPlayerInRange(fAttackRange))
 		{

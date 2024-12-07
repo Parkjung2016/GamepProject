@@ -3,13 +3,15 @@
 
 #include "Animation.h"
 #include "Animator.h"
+#include "Audio.h"
+
 #include "Enums.h"
 #include "Player.h"
 #include "PlayerStateMachine.h"
 #include "Rigidbody.h"
 
 PlayerReloadGunState::PlayerReloadGunState() : PlayerState(PLAYER_STATE::RELOADGUN),
-m_bAnimationTrigger(false)
+                                               m_bAnimationTrigger(false)
 {
 }
 
@@ -26,6 +28,9 @@ void PlayerReloadGunState::Update()
 	if (animator->GetCurrentAnim()->GetCurFrame() == 15 && !m_bAnimationTrigger)
 	{
 		m_bAnimationTrigger = true;
+		GetPlayer()->GetComponent<Audio>()->PlayEvent("event:/SFX/Player/ReloadShotGun", GET_SINGLE(Camera)->GetLookAt());
+
+
 		GetPlayer()->ReloadGun();
 	}
 	if (animator->GetCurrentAnim()->IsFinished())

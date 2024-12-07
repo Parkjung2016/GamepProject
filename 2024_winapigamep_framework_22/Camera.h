@@ -52,7 +52,7 @@ public:
 	void SetTarget(Object* _pTarget) { m_pTargetObj = _pTarget; }
 	Vec2 GetLookAt() { return m_vCurLookAt; }
 	Vec2 GetRenderPos(Vec2 _vObjPos) const { return _vObjPos - m_vDiff; };
-	Vec2 GetRenderPosWithParallax(Vec2 _vObjPos, Vec2 _vParallaxFactor, Vec2 _vImageSize);
+	Vec2 GetRenderPosWithParallax(Vec2 _vObjPos, Vec2 _vParallaxFactor);
 	Vec2 GetRealPos(Vec2 _vRenderPos) const { { return _vRenderPos + m_vDiff; } }
 	Vec2 GetCameraPos() {
 		return m_vDiff;

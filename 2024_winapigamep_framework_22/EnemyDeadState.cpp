@@ -3,6 +3,7 @@
 
 #include "Animation.h"
 #include "Animator.h"
+#include "Audio.h"
 #include "Enemy.h"
 #include "EnemyStateMachine.h"
 #include "Gravity.h"
@@ -13,8 +14,8 @@
 #include "TimeManager.h"
 
 EnemyDeadState::EnemyDeadState() : EnemyState(ENEMY_STATE::DEAD),
-m_fCurrentDestroyTime(0),
-m_fDestroyTime(1)
+                                   m_fCurrentDestroyTime(0),
+                                   m_fDestroyTime(1)
 {
 }
 
@@ -38,6 +39,9 @@ void EnemyDeadState::Update()
 
 void EnemyDeadState::Enter()
 {
+	GetEnemy()->GetComponent<Audio>()->StopAllEvents();
+	GetEnemy()->GetComponent<Audio>()->PlayEvent("event:/SFX/Zombie/ZombieDead");
+
 	GetStateMachine()->SetCanChangeState(false);
 	GetEnemy()->GetPlayer()->AddDashableCount();
 	GetEnemy()->GetComponent<Health>()->SetDead();

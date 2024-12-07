@@ -1,1 +1,5 @@
 *.bmp filter=lfs diff=lfs merge=lfs -text
+fmodstudio.dll filter=lfs diff=lfs merge=lfs -text
+fmodL.dll filter=lfs diff=lfs merge=lfs -text
+BGM.bank filter=lfs diff=lfs merge=lfs -text
+fmodstudioL.dll filter=lfs diff=lfs merge=lfs -text

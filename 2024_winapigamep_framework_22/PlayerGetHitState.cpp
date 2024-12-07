@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "PlayerGetHitState.h"
 
-#include "Animation.h"
 #include "Animator.h"
+#include "Audio.h"
 #include "Health.h"
 #include "Player.h"
 #include "PlayerStateMachine.h"
@@ -35,6 +35,8 @@ void PlayerGetHitState::Update()
 
 void PlayerGetHitState::Enter()
 {
+	GetPlayer()->GetComponent<Audio>()->PlayEvent("event:/SFX/Player/PlayerImpact", GET_SINGLE(Camera)->GetLookAt());
+
 	GetPlayer()->GetComponent<Animator>()->SetIsHit(true);
 	GetPlayer()->GetComponent<Animator>()->PlayAnimation(L"GetHit", false);
 }

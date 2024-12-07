@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "PlayerHealth.h"
 
+#include "Audio.h"
 #include "Enemy.h"
 #include "Player.h"
 
@@ -20,6 +21,8 @@ void PlayerHealth::ApplyDamage(CombatData combatData)
 		Enemy* pENemy = (Enemy*)(combatData.pDealer);
 		if (pENemy)
 		{
+			GetOwner()->GetComponent<Audio>()->PlayEvent("event:/SFX/Player/AttackBlock");
+
 			pENemy->FreezeMove(3);
 		}
 		return;
