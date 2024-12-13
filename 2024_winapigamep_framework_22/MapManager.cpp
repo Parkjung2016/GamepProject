@@ -168,7 +168,37 @@ void MapManager::CreatePlayer(const Vec2& vPos)
 
 void MapManager::CreateEnemy(const Vec2& vPos)
 {
-	Enemy* pEnemy = new Enemy;
+	wstring texKey;
+	wstring texPath;
+	int idleFrameCount;
+	int traceFrameCount;
+	int attackFrameCount;
+	int getHitFrameCount;
+	int deadFrameCount;
+	switch (rand() % 2)
+	{
+	case 0:
+		texKey = L"Enemy_zombie1";
+		texPath = L"Texture\\Enemy_zombie1.bmp";
+		idleFrameCount = 9;
+		traceFrameCount = 10;
+		attackFrameCount = 4;
+		getHitFrameCount = 5;
+		deadFrameCount = 5;
+		break;
+	case 1:
+		texKey = L"Enemy_zombie2";
+		texPath = L"Texture\\Enemy_zombie2.bmp";
+		idleFrameCount = 8;
+		traceFrameCount = 8;
+		attackFrameCount = 5;
+		getHitFrameCount = 5;
+		deadFrameCount = 5;
+		break;
+	}
+	Enemy* pEnemy = new Enemy();
+	pEnemy->SetTexture(texKey, texPath);
+	pEnemy->Init(idleFrameCount, traceFrameCount, attackFrameCount, getHitFrameCount, deadFrameCount);
 	pEnemy->SetName(L"Enemy");
 	pEnemy->SetPos(vPos);
 	pEnemy->SetSize({ 100.f,100.f });

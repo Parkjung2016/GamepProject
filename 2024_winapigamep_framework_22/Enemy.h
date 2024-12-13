@@ -30,6 +30,8 @@ public:
 		m_fFreezeTime = _fFreezeTime;
 	}
 	void SetSpeed(float _f) { m_tInfo.fSpeed = _f; }
+	void Init(int _iIdleFrameCount, int _iTraceFrameCount, int _iAttackFrameCount, int _iGetHitFrameCount, int _iDeadFrameCount);
+	void SetTexture(const wstring& _wKey, const wstring& _wPath);
 	void SetStateMachine(EnemyStateMachine* _stateMachine);
 	bool IsPlayerInRange(float fRange) const;
 	bool IsPlayerInFront();
@@ -41,7 +43,6 @@ private:
 	void HandleApplyDamaged() const;
 	void HandleDead() const;
 public:
-	void Start() override;
 	void Update() override;
 	void Render(HDC _hdc) override;
 	void AfterRender() override;

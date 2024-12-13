@@ -43,8 +43,8 @@
   </object>
  </objectgroup>
  <objectgroup id="8" name="Wall Layer">
-  <object id="29" type="Collider" x="800" y="800" width="174" height="568"/>
-  <object id="32" type="Collider" x="5500" y="800" width="174" height="568"/>
+  <object id="29" type="Collider" x="800" y="500" width="174" height="904"/>
+  <object id="32" type="Collider" x="5500" y="500" width="174" height="904"/>
  </objectgroup>
  <layer id="1" name="Main Layer" width="200" height="40" opacity="0.9">
   <data encoding="csv">

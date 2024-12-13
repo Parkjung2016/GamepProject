@@ -13,5 +13,7 @@ public:
 	void EnterCollision(Collider* _other) override;
 	void StayCollision(Collider* _other) override;
 	void ExitCollision(Collider* _other) override;
+private:
+	Texture* m_pTex;
 };
 

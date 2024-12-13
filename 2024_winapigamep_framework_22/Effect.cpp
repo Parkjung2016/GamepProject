@@ -63,7 +63,6 @@ void Effect::SetAlpha(float _fAlpha)
 
 void Effect::DestroyObject()
 {
-	SafeDeleteVec(m_vecComponents);
 	tEvent evt;
 
 	evt.eveType = EVENT_TYPE::DELETE_OBJECT;

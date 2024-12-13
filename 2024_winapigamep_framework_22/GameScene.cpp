@@ -42,21 +42,33 @@ void GameScene::Init()
 	keyGuideMoveText->SetAlign(TA_RIGHT);
 	AddObject(keyGuideMoveText, LAYER::UI);
 
+	TextUI* keyGuideRunText = new TextUI;
+	keyGuideRunText->SetText(L"Run : Shift");
+	keyGuideRunText->SetPos({ SCREEN_WIDTH - 1,25 });
+	keyGuideRunText->SetAlign(TA_RIGHT);
+	AddObject(keyGuideRunText, LAYER::UI);
+
 	TextUI* keyGuideAttackText = new TextUI;
 	keyGuideAttackText->SetText(L"Attack : A");
-	keyGuideAttackText->SetPos({ SCREEN_WIDTH - 1,25 });
+	keyGuideAttackText->SetPos({ SCREEN_WIDTH - 1,50 });
 	keyGuideAttackText->SetAlign(TA_RIGHT);
 	AddObject(keyGuideAttackText, LAYER::UI);
 
+	TextUI* keyGuideReloadText = new TextUI;
+	keyGuideReloadText->SetText(L"Reload : R");
+	keyGuideReloadText->SetPos({ SCREEN_WIDTH - 1,75 });
+	keyGuideReloadText->SetAlign(TA_RIGHT);
+	AddObject(keyGuideReloadText, LAYER::UI);
+
 	TextUI* keyGuideJumpText = new TextUI;
 	keyGuideJumpText->SetText(L"Jump : Space");
-	keyGuideJumpText->SetPos({ SCREEN_WIDTH - 1,50 });
+	keyGuideJumpText->SetPos({ SCREEN_WIDTH - 1,100 });
 	keyGuideJumpText->SetAlign(TA_RIGHT);
 	AddObject(keyGuideJumpText, LAYER::UI);
 
 	TextUI* keyGuideBlockText = new TextUI;
 	keyGuideBlockText->SetText(L"Block : X");
-	keyGuideBlockText->SetPos({ SCREEN_WIDTH - 1,75 });
+	keyGuideBlockText->SetPos({ SCREEN_WIDTH - 1,125 });
 	keyGuideBlockText->SetAlign(TA_RIGHT);
 	AddObject(keyGuideBlockText, LAYER::UI);
 

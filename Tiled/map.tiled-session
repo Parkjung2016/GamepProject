@@ -52,15 +52,15 @@
             "expandedObjectLayers": [
                 3
             ],
-            "scale": 0.33,
-            "selectedLayer": 4,
+            "scale": 0.75,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 5234.848484848485,
-                "y": 1172.7272727272727
+                "x": 2569.333333333333,
+                "y": 1088.6666666666665
             }
         }
     },
-    "last.exportedFilePath": "D:/_Github/Gamep/Output/build/Resource/Json",
+    "last.exportedFilePath": "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Json",
     "last.imagePath": "C:/Users/bagj2/Downloads/2024_winapigamep_framework_end/Output/build/Resource/Texture/Map",
     "map.height": 1,
     "map.lastUsedExportFilter": "JSON map files (*.tmj *.json)",

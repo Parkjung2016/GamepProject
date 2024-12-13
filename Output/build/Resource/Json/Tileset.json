@@ -237,7 +237,7 @@
          "name":"Wall Layer",
          "objects":[
                 {
-                 "height":568,
+                 "height":904,
                  "id":29,
                  "name":"",
                  "rotation":0,
@@ -245,10 +245,10 @@
                  "visible":true,
                  "width":174,
                  "x":800,
-                 "y":800
+                 "y":500
                 }, 
                 {
-                 "height":568,
+                 "height":904,
                  "id":32,
                  "name":"",
                  "rotation":0,
@@ -256,7 +256,7 @@
                  "visible":true,
                  "width":174,
                  "x":5500,
-                 "y":800
+                 "y":500
                 }],
          "opacity":1,
          "type":"objectgroup",
